@@ -2,38 +2,73 @@
 <!-- saved from url=(0025)http://cs.unc.edu/~hartg/ -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+<!-- Get CSS -->
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+
+<!-- Set Up PHP Functions-------------------------------------------------- -->
+<?php
+
+/* Function to create a tile in the home screen */
+function createTile($img, $link, $text, $opacity, $name) {
+	$out='<div class="image">';
+	$out=$out.'<img src='.$img.' alt="" name="'.$name.'" style="opacity: 0.'.$opacity.';" />';
+	$out=$out.'<span class="overlay">
+						 <a href='.$link.'>
+						 <table width="234" style="height: 234px; opacity: 0.'.$opacity.'; "
+						 onmouseover="'.$name.'.style.opacity=1;'.$name.'.filters.alpha.opacity=100"
+						 onmouseout="'.$name.'.style.opacity=0.'.$opacity.';'.$name.'.filters.alpha.opacity='.$opacity.'">
+						 <tr valign="middle"><td align="center">
+						 <p class="linkText" style="text-align:center;">'.$text.'
+						 </p>
+						 </td></tr></table>
+						 </a>
+						 </span>';
+	$out=$out.'</div>';
+	return $out;
+}
+
+?>
+
 <title>Rebekkah and Gabe</title>
-
-<style type="text/css">
-<!--
-
-.imgLnk A.link{
-	border:none;
-	text-decoration:none;
-	color:#FFFFFF;
-}
-
-.imgLnk A.visited{
-	border:none;
-	text-decoration:none;
-	color:#FFFFFF;
-}
-
--->
-</style>
 
 </head>
 
 <body>
-<!--Main Table-->
+<!-- Main Table------------------------------------------------------------ -->
 <center>
-<table width="702" cellpadding="0" cellspacing="0" border="0">
-	
+<table width="704" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+
+<!-- First Row -->
+<tr>
+<td><img src="./images/p11.png" alt="" /></td>
+<td><?php echo "" . createTile("./images/p12.png", "www.test.com", "Welcome", 85, "p12") ?></td>
+<td><?php echo "" . createTile("./images/p13.png", "www.test.com", "The Place", 85, "p13") ?></td>
+</tr>
+
+<!-- Second Row -->
+<tr>
+<td><img src="./images/p21.png" alt="" /></td>
+<td><?php echo "" . createTile("./images/p22.png", "www.test.com", "RSVP", 85, "p22") ?></td>
+<td><?php echo "" . createTile("./images/p23.png", "www.test.com", "Registry", 85, "p23") ?></td>
+</tr>
+
+<!-- Third Row -->
+<tr>
+<td><img src="./images/p31.png" alt="" /></td>
+<td><?php echo "" . createTile("./images/p32.png", "www.test.com", "The Place", 85, "p32") ?></td>
+<td><?php echo "" . createTile("./images/p33.png", "www.test.com", "RSVP", 85, "p33") ?></td>
+</tr>
+
+</tbody>
+
+
+<!--
 <tbody><tr><td>
-	<!--Header Table-->
+	<!--Header Table->
 	<table bgcolor="#6F7359" border="0" cellpadding="0" cellspacing="0">
 
-    <!--Header Top Edge-->
+    <!--Header Top Edge->
     <tbody><tr>
     <td><img src="./images/cornerUL_green.jpg" width="10" height="10"></td>
     <td><img src="./images/spacer.gif" width="150" height="10"></td>
@@ -41,7 +76,7 @@
     <td><img src="./images/cornerUR_green.jpg" width="10" height="10"></td>
     </tr>
 
-	<!--Header-->
+	<!--Header->
     <tr>
     <td><img src="./images/spacer.gif" width="10" height="10"></td>
     <td><img src="./images/headShot3.jpg"></td>
@@ -61,7 +96,7 @@
     <td><img src="./images/spacer.gif" width="10" height="10"></td>
     </tr>
     
-    <!--Header Bottom Edge-->
+    <!--Header Bottom Edge->
     <tr>
     <td><img src="./images/cornerBL_green.jpg" width="10" height="10"></td>
     <td><img src="./images/spacer.gif" width="150" height="10"></td>
@@ -73,9 +108,9 @@
 </td></tr>
 <tr><td>
     
-    <!--Links Table-->
+    <!--Links Table->
     <table width="705" cellpadding="0" cellspacing="0" border="0">
-	<!--Row 1-->
+	<!--Row 1->
     <tbody><tr>
         <td>
         <a href="http://cs.unc.edu/~hartg/about.html" style="display:inline-table">
@@ -96,7 +131,7 @@
         </td>
         
     </tr>
-    <!--Row 2-->
+    <!--Row 2->
     <tr>
     
     	<td>
@@ -119,6 +154,8 @@
     </tr>
     </tbody></table>
 </td></tr>
+
+-->
 
 </tbody></table>
 </center>
