@@ -3,28 +3,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!-- Get CSS -->
+<style media="screen" type="text/css">/*<![CDATA[*/@import 'gabriola.css';/*]]>*/</style>
 <link rel="stylesheet" type="text/css" href="./css/style.css">
+<style type="text/css">#title,#glyphs p{font-family:"Gabriola"}</style>
 
 <!-- Set Up PHP Functions-------------------------------------------------- -->
 <?php
 
 /* Function to create a tile in the home screen */
 function createTile($img, $link, $text, $opacity, $name) {
-	$out='<div class="image">';
-	$out=$out.'<img src='.$img.' alt="" name="'.$name.'" style="opacity: 1;" />';
-	$out=$out.'<span class="overlay">
-						 <a href='.$link.'>
-						 <table width="234" style="height: 234px; opacity: 1; "
-						 onmouseover="'.$name.'.style.opacity=0.'.$opacity.';'.$name.'.filters.alpha.opacity='.$opacity.'"
-						 onmouseout="'.$name.'.style.opacity=1;'.$name.'.filters.alpha.opacity=100">
-						 <tr valign="middle"><td align="center">
-						 <p class="linkText" style="text-align:center;">'.$text.'
-						 </p>
-						 </td></tr></table>
-						 </a>
-						 </span>';
-	$out=$out.'</div>';
-	return $out;
+  $out='<div class="image">';
+  $out=$out.'<img src='.$img.' alt="" name="'.$name.'" style="opacity: 1;" />';
+  $out=$out.'<span class="overlay">
+             <a href='.$link.'>
+             <table width="234" style="height: 234px; opacity: 1; "
+             onmouseover="'.$name.'.style.opacity=0.'.$opacity.';'.$name.'.filters.alpha.opacity='.$opacity.'"
+             onmouseout="'.$name.'.style.opacity=1;'.$name.'.filters.alpha.opacity=100">
+             <tr valign="middle"><td align="center">
+             <p class="linkText" style="text-align:center;">'.$text.'
+             </p>
+             </td></tr></table>
+             </a>
+             </span>';
+  $out=$out.'</div>';
+  return $out;
 }
 
 ?>
