@@ -19,8 +19,8 @@ function createTile($img, $link, $text, $opacity, $name) {
              <table width="234" style="height: 234px; opacity: 1; "
              onmouseover="'.$name.'.style.opacity=0.'.$opacity.';'.$name.'.filters.alpha.opacity='.$opacity.'"
              onmouseout="'.$name.'.style.opacity=1;'.$name.'.filters.alpha.opacity=100">
-             <tr valign="middle"><td align="center">
-             <p class="linkText" style="text-align:center;">'.$text.'
+             <tr valign="bottom"><td>
+             <p class="linkText" style="text-align:right; font-size:22px">'.$text.'&nbsp;&nbsp;&nbsp;
              </p>
              </td></tr></table>
              </a>

@@ -40,8 +40,10 @@ function createMiniTile($img, $link, $text, $opacity, $name, $w, $h) {
 
 <tr>
 <!-- Left Col -->
-<td>
+<td valign="top" style="height:469px;">
+  <a href="..">
   <img src="./images/Image.png">
+  </a>
 </td>
 
 <!-- Body Col -->
@@ -117,7 +119,7 @@ function createMiniTile($img, $link, $text, $opacity, $name, $w, $h) {
 </tr>
 
 <!-- Mini Panel -->
-<tr>
+<tr valign="top">
 <td>
 
   <table cellpadding="0" cellspacing="0" border="0">
