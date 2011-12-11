@@ -28,7 +28,7 @@ function createMiniTile($img, $link, $text, $opacity, $name, $w, $h) {
 }
 ?>
 
-<title>Rebekkah and Gabe - Welcome</title>
+<title>Rebekkah and Gabe - RSVP</title>
 
 </head>
 
@@ -57,58 +57,58 @@ function createMiniTile($img, $link, $text, $opacity, $name, $w, $h) {
 
     <!-- Place Body Here ------------------------------------------------- -->
 
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
-    <p>Welcome -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
+    <p>RSVP -- TEST</p>
   </td></tr>
   <tr><td>
     <img src="./images/bottom.png" height="10">
@@ -125,15 +125,15 @@ function createMiniTile($img, $link, $text, $opacity, $name, $w, $h) {
   <table cellpadding="0" cellspacing="0" border="0">
   <tbody>
   <tr>
-    <td><?php echo createMiniTile("./images/p11.png", ".", "Welcome", 85, "mp11", 117, 78) ?></td>
+    <td><?php echo createMiniTile("./images/p11.png", "../Welcome/", "Welcome", 85, "mp11", 117, 78) ?></td>
     <td><?php echo createMiniTile("./images/p12.png", "../ThePlace/", "The Place", 85, "mp12", 118, 78) ?></td>
   </tr>
   <tr>
     <td><?php echo createMiniTile("./images/p21.png", "../Registry/", "Registry", 85, "mp21", 117, 78) ?></td>
-    <td><?php echo createMiniTile("./images/p22.png", "../RSVP/", "RSVP", 85, "mp22", 118, 78) ?></td>
+    <td><?php echo createMiniTile("./images/p22.png", ".", "RSVP", 85, "mp22", 118, 78) ?></td>
   </tr>
   <tr>
-    <td><?php echo createMiniTile("./images/p31.png", ".", "Welcome", 85, "mp31", 117, 77) ?></td>
+    <td><?php echo createMiniTile("./images/p31.png", "../Welcome/", "Welcome", 85, "mp31", 117, 77) ?></td>
     <td><?php echo createMiniTile("./images/p32.png", "../ThePlace/", "The Place", 85, "mp32", 118, 77) ?></td>
   </tr>
   </tbody>
