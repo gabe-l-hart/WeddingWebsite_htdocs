@@ -44,15 +44,69 @@ function createMiniTile($img, $link, $text, $opacity, $name, $w, $h) {
   <img src="./images/Image.png">
 </td>
 
-<!-- Body Col -->     <!-- FIXME -->
+<!-- Body Col -->
 <td rowspan="3">
   <table width="467" cellpadding="0" cellspacing="0" border="0">
   <tbody>
   <tr><td>
     <img src="./images/top.png" height="10">
   </td></tr>
-  <tr><td>
-    <img src="./images/body.png">
+  <tr><td background="./images/body.png" bgcolor="49002e" style="background-repeat:no-repeat">
+
+    <!-- Place Body Here ------------------------------------------------- -->
+
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
   </td></tr>
   <tr><td>
     <img src="./images/bottom.png" height="10">
