@@ -10,7 +10,7 @@
 <!-- Get PHP Utils -->
 <?php include '../scripts/utils.php'; ?>
 
-<title>Rebekkah and Gabe - RSVP</title>
+<title>Rebekkah and Gabe - The Place</title>
 
 </head>
 
@@ -43,58 +43,58 @@
 
     <!-- Place Body Here ------------------------------------------------- -->
 
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
-    <p>RSVP -- TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
+    <p>THIS IS A TEST</p>
 
     </td>
     <td><img src="../images/spacer.png" width="10"></td>

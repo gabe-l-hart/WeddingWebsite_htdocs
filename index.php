@@ -7,29 +7,8 @@
 <link rel="stylesheet" type="text/css" href="./css/style.css">
 <style type="text/css">#title,#glyphs p{font-family:"Gabriola"}</style>
 
-<!-- Set Up PHP Functions ------------------------------------------------- -->
-<?php
-
-/* Function to create a tile in the home screen */
-function createTile($img, $link, $text, $opacity, $name) {
-  $out='<div class="image">';
-  $out=$out.'<img src='.$img.' alt="" name="'.$name.'" style="opacity: 1;" />';
-  $out=$out.'<span class="overlay">
-             <a href='.$link.'>
-             <table width="234" style="height: 234px; opacity: 1; "
-             onmouseover="'.$name.'.style.opacity=0.'.$opacity.';'.$name.'.filters.alpha.opacity='.$opacity.'"
-             onmouseout="'.$name.'.style.opacity=1;'.$name.'.filters.alpha.opacity=100">
-             <tr valign="bottom"><td>
-             <p class="linkText" style="text-align:right; font-size:22px">'.$text.'&nbsp;&nbsp;&nbsp;
-             </p>
-             </td></tr></table>
-             </a>
-             </span>';
-  $out=$out.'</div>';
-  return $out;
-}
-
-?>
+<!-- Get PHP Scripts -->
+<?php include './scripts/utils.php'; ?>
 
 <title>Rebekkah and Gabe</title>
 
@@ -44,22 +23,22 @@ function createTile($img, $link, $text, $opacity, $name) {
 <!-- First Row -->
 <tr>
 <td><img src="./images/p11.png" alt="" /></td>
-<td><?php echo createTile("./images/p12.png", "./Welcome/", "Welcome", 85, "p12") ?></td>
-<td><?php echo createTile("./images/p13.png", "www.test.com", "The Place", 85, "p13") ?></td>
+<td><?php echo createHomeTile("./images/p12.png", "./Welcome/", "Welcome", 85, "p12") ?></td>
+<td><?php echo createHomeTile("./images/p13.png", "./TheEvent/", "The Event", 85, "p13") ?></td>
 </tr>
 
 <!-- Second Row -->
 <tr>
 <td><img src="./images/p21.png" alt="" /></td>
-<td><?php echo createTile("./images/p22.png", "www.test.com", "RSVP", 85, "p22") ?></td>
-<td><?php echo createTile("./images/p23.png", "www.test.com", "Registry", 85, "p23") ?></td>
+<td><?php echo createHomeTile("./images/p22.png", "./Colorado/", "Colorado", 85, "p22") ?></td>
+<td><?php echo createHomeTile("./images/p23.png", "./Photos/", "Photos", 85, "p23") ?></td>
 </tr>
 
 <!-- Third Row -->
 <tr>
 <td><img src="./images/p31.png" alt="" /></td>
-<td><?php echo createTile("./images/p32.png", "www.test.com", "The Place", 85, "p32") ?></td>
-<td><?php echo createTile("./images/p33.png", "www.test.com", "RSVP", 85, "p33") ?></td>
+<td><?php echo createHomeTile("./images/p32.png", "./Registry/", "Registry", 85, "p32") ?></td>
+<td><?php echo createHomeTile("./images/p33.png", "./RSVP/", "RSVP", 85, "p33") ?></td>
 </tr>
 
 </tbody>
