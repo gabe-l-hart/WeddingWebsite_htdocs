@@ -11,22 +11,22 @@
 <!-- First Row -->
 <tr>
 <td><img src="./images/p11.png" alt="" /></td>
-<td><?php echo createHomeTile("./images/p12.png", "./Welcome/", "Welcome", "p12") ?></td>
-<td><?php echo createHomeTile("./images/p13.png", "./TheEvent/", "The Event", "p13") ?></td>
+<td><?php createHomeTile("./images/p12.png", "./Welcome/", "Welcome", "p12") ?></td>
+<td><?php createHomeTile("./images/p13.png", "./TheEvent/", "The Event", "p13") ?></td>
 </tr>
 
 <!-- Second Row -->
 <tr>
 <td><img src="./images/p21.png" alt="" /></td>
-<td><?php echo createHomeTile("./images/p22.png", "./Colorado/", "Colorado", "p22") ?></td>
-<td><?php echo createHomeTile("./images/p23.png", "./Photos/", "Photos", "p23") ?></td>
+<td><?php createHomeTile("./images/p22.png", "./Colorado/", "Colorado", "p22") ?></td>
+<td><?php createHomeTile("./images/p23.png", "./Photos/", "Photos", "p23") ?></td>
 </tr>
 
 <!-- Third Row -->
 <tr>
 <td><img src="./images/p31.png" alt="" /></td>
-<td><?php echo createHomeTile("./images/p32.png", "./Registry/", "Registry", "p32") ?></td>
-<td><?php echo createHomeTile("./images/p33.png", "./RSVP/", "RSVP", "p33") ?></td>
+<td><?php createHomeTile("./images/p32.png", "./Registry/", "Registry", "p32") ?></td>
+<td><?php createHomeTile("./images/p33.png", "./RSVP/", "RSVP", "p33") ?></td>
 </tr>
 
 </tbody>

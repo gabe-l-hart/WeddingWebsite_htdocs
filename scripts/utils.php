@@ -1,8 +1,6 @@
 <?php
 /* Globals */
 $highlightOpacity = 85;
-$regMainOpacity = 90;
-$regHighlightOpacity = 75;
 
 /* Function to create a tile in the home screen */
 function createHomeTile($img, $link, $text, $name) {
@@ -21,7 +19,7 @@ function createHomeTile($img, $link, $text, $name) {
              </a>
              </span>';
   $out=$out.'</div>';
-  return $out;
+  echo $out;
 }
 
 /* Function to create a small link tile */
@@ -120,7 +118,7 @@ function subPageTop()
 function subPageBottom()
 {
   echo '</td>
-    <td width="10"><img src="../images/spacer.png" width="1" height="676"></td>
+    <td width="10"><img src="../images/spacer.png" width="1" height="681"></td>
 
     </tr></tbody></table>
   </td></tr>
@@ -152,31 +150,6 @@ function subPageBottom()
 </center>
 
 </body></html>';
-}
-
-/* Function to set up a registry panel */
-function createRegistryPanel($image, $title, $name)
-{
-  global $regMainOpacity;
-  global $regHighlightOpacity;
-  return '<div class="image">
-      <img src="./images/InnerTile.png" alt="" name="'.$name.'" style="opacity:0.'.$regMainOpacity.';">
-      <span class="overlay">
-      <a href="./TestItem.php">
-      <table cellpadding="0" cellspacing="0" border="0" class="fixedTable"          onmouseover="'.$name.'.style.opacity=0.'.$regHighlightOpacity.';'.$name.'.filters.alpha.opacity='.$regHighlightOpacity.'"
-        onmouseout="'.$name.'.style.opacity=0.'.$regMainOpacity.';'.$name.'.filters.alpha.opacity='.$regMainOpacity.'">
-      <tbody>
-        <tr><td height="10" width="212"></td></tr>
-        <tr><td align="center">
-        <img src="./images/TEST.png" height="160">
-        <div style="color:#49002e; text-align:center">'.$title.'</div>
-        </td></tr>
-        <tr><td></td></tr>
-      </tbody>
-      </table>
-      </a>
-      </span>
-      </div>';
 }
 
 ?>

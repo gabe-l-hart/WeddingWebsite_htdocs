@@ -2,17 +2,6 @@
 <?php require '../scripts/utils.php'; ?>
 <?php require '../scripts/registry.php'; ?>
 
-<?php
-  // Set up registry
-  $reg = new Registry();
-  $reg->setHost('localhost');
-  $reg->setUser('root');
-  $reg->setPW('root');
-
-  // Connect to DB
-  $reg->connect();
-?>
-
 <?php pageHeader("..", "Registry"); ?>
 <?php subPageTop(); ?>
 
@@ -23,23 +12,26 @@
   <table cellpadding="0" cellspacing="0" border="0" class="fixedTable">
   <tbody>
 
+    <img src="./images/TestImage.png">
+    
+
+<!--
   <tr><td width="5"></td>
   <td align="center" valign="top">
-    <?php
-      $item1 = new RegistryItem("./images/TEST.png", "test", "long test", "testItem1", "www.test.com");
-      echo $item1->createSmallTile();
-    ?>
+    <?php echo createRegistryPanel("./images/TestImage.png", "TEST", "TestItem") ?>
   </td>
   <td width="10"></td>
   <td align="center" valign="top">
-    <?php
-      $item2 = new RegistryItem("./images/TEST.png", "test 2", "long test 2", "testItem2", "www.test.com");
-      echo $item2->createSmallTile();
-    ?>
+    <?php echo createRegistryPanel("./images/TestImage.png", "TEST 2", "TestItem2") ?>
   </td>
   <td width="5"></td></tr>
 
+-->
+
   </tbody>
   </table>
+
+  <!-- DEBUG -->
+  <p><?php listTest(); ?></p>
 
 <?php subPageBottom(); ?>
