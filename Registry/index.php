@@ -29,7 +29,7 @@
 </td>
 
 <!-- Body Col -->
-<td rowspan="3">
+<td rowspan="3" valign="top">
   <table width="467" cellpadding="0" cellspacing="0" border="0" class="commonText">
   <tbody>
   <tr><td>
@@ -37,67 +37,34 @@
   </td></tr>
   <tr><td background="./images/body.png" bgcolor="49002e" style="background-repeat:no-repeat">
 
-    <table><tbody><tr>
-    <td><img src="../images/spacer.png" width="10"></td>
-    <td>
+    <table cellpadding="0" cellspacing="0" border="0" class="fixedTable"><tbody><tr>
+    <td width="10"></td>
+    <td valign="top" width="447">
 
     <!-- Place Body Here ------------------------------------------------- -->
 
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
-    <p>Registry -- TEST</p>
+    <!-- Title -->
+    <p style="font-size:32px; text-align:center">Registry</p>
+
+    <!-- Item Grid -->
+    <table cellpadding="0" cellspacing="0" border="0" class="fixedTable">
+    <tbody>
+
+    <tr><td width="5"></td>
+    <td align="center" valign="top">
+      <?php echo createRegistryPanel("./images/TestImage.png", "TEST", "TestItem", 85) ?>
+    </td>
+    <td width="10"></td>
+    <td align="center" valign="top">
+      <?php echo createRegistryPanel("./images/TestImage.png", "TEST 2", "TestItem2", 85) ?>
+    </td>
+    <td width="5"></td></tr>
+
+    </tbody>
+    </table>
 
     </td>
-    <td><img src="../images/spacer.png" width="10"></td>
+    <td width="10"><img src="../images/spacer.png" width="1" height="676"></td>
 
     </tr></tbody></table>
 

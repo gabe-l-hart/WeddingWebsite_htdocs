@@ -29,7 +29,7 @@
 </td>
 
 <!-- Body Col -->
-<td rowspan="3">
+<td rowspan="3" valign="top">
   <table width="467" cellpadding="0" cellspacing="0" border="0" class="commonText">
   <tbody>
   <tr><td>

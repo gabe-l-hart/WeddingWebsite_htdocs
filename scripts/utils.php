@@ -57,4 +57,27 @@ function createLinkTiles()
 
 }
 
+/* Function to set up a registry panel */
+function createRegistryPanel($image, $title, $name, $opacity)
+{
+  return '<div class="image">
+      <img src="./images/InnerTile.png" alt="" name="'.$name.'" style="opacity:1;">
+      <span class="overlay">
+      <a href="./TestItem.php">
+      <table cellpadding="0" cellspacing="0" border="0" class="fixedTable"          onmouseover="'.$name.'.style.opacity=0.'.$opacity.';'.$name.'.filters.alpha.opacity='.$opacity.'"
+        onmouseout="'.$name.'.style.opacity=1;'.$name.'.filters.alpha.opacity=100">
+      <tbody>
+        <tr><td height="10" width="212"></td></tr>
+        <tr><td align="center">
+        <img src="./images/TEST.png" height="160">
+        <div style="color:#49002e; text-align:center">'.$title.'</div>
+        </td></tr>
+        <tr><td></td></tr>
+      </tbody>
+      </table>
+      </a>
+      </span>
+      </div>';
+}
+
 ?>

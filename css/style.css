@@ -17,6 +17,10 @@
   color:#CFCFCF;
 }
 
+.fixedTable {
+  table-layout:fixed;
+}
+
 .rotate {
   /* Safari */
   -webkit-transform:rotate(-90deg);
