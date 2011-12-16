@@ -5,11 +5,21 @@ $highlightOpacity = 85;
 /* Function to create a tile in the home screen */
 function createHomeTile($img, $link, $text, $name) {
   global $highlightOpacity;
-  $out='<div class="image">';
-  $out=$out.'<img src='.$img.' alt="" name="'.$name.'" style="opacity: 1;" />';
+	//*
+  echo '<td><a href="'.$link.'" class="commonText" style="background-image:url('.$img.'); 
+  						display:block; height:234px; width:234px; text-align:right; font-size:22px;
+  						opacity:1; filter:alpha(opacity=100);"
+  						onmouseover="this.style.opacity=0.'.$highlightOpacity.'; this.alpha.opacity='.$highlightOpacity.'"
+  						onmouseout="this.style.opacity=1; this.alpha.opacity=100">
+  						<span style="position:relative; top:180px; right:20px;">'.$text.'</span>
+  					</a>
+  		  </td>';
+  /*/
+  $out='<td><div class="image">';
+  $out=$out.'<img src='.$img.' alt="" name="'.$name.'" style="opacity: 1; filter:alpha(opacity=100);" />';
   $out=$out.'<span class="overlay">
              <a href='.$link.'>
-             <table width="234" style="height: 234px; opacity: 1; "
+             <table class="fixedTable" width="234" style="height: 234px; opacity: 1; "
              onmouseover="'.$name.'.style.opacity=0.'.$highlightOpacity.';'.$name.'.filters.alpha.opacity='.$highlightOpacity.'"
              onmouseout="'.$name.'.style.opacity=1;'.$name.'.filters.alpha.opacity=100">
              <tr valign="bottom"><td>
@@ -18,8 +28,9 @@ function createHomeTile($img, $link, $text, $name) {
              </td></tr></table>
              </a>
              </span>';
-  $out=$out.'</div>';
+  $out=$out.'</div></td>';
   echo $out;
+  //*/
 }
 
 /* Function to create a small link tile */
