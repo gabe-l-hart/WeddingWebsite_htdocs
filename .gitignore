@@ -1,0 +1,5 @@
+.backup/
+.bash_history
+.devel/
+.viminfo
+logs/
