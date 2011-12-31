@@ -3,3 +3,5 @@
 .devel/
 .viminfo
 logs/
+.DS_Store
+*~
