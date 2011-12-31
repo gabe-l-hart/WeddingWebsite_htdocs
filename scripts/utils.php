@@ -27,7 +27,7 @@ function createMiniTile($img, $link, $text, $name, $w, $h)
 {
   return '<td><a href="'.$link.'" class="commonText fadeTile linkTile" style="background-image:url('.$img.'); 
               display:block; height:'.$h.'px; width:'.$w.'px;
-              text-align:center; style="background-repeat:no-repeat;">
+              text-align:center; background-repeat:no-repeat;">
               <span style="position:relative; top:25px;">'.$text.'</span>
             </a>
         </td>';
@@ -103,6 +103,18 @@ function pageHeader($pathToBase, $pageName)
     $(".fadeTile").mouseout(function(event){
       $(this).fadeTo(0,1);
     });
+
+    // Fade registry tile out on mouse over
+    $(".regTile").mouseover(function(event){
+      $(this).fadeTo(0,0.75);
+    });
+  
+    // Fade registry in on mouse out
+    $(".regTile").mouseout(function(event){
+      $(this).fadeTo(0,0.95);
+    });
+
+
   });
 
   function fixHeight() {

@@ -10,9 +10,6 @@ class RegistryItem
   public $name = '';
   public $link = '';
 
-  private $mainOpacity=90;
-  private $highlightOpacity=75;
-
   /* Constructor */
   public function __construct($ip, $sd, $ld, $n, $l)
   {
@@ -26,23 +23,21 @@ class RegistryItem
   /* Method to create the small tile */
   function createSmallTile()
   {
-    return '<div class="image">
-      <img src="./images/InnerTile.png" alt="" name="'.$this->name.'" style="opacity:0.'.$this->mainOpacity.';">
+    return '<div class="regTileDiv">
+    <a class="regTile" href="'.$this->link.'" style="position:relative; background-image:url(./images/InnerTile.png); height:212px; width:212px; display:block; text-align:center; opacity:0.'.$this->mainOpacity.';">
       <span class="overlay">
-      <a href="./TestItem.php">
-      <table cellpadding="0" cellspacing="0" border="0" class="fixedTable"          onmouseover="'.$this->name.'.style.opacity=0.'.$this->highlightOpacity.';'.$this->name.'.filters.alpha.opacity='.$this->highlightOpacity.'"
-        onmouseout="'.$this->name.'.style.opacity=0.'.$this->mainOpacity.';'.$this->name.'.filters.alpha.opacity='.$this->mainOpacity.'">
+      <table cellpadding="0" cellspacing="0" border="0" class="fixedTable">
       <tbody>
         <tr><td height="10" width="212"></td></tr>
         <tr><td align="center">
         <img src="'.$this->imagePath.'" height="160">
-        <div style="color:#49002e; text-align:center">'.$this->shortDescrip.'</div>
+        <div style="color:#4a002f; text-align:center">'.$this->shortDescrip.'</div>
         </td></tr>
         <tr><td></td></tr>
       </tbody>
       </table>
-      </a>
       </span>
+      </a>
       </div>';
   }
 }
@@ -91,6 +86,9 @@ class Registry
     // Go through all entries in Registry and create items for each
     $this->items = array();
     while($row = mysql_fetch_assoc($result)) {
+
+      echo '<!-- '.$row['name'].' -->';
+
 //      items[$row['name']] = new RegistryEntry($row['imagePath'],
 //                                              $row['shortDescrip'],
 //                                              $row['longDescrip'],

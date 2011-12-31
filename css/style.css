@@ -71,6 +71,13 @@
   table-layout:fixed;
 }
 
+.regTileDiv {
+  float:left;
+  position:relative;
+  padding:15px 5px;
+  left:8px;
+}
+
 .rotate {
   /* Safari */
   -webkit-transform:rotate(-90deg);
@@ -82,8 +89,4 @@
   -o-transform:rotate(-90deg);
   /* Internet Explorer */
   filter:progit:DXImageTransform.Microsoft.BasicImage(rotation=3);
-}
-
-.clear {
-  clear: both;
 }
