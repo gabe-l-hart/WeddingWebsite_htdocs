@@ -16,21 +16,21 @@ function usingIE()
 /* Function to create a tile in the home screen */
 function createHomeTile($img, $link, $text, $name) {
   echo '<td><a href="'.$link.'" class="commonText fadeTile linkTile" style="background-image:url('.$img.'); 
-  						display:block; height:234px; width:234px; text-align:right; font-size:22px;">
-  						<span style="position:relative; top:180px; right:20px;">'.$text.'</span>
-  					</a>
-  		  </td>';
+              display:block; height:234px; width:234px; text-align:right; font-size:22px;">
+              <span style="position:relative; top:180px; right:20px;">'.$text.'</span>
+            </a>
+        </td>';
 }
 
 /* Function to create a small link tile */
 function createMiniTile($img, $link, $text, $name, $w, $h)
 {
   return '<td><a href="'.$link.'" class="commonText fadeTile linkTile" style="background-image:url('.$img.'); 
-  						display:block; height:'.$h.'px; width:'.$w.'px;
-  						text-align:center; style="background-repeat:no-repeat;">
-  						<span style="position:relative; top:25px;">'.$text.'</span>
-  					</a>
-  		  </td>';
+              display:block; height:'.$h.'px; width:'.$w.'px;
+              text-align:center; style="background-repeat:no-repeat;">
+              <span style="position:relative; top:25px;">'.$text.'</span>
+            </a>
+        </td>';
 }
 
 /* Function to set up the links for a content page */
@@ -40,16 +40,16 @@ function createLinkTiles()
   <table cellpadding="0" cellspacing="0" border="0" style="position:relative; top:0px;">
   <tbody>
   <tr>
-    <td>'.createMiniTile("./images/p11.png", "../Welcome/", "Welcome", "mp11", 117, 77).'</td>
-    <td>'.createMiniTile("./images/p12.png", "../TheEvent/", "The Event", "mp12", 118, 77).'</td>
+    <td>'.createMiniTile("../images/m11.png", "../Welcome/", "Welcome", "mp11", 117, 77).'</td>
+    <td>'.createMiniTile("../images/m12.png", "../TheEvent/", "The Event", "mp12", 118, 77).'</td>
   </tr>
   <tr>
-    <td>'.createMiniTile("./images/p21.png", "../Colorado/", "Colorado", "mp21", 117, 78).'</td>
-    <td>'.createMiniTile("./images/p22.png", "../Photos/", "Photos", "mp22", 118, 78).'</td>
+    <td>'.createMiniTile("../images/m21.png", "../Colorado/", "Colorado", "mp21", 117, 78).'</td>
+    <td>'.createMiniTile("../images/m22.png", "../Photos/", "Photos", "mp22", 118, 78).'</td>
   </tr>
   <tr>
-    <td>'.createMiniTile("./images/p31.png", "../Registry/", "Registry", "mp31", 117, 77).'</td>
-    <td>'.createMiniTile("./images/p32.png", "../RSVP/", "RSVP", "mp32", 118, 77).'</td>
+    <td>'.createMiniTile("../images/m31.png", "../Registry/", "Registry", "mp31", 117, 77).'</td>
+    <td>'.createMiniTile("../images/m32.png", "../RSVP/", "RSVP", "mp32", 118, 77).'</td>
   </tr>
   </tbody>
   </table>';
@@ -65,7 +65,7 @@ function createLinkTiles()
  */
 function pageHeader($pathToBase, $pageName)
 {
-	global $fadeTime;
+  global $fadeTime;
   echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -77,24 +77,24 @@ function pageHeader($pathToBase, $pageName)
 
 <script src="'.$pathToBase.'/scripts/jquery.js"></script>
 <script>
-  $(document).ready(function(){  	
-		// Iitially, hide everything, then fade in
+  $(document).ready(function(){    
+    // Iitially, hide everything, then fade in
     $("body").css("display", "none");
     $("body").fadeIn('.$fadeTime.');
 
-		// Fade out when leaving the page from a tile
-		$(".linkTile").click(function(event){
+    // Fade out when leaving the page from a tile
+    $(".linkTile").click(function(event){
       event.preventDefault();
       linkLocation = this.href;
       $("body").fadeOut('.$fadeTime.', redirectPage);
     });
  
- 		// Callback that redirects page correctly
+     // Callback that redirects page correctly
     function redirectPage() {
         window.location = linkLocation;
     }
 
-		// Fade out on mouse over
+    // Fade out on mouse over
     $(".fadeTile").mouseover(function(event){
       $(this).fadeTo(0,0.85);
     });
@@ -104,6 +104,14 @@ function pageHeader($pathToBase, $pageName)
       $(this).fadeTo(0,1);
     });
   });
+
+  function fixHeight() {
+    var h = document.getElementById("main_panel").offsetHeight;
+    if (h == 701) {
+      //alert("found it");
+      //document.getElementById("footer").style.height = url(./images/shortFooter.png);
+    }
+  }
 </script>
 
 </head>';
@@ -112,64 +120,46 @@ function pageHeader($pathToBase, $pageName)
 /* Function to set up common top section of a sub-page */
 function subPageTop()
 {
-  echo '<body bgcolor="White">
-<!-- Main Table------------------------------------------------------------ -->
+  echo '<body bgcolor="White" onload="fixHeight();">
 <center>
-<table class="fixedTable" width="704" cellpadding="0" cellspacing="0" border="0" style="padding:0px; border:0px;">
-<tbody>
 
-<tr>
-<!-- Left Col -->
-<td style="vertical-align:top; height:469px; width:235px">
-  <a href=".." class="linkTile" style="background-image:url(./images/Image.png); display:block; width:235px; height:469px"></a>
-</td>
+<!-- Main Panel------------------------------------------------------------ -->
+<div id="main_panel" class="mainPanel">
 
-<!-- Body Col -->
-<td rowspan="2">
-  <table width="467" cellpadding="0" cellspacing="0" border="0" class="commonText">
-  <tbody>
-  <tr><td background="./images/top.png" style="height:10px; width:447px;"></td></tr>
-  <tr><td background="./images/body.png" bgcolor="49002e" style="background-repeat:no-repeat">
+<!-- Panel Image -->
+<div class="panelImage" style="background-image:url(./images/Image.png);"></div>
 
-    <table cellpadding="0" cellspacing="0" border="0" class="fixedTable"><tbody><tr>
-    <td width="10"></td>
-    <td valign="top" width="447">';
+<!-- Page Background -->
+<div class="pageBackground">
+
+<!-- Footer Image -->
+<div id="footer" class="footerImage"></div>
+
+<!-- Left Panel------------------------------------------------------------ -->
+<div class="leftPanel">
+
+<!-- Image Link -->
+<div style="height:469px; 235px;">
+  <a href=".." class="linkTile" style="display:block; width:235px; height:469px"></a>
+</div>
+
+<!-- Mini Links -->
+<div>'.createLinkTiles().'</div>
+
+</div> <!-- end left panel -->
+
+<!-- Body Panel------------------------------------------------------------ -->
+
+<div class="commonText bodyPanel">';
 }
 
 /* Function to set up the common bottom section of a sub-page */
 function subPageBottom()
 {
-  echo '</td>
-    <td width="10"><img src="../images/spacer.png" width="1" height="681"></td>
-
-    </tr></tbody></table>
-  </td></tr>
-  <tr><td background="./images/bottom.png" style="height:10px; width:447px;"></td></tr>
-  </tbody>
-  </table>
-</td>
-</tr>
-
-<!-- Mini Panel -->
-<tr>
-<td style="position:absolute; top:';
-
-	if (usingIE()){
-		echo '485';
-	} else {
-		echo '478';
-	}
-
-	echo 'px;">
-  '.createLinkTiles().'
-</td>
-</tr>
-
-</tbody>
-
-</tbody></table>
+  echo '</div> <!-- end body div -->
+</div> <!-- end background div -->
+</div> <!-- end main div -->
 </center>
-
 </body></html>';
 }
 
