@@ -65,13 +65,17 @@ class Registry
   }
   /* Set pw */
   public function setPW($p) {
-    $this->pw = $u;
+    $this->pw = $p;
   }
 
   /* Connect to the MySQL server */
   public function connect()
   {
     $this->dbLink = mysql_connect($this->host, $this->user, $this->pw);
+    if (!$this->dbLink) {
+      die('Failed to connect to database');
+    }
+    mysql_select_db("Wedding");
   }
 
   /* Populate the array of items */
@@ -87,13 +91,19 @@ class Registry
     $this->items = array();
     while($row = mysql_fetch_assoc($result)) {
 
+      // Add comment
       echo '<!-- '.$row['name'].' -->';
 
-//      items[$row['name']] = new RegistryEntry($row['imagePath'],
-//                                              $row['shortDescrip'],
-//                                              $row['longDescrip'],
-//                                              $row['name'],
-//                                              $row['link']);
+      // Create the item
+      $n = $row['name'];
+      $ip = $row['imagePath'];
+      $sd = $row['shortDescrip'];
+      $ld = $row['longDescrip'];
+      $l = $row['link'];
+      $this->items[$n] = new RegistryItem($ip, $sd, $ld, $n, $l);
+
+      // Display it's tile
+      echo $this->items[$n]->createSmallTile();
     }
   }
 
