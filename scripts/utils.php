@@ -120,8 +120,7 @@ function pageHeader($pathToBase, $pageName)
   function fixHeight() {
     var h = document.getElementById("main_panel").offsetHeight;
     if (h == 701) {
-      //alert("found it");
-      //document.getElementById("footer").style.height = url(./images/shortFooter.png);
+      document.getElementById("footer").style.backgroundImage = "url(../images/shortFooter.png)";
     }
   }
 </script>

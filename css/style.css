@@ -25,19 +25,21 @@
   background-position:left top;
   width:702px;
   background-repeat:no-repeat;
+  min-height:681px;
 }
 
 .footerImage {
   position:absolute;
+  left: 0%;
   bottom: 0%;
   z-index:3;
   padding:0px;
   border:0px;
   background-image:url(../images/footer.png);
   background-repeat:no-repeat;
-  background-position:right bottom;
+  background-position:left bottom;
   width:702px;
-  height:10px
+  height:10px;
 }
 
 .leftPanel {
