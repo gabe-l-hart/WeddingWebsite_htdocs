@@ -4,6 +4,6 @@
 <?php pageHeader("..", "The Event"); ?>
 <?php subPageTop(); ?>
 
-  <p>TEST -- The Event</p>
+  	<p>TEST -- The Event</p>
 
 <?php subPageBottom(); ?>

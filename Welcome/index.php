@@ -56,4 +56,5 @@
     <p>Welcome -- TEST</p>
     <p>Welcome -- TEST</p>
     <p>Welcome -- TEST</p>
-<?php echo subPageBottom();?>
+
+<?php subPageBottom();?>
