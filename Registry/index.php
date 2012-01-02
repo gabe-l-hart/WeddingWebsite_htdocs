@@ -22,9 +22,7 @@
   <!-- Item Grid -->
   <div style="position:relative;">
 
-  <?php populateItems(); ?>
-
-<!--
+<!---->
     <?php
       $item1 = new RegistryItem("./images/TEST.png", "test", "long test", "testItem1", "www.test.com");
       echo $item1->createSmallTile();
