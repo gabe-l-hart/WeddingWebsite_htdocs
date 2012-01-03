@@ -80,6 +80,31 @@
   left:8px;
 }
 
+.regOverlay {
+  width: 100%;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: url('../images/overlay.png') repeat 0 0;
+  display: none;
+  text-align: center;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 10;
+  padding: 0;
+}
+
+.regOverlayPanel {
+  margin: 10% auto 0 auto;
+  width: 350px;
+  background: #FFF;
+}
+
 .rotate {
   /* Safari */
   -webkit-transform:rotate(-90deg);

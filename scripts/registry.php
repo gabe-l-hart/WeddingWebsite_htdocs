@@ -24,7 +24,7 @@ class RegistryItem
   function createSmallTile()
   {
     return '<div class="regTileDiv">
-    <a class="regTile" href="'.$this->link.'" style="position:relative; background-image:url(./images/InnerTile.png); height:212px; width:212px; display:block; text-align:center; opacity:0.'.$this->mainOpacity.';">
+    <a class="regTile show-overlay" href="#" style="position:relative; background-image:url(./images/InnerTile.png); height:212px; width:212px; display:block; text-align:center; opacity:0.'.$this->mainOpacity.';">
       <span class="overlay">
       <table cellpadding="0" cellspacing="0" border="0" class="fixedTable">
       <tbody>
@@ -39,6 +39,47 @@ class RegistryItem
       </span>
       </a>
       </div>';
+  }
+
+  /* Method to create the full overlay */
+  function createOverlay()
+  {
+    return '<script>
+  var $overlay_wrapper_'.$this->name.';
+  var $overlay_panel_'.$this->name.';
+  
+  function show_overlay() {
+      if ( !$overlay_wrapper_'.$this->name.' ) append_overlay();
+      $overlay_wrapper_'.$this->name.'.fadeIn(700);
+  }
+  
+  function hide_overlay() {
+      $overlay_wrapper_'.$this->name.'.fadeOut(500);
+  }
+  
+  function append_overlay() {
+      $overlay_wrapper_'.$this->name.' = $("<div class=\'regOverlay\'></div>").appendTo( $("BODY") );
+      $overlay_panel_'.$this->name.' = $("<div class=\'regOverlayPanel\'></div>").appendTo( $overlay_wrapper_'.$this->name.' );
+  
+      $overlay_panel_'.$this->name.'.html( "<p>This is the overlay content for '.$this->name.'</p><a href=\'#\' class=\'hide-overlay\'>Close Overlay</a>" );
+  
+      attach_overlay_events();
+  }
+  
+  function attach_overlay_events() {
+      $("A.hide-overlay", $overlay_wrapper_'.$this->name.').click( function(ev) {
+          ev.preventDefault();
+          hide_overlay();
+      });
+  }
+  
+  $(function() {
+      $("A.show-overlay").click( function(ev) {
+          ev.preventDefault();
+          show_overlay();
+      });
+  });
+  </script>';
   }
 }
 
@@ -104,6 +145,9 @@ class Registry
 
       // Display it's tile
       echo $this->items[$n]->createSmallTile();
+
+      // Set up it's overlay
+      echo $this->items[$n]->createOverlay();
     }
   }
 
