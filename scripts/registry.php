@@ -24,7 +24,7 @@ class RegistryItem
   function createSmallTile()
   {
     return '<div class="regTileDiv">
-    <a class="regTile show-overlay" href="#" style="position:relative; background-image:url(./images/InnerTile.png); height:212px; width:212px; display:block; text-align:center; opacity:0.'.$this->mainOpacity.';">
+    <a class="regTile show-overlay_'.$this->name.'" href="#" style="position:relative; background-image:url(./images/InnerTile.png); height:212px; width:212px; display:block; text-align:center; opacity:0.'.$this->mainOpacity.';">
       <span class="overlay">
       <table cellpadding="0" cellspacing="0" border="0" class="fixedTable">
       <tbody>
@@ -41,6 +41,12 @@ class RegistryItem
       </div>';
   }
 
+  /* Method to create the html for the overlay panel */
+  function createOverlayPanel()
+  {
+    return '<div class=\'overlayPanelTop\'></div><div class=\'overlayPanelBody\'><img src=\''.$this->imagePath.'\'><div style=\'float:right;\'><a href=\'#\' class=\'hide-overlay_'.$this->name.' \'><img src=\'../images/closePanel.png\'></a></div><div>'.$this->longDescrip.'</div></div><div class=\'overlayPanelBottom\'></div>';
+  }
+
   /* Method to create the full overlay */
   function createOverlay()
   {
@@ -48,35 +54,35 @@ class RegistryItem
   var $overlay_wrapper_'.$this->name.';
   var $overlay_panel_'.$this->name.';
   
-  function show_overlay() {
-      if ( !$overlay_wrapper_'.$this->name.' ) append_overlay();
+  function show_overlay_'.$this->name.'() {
+      if ( !$overlay_wrapper_'.$this->name.' ) append_overlay_'.$this->name.'();
       $overlay_wrapper_'.$this->name.'.fadeIn(700);
   }
   
-  function hide_overlay() {
+  function hide_overlay_'.$this->name.'() {
       $overlay_wrapper_'.$this->name.'.fadeOut(500);
   }
   
-  function append_overlay() {
+  function append_overlay_'.$this->name.'() {
       $overlay_wrapper_'.$this->name.' = $("<div class=\'regOverlay\'></div>").appendTo( $("BODY") );
       $overlay_panel_'.$this->name.' = $("<div class=\'regOverlayPanel\'></div>").appendTo( $overlay_wrapper_'.$this->name.' );
   
-      $overlay_panel_'.$this->name.'.html( "<p>This is the overlay content for '.$this->name.'</p><a href=\'#\' class=\'hide-overlay\'>Close Overlay</a>" );
+      $overlay_panel_'.$this->name.'.html( "'.$this->createOverlayPanel().'" );
   
-      attach_overlay_events();
+      attach_overlay_events_'.$this->name.'();
   }
   
-  function attach_overlay_events() {
-      $("A.hide-overlay", $overlay_wrapper_'.$this->name.').click( function(ev) {
+  function attach_overlay_events_'.$this->name.'() {
+      $("A.hide-overlay_'.$this->name.'", $overlay_wrapper_'.$this->name.').click( function(ev) {
           ev.preventDefault();
-          hide_overlay();
+          hide_overlay_'.$this->name.'();
       });
   }
   
   $(function() {
-      $("A.show-overlay").click( function(ev) {
+      $("A.show-overlay_'.$this->name.'").click( function(ev) {
           ev.preventDefault();
-          show_overlay();
+          show_overlay_'.$this->name.'();
       });
   });
   </script>';

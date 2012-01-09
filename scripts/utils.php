@@ -150,7 +150,7 @@ function subPageTop()
 <div class="leftPanel">
 
 <!-- Image Link -->
-<div style="height:469px; 235px;">
+<div style="height:469px; width:235px;">
   <a href=".." class="linkTile" style="display:block; width:235px; height:469px"></a>
 </div>
 
@@ -158,6 +158,9 @@ function subPageTop()
 <div>'.createLinkTiles().'</div>
 
 </div> <!-- end left panel -->
+
+<!-- Pad left side of body area -->
+<div style="height:702px; width:10px; float:left;"></div>
 
 <!-- Body Panel------------------------------------------------------------ -->
 

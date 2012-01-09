@@ -76,8 +76,7 @@
 .regTileDiv {
   float:left;
   position:relative;
-  padding:15px 5px;
-  left:8px;
+  padding:15px 5px 15px 5px;
 }
 
 .regOverlay {
@@ -100,9 +99,27 @@ html, body {
 }
 
 .regOverlayPanel {
-  margin: 10% auto 0 auto;
-  width: 350px;
+  margin: 5% auto 0 auto;
+  width: 450px;
+}
+
+.overlayPanelTop {
+  background: url('../images/overlayPanelTop.png') no-repeat 0 0;
+  width:450px;
+  height:10px;
+  padding:0px;
+}
+
+.overlayPanelBody {
   background: #FFF;
+  width:450px;
+  font-family:"Gabriola";
+}
+
+.overlayPanelBottom {
+  background: url('../images/overlayPanelBottom.png') no-repeat 0 0;
+  width:450px;
+  height:10px;
 }
 
 .rotate {
