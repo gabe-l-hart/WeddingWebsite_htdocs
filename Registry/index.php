@@ -1,15 +1,22 @@
 <!-- Get PHP Utils -->
-<?php require '../scripts/utils.php'; ?>
-<?php require './scripts/registry.php'; ?>
+<?php
+require '../scripts/utils.php';
+require './scripts/registry.php';
+require '../scripts/db.php';
+?>
 
 <link rel="stylesheet" type="text/css" href="./css/registry.css">
 
 <?php
+  global $db_hostname;
+  global $db_user;
+  global $db_pw;
+
   // Set up registry
   $reg = new Registry();
-  $reg->setHost('localhost');
-  $reg->setUser('root');
-  $reg->setPW('root');
+  $reg->setHost($db_hostname);
+  $reg->setUser($db_user);
+  $reg->setPW($db_pw);
 
   // Connect to DB
   $reg->connect();
