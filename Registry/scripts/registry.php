@@ -128,9 +128,10 @@ class RegistryItem
         <div class=\'overlayPanelTitle\'>'.$this->shortDescrip.'</div>\
         <div>FIXME!!! Please provide us with contact information so that we can organize payment.</div>\
         <div>\
-          <form class=\'purchaseForm\' id=\'purchase_form_'.$this->name.'\' action=\'\'>\
+          <form class=\'purchaseForm\' id=\'purchase_form_'.$this->name.'\' action=\'./scripts/process.php\' method=\'post\'>\
             <a href=\'#\' class=\'overlay-purchase-back_'.$this->name.' overlayButton overlayPanelBack\'>Back</a>\
-            email <input type=\'text\' name=\'purchase_email_'.$this->name.'\'>\
+            email <input type=\'text\' name=\'email\'>\
+            <input type=\'hidden\' name=\'item_name\' value=\''.$this->name.'\'>\
             <a href=\'#\' class=\'overlay-purchase-submit_'.$this->name.' overlayButton overlayPanelSubmit\'>Purchase</a>\
           </form>\
         </div>\
@@ -225,7 +226,7 @@ class Registry
   private $host = 'localhost';
   private $user = 'root';
   private $pw = 'root';
-  private $table = 'Wedding';
+  private $name = 'Wedding';
   private $dbLink = '';
   private $items = '';
 
@@ -242,8 +243,8 @@ class Registry
     $this->pw = $p;
   }
   /* Set table */
-  public function setTable($t) {
-    $this->table = $t;
+  public function setDBName($n) {
+    $this->name = $n;
   }
 
   /* Connect to the MySQL server */
@@ -253,7 +254,7 @@ class Registry
     if (!$this->dbLink) {
       die('Failed to connect to database');
     }
-    mysql_select_db($this->table);
+    mysql_select_db($this->name);
   }
 
   /* Populate the array of items */
