@@ -1,6 +1,8 @@
 <!-- Get PHP Utils -->
 <?php require '../scripts/utils.php'; ?>
-<?php require '../scripts/registry.php'; ?>
+<?php require './scripts/registry.php'; ?>
+
+<link rel="stylesheet" type="text/css" href="./css/registry.css">
 
 <?php
   // Set up registry

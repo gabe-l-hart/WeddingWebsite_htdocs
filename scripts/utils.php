@@ -3,7 +3,7 @@ $fadeTime = 500;
 
 /* Check if using IE */
 function usingIE() 
-{ 
+{
     $u_agent = $_SERVER['HTTP_USER_AGENT']; 
     $ub = False; 
     if(preg_match('/MSIE/i',$u_agent)) 
