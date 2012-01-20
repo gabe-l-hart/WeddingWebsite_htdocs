@@ -225,6 +225,7 @@ class Registry
   private $host = 'localhost';
   private $user = 'root';
   private $pw = 'root';
+  private $table = 'Wedding';
   private $dbLink = '';
   private $items = '';
 
@@ -240,6 +241,10 @@ class Registry
   public function setPW($p) {
     $this->pw = $p;
   }
+  /* Set table */
+  public function setTable($t) {
+    $this->table = $t;
+  }
 
   /* Connect to the MySQL server */
   public function connect()
@@ -248,7 +253,7 @@ class Registry
     if (!$this->dbLink) {
       die('Failed to connect to database');
     }
-    mysql_select_db("Wedding");
+    mysql_select_db($this->table);
   }
 
   /* Populate the array of items */

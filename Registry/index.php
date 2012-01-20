@@ -11,12 +11,14 @@ require '../scripts/db.php';
   global $db_hostname;
   global $db_user;
   global $db_pw;
+  global $db_wedding_table;
 
   // Set up registry
   $reg = new Registry();
   $reg->setHost($db_hostname);
   $reg->setUser($db_user);
   $reg->setPW($db_pw);
+  $reg->setTable($db_wedding_table);
 
   // Connect to DB
   $reg->connect();
