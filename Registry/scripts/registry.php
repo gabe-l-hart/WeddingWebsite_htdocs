@@ -131,8 +131,8 @@ class RegistryItem
           <a href=\'#\' class=\'overlay-purchase-back_'.$this->name.' overlayButton overlayPanelBack\'>Back</a>\
           <a href=\'#\' class=\'overlay-purchase-submit_'.$this->name.' overlayButton overlayPanelSubmit\'>Purchase</a>\
           <form class=\'purchaseForm\' id=\'purchase_form_'.$this->name.'\' action=\'./scripts/process.php\' method=\'post\'>\
-            email <input type=\'text\' name=\'email\'><br />\
             name <input type=\'text\' name=\'buyer_name\'>\
+            email <input type=\'text\' name=\'email\'><br />\
             <input type=\'hidden\' name=\'item_name\' value=\''.$this->name.'\'>\
           </form>\
         </div>\
@@ -188,6 +188,28 @@ class RegistryItem
       attach_overlay_events_'.$this->name.'();
   }
 
+  function validate_form_'.$this->name.'() {
+    var name = document.forms[\'purchase_form_'.$this->name.'\']["buyer_name"].value;
+    if (name == null || name == "")
+    {
+      alert("Please enter your name");
+      return false;
+    }
+    var email = document.forms[\'purchase_form_'.$this->name.'\']["email"].value;
+    if (email == null || email == "")
+    {
+      alert("Please enter your email address");
+      return false;
+    }
+    return true;
+  }
+
+  function submit_form_if_valid_'.$this->name.'() {
+    if (validate_form_'.$this->name.'()) {
+      document.forms[\'purchase_form_'.$this->name.'\'].submit()
+    }
+  }
+
   function attach_overlay_events_'.$this->name.'() {
       $("A.hide-overlay_'.$this->name.'", $overlay_wrapper_'.$this->name.').click( function(ev) {
           ev.preventDefault();
@@ -199,7 +221,7 @@ class RegistryItem
       });
       $("A.overlay-purchase-submit_'.$this->name.'").click( function(ev) {
           ev.preventDefault();
-          document.forms[\'purchase_form_'.$this->name.'\'].submit();
+          submit_form_if_valid_'.$this->name.'();
       });
       $("A.overlay-purchase-back_'.$this->name.'").click( function(ev) {
           ev.preventDefault();
