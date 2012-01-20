@@ -101,12 +101,12 @@ class RegistryItem
           <a href=\'#\' class=\'hide-overlay_'.$this->name.' \'><img src=\'../images/closePanel.png\'></a>\
         </div>\
         <div class=\'overlayPanelInfoContainer\'>\
-          <a href=\''.$this->link.'\' class=\'overlayPanelLink\'>Visit their website</a>';
+          <a href=\''.$this->link.'\' class=\'overlayButton overlayPanelLink\'>Visit their website</a>';
 
       if ($this->purchased) {
-        $out = $out.'<div class=\'overlayPanelBuy\' style=\'color:#616161\'>Already Purchased</div>';
+        $out = $out.'<div class=\'overlayButton overlayPanelBuy\' style=\'color:#616161\'>Already Purchased</div>';
       } else {
-        $out = $out.'<a href=\'#\' class=\'overlay-purchase-transition_'.$this->name.' overlayPanelBuy\'>Purchase</a>';
+        $out = $out.'<a href=\'#\' class=\'overlay-purchase-transition_'.$this->name.' overlayButton overlayPanelBuy\'>Purchase</a>';
       }
 
       $out = $out.'<div class=\'overlayPanelTitle\'>'.$this->shortDescrip.'</div>\
@@ -128,9 +128,10 @@ class RegistryItem
         <div class=\'overlayPanelTitle\'>'.$this->shortDescrip.'</div>\
         <div>FIXME!!! Please provide us with contact information so that we can organize payment.</div>\
         <div>\
-          <form id=\'purchase_form_'.$this->name.'\' action=\'\'>\
+          <form class=\'purchaseForm\' id=\'purchase_form_'.$this->name.'\' action=\'\'>\
+            <a href=\'#\' class=\'overlay-purchase-back_'.$this->name.' overlayButton overlayPanelBack\'>Back</a>\
             email <input type=\'text\' name=\'purchase_email_'.$this->name.'\'>\
-            <input type=\'submit\' value=\'Purchase\' />\
+            <a href=\'#\' class=\'overlay-purchase-submit_'.$this->name.' overlayButton overlayPanelSubmit\'>Purchase</a>\
           </form>\
         </div>\
       </div>\
@@ -193,6 +194,14 @@ class RegistryItem
       $("A.overlay-purchase-transition_'.$this->name.'").click( function(ev) {
           ev.preventDefault();
           show_purchase_'.$this->name.'();
+      });
+      $("A.overlay-purchase-submit_'.$this->name.'").click( function(ev) {
+          ev.preventDefault();
+          document.forms[\'purchase_form_'.$this->name.'\'];
+      });
+      $("A.overlay-purchase-back_'.$this->name.'").click( function(ev) {
+          ev.preventDefault();
+          show_info_'.$this->name.'();
       });
   }
 
