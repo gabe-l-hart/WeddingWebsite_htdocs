@@ -128,11 +128,12 @@ class RegistryItem
         <div class=\'overlayPanelTitle\'>'.$this->shortDescrip.'</div>\
         <div>FIXME!!! Please provide us with contact information so that we can organize payment.</div>\
         <div>\
+          <a href=\'#\' class=\'overlay-purchase-back_'.$this->name.' overlayButton overlayPanelBack\'>Back</a>\
+          <a href=\'#\' class=\'overlay-purchase-submit_'.$this->name.' overlayButton overlayPanelSubmit\'>Purchase</a>\
           <form class=\'purchaseForm\' id=\'purchase_form_'.$this->name.'\' action=\'./scripts/process.php\' method=\'post\'>\
-            <a href=\'#\' class=\'overlay-purchase-back_'.$this->name.' overlayButton overlayPanelBack\'>Back</a>\
-            email <input type=\'text\' name=\'email\'>\
+            email <input type=\'text\' name=\'email\'><br />\
+            name <input type=\'text\' name=\'buyer_name\'>\
             <input type=\'hidden\' name=\'item_name\' value=\''.$this->name.'\'>\
-            <a href=\'#\' class=\'overlay-purchase-submit_'.$this->name.' overlayButton overlayPanelSubmit\'>Purchase</a>\
           </form>\
         </div>\
       </div>\
@@ -198,7 +199,7 @@ class RegistryItem
       });
       $("A.overlay-purchase-submit_'.$this->name.'").click( function(ev) {
           ev.preventDefault();
-          document.forms[\'purchase_form_'.$this->name.'\'];
+          document.forms[\'purchase_form_'.$this->name.'\'].submit();
       });
       $("A.overlay-purchase-back_'.$this->name.'").click( function(ev) {
           ev.preventDefault();
