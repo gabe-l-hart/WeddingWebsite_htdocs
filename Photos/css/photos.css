@@ -1,0 +1,14 @@
+.albumTileDiv {
+  float:left;
+  position:relative;
+  padding:15px 5px 15px 5px;
+}
+
+.albumTile {
+  position:relative;
+  background-image:url('../../images/InnerTile.png');
+  height:212px;
+  width:212px;
+  display:block;
+  text-align:center;
+}

@@ -68,7 +68,7 @@ class RegistryItem
   function createSmallTile()
   {
     $out = '<div class="regTileDiv">
-    <a class="regTile show-overlay_'.$this->name.'" href="#" style="position:relative; background-image:url(./images/InnerTile.png); height:212px; width:212px; display:block; text-align:center; opacity:0.'.$this->mainOpacity.';">
+    <a class="regTile show-overlay_'.$this->name.'" href="#" style="opacity:0.'.$this->mainOpacity.';">
       <span class="overlay">
       <table cellpadding="0" cellspacing="0" border="0" class="fixedTable">
       <tbody>
