@@ -46,17 +46,19 @@ function createThumbs( $pathToImages, $pathToThumbs, $thumbWidth )
 class RegistryItem
 {
   /* Members */
-  public $imagePath = '';
-  public $shortDescrip = '';
-  public $longDescrip = '';
-  public $name = '';
-  public $link = '';
-  public $purchased = False;
+  private $imagePath = '';
+  private $thumbnailPath = '';
+  private $shortDescrip = '';
+  private $longDescrip = '';
+  private $name = '';
+  private $link = '';
+  private $purchased = False;
 
   /* Constructor */
-  public function __construct($ip, $sd, $ld, $n, $l, $p)
+  public function __construct($ip, $tp, $sd, $ld, $n, $l, $p)
   {
     $this->imagePath = $ip;
+    $this->thumbnailPath = $tp;
     $this->shortDescrip = $sd;
     $this->longDescrip = $ld;
     $this->name = $n;
@@ -68,13 +70,13 @@ class RegistryItem
   function createSmallTile()
   {
     $out = '<div class="regTileDiv">
-    <a class="regTile show-overlay_'.$this->name.'" href="#" style="opacity:0.'.$this->mainOpacity.';">
+    <a class="regTile show-overlay_'.$this->name.'" href="#">
       <span class="overlay">
       <table cellpadding="0" cellspacing="0" border="0" class="fixedTable">
       <tbody>
         <tr><td height="10" width="212"></td></tr>
         <tr><td align="center">
-        <img src="'.$this->imagePath.'" height="160">
+        <img src="'.$this->thumbnailPath.'" height="160">
         <div style="color:#4a002f; text-align:center">'.$this->shortDescrip.'</div>
         </td></tr>
         <tr><td></td></tr>
@@ -299,11 +301,12 @@ class Registry
       // Create the item
       $n = $row['name'];
       $ip = $row['imagePath'];
+      $tp = $row['thumbnailPath'];
       $sd = $row['shortDescrip'];
       $ld = $row['longDescrip'];
       $l = $row['link'];
       $p = $row['purchased'];
-      $this->items[$n] = new RegistryItem($ip, $sd, $ld, $n, $l, $p);
+      $this->items[$n] = new RegistryItem($ip, $tp, $sd, $ld, $n, $l, $p);
 
       // Display it's tile
       echo $this->items[$n]->createSmallTile();
