@@ -170,7 +170,8 @@ function subPageTop($pathToBase = "..")
 /* Function to set up the common bottom section of a sub-page */
 function subPageBottom()
 {
-  echo '</div> <!-- end body div -->
+  echo '<div style="clear:both;"></div> <!-- Make sure floated content gets expanded for -->
+</div> <!-- end body div -->
 </div> <!-- end background div -->
 </div> <!-- end main div -->
 </center>
