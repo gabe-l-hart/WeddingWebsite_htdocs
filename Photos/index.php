@@ -12,4 +12,7 @@ require './scripts/photos.php';
   <p>TEST -- Photos</p>
   <?php displayAlbums(); ?>
 
+  <!-- Make sure floated content gets expanded for -->
+  <div style="clear:both;"></div>
+
 <?php subPageBottom(); ?>
