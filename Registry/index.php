@@ -40,5 +40,8 @@ require '../scripts/db.php';
   $reg->populateItems();
   $reg->showItems();
   ?>
+  
+  <!-- Make sure floated content gets expanded for -->
+  <div style="clear:both;"></div>
 
 <?php subPageBottom(); ?>
