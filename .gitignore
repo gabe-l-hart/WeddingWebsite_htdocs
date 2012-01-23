@@ -8,3 +8,4 @@ logs/
 db.php
 Registry/images/items/*
 .htaccess
+.lesshst
