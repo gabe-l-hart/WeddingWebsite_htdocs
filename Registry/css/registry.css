@@ -40,7 +40,14 @@ html, body {
   padding: 0;
 }
 
+.regOverlayExit {
+  position: absolute;
+  top: 10px;
+  right:0px;
+}
+
 .regOverlayPanel {
+  position:relative;
   margin: 20px auto 0 auto;
   width: 450px;
 }

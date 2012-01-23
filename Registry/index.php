@@ -41,6 +41,4 @@ require '../scripts/db.php';
   $reg->showItems();
   ?>
 
-  <p style="clear:both;"></p>
-
 <?php subPageBottom(); ?>

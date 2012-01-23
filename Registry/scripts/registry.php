@@ -68,7 +68,7 @@ class RegistryItem
     $out = '<div class=\'overlayPanelTop\'></div>\
       <div class=\'overlayPanelBody\'>\
         <img src=\''.$this->imagePath.'\'>\
-        <div style=\'float:right;\'>\
+        <div class=\'regOverlayExit\'>\
           <a href=\'#\' class=\'hide-overlay_'.$this->noSpaceName.' \'><img src=\'../images/closePanel.png\'></a>\
         </div>\
         <div class=\'overlayPanelInfoContainer\'>\
@@ -93,7 +93,7 @@ class RegistryItem
   {
     $out = '<div class=\'overlayPanelTop\'></div>\
       <div class=\'overlayPanelBody\'>\
-        <div style=\'float:right;\'>\
+        <div class=\'regOverlayExit\'>\
           <a href=\'#\' class=\'hide-overlay_'.$this->noSpaceName.' \'><img src=\'../images/closePanel.png\'></a>\
         </div>\
         <div class=\'overlayPanelTitle\'>'.$this->shortDescrip.'</div>\
