@@ -34,22 +34,22 @@ function createMiniTile($img, $link, $text, $name, $w, $h)
 }
 
 /* Function to set up the links for a content page */
-function createLinkTiles()
+function createLinkTiles($basePath = "..")
 {
   return '
   <table cellpadding="0" cellspacing="0" border="0" style="position:relative; top:0px;">
   <tbody>
   <tr>
-    <td>'.createMiniTile("../images/m11.png", "../Welcome/", "Welcome", "mp11", 117, 77).'</td>
-    <td>'.createMiniTile("../images/m12.png", "../TheEvent/", "The Event", "mp12", 118, 77).'</td>
+    <td>'.createMiniTile($basePath."/images/m11.png", $basePath."/Welcome/", "Welcome", "mp11", 117, 77).'</td>
+    <td>'.createMiniTile($basePath."/images/m12.png", $basePath."/TheEvent/", "The Event", "mp12", 118, 77).'</td>
   </tr>
   <tr>
-    <td>'.createMiniTile("../images/m21.png", "../Colorado/", "Colorado", "mp21", 117, 78).'</td>
-    <td>'.createMiniTile("../images/m22.png", "../Photos/", "Photos", "mp22", 118, 78).'</td>
+    <td>'.createMiniTile($basePath."/images/m21.png", $basePath."/Colorado/", "Colorado", "mp21", 117, 78).'</td>
+    <td>'.createMiniTile($basePath."/images/m22.png", $basePath."/Photos/", "Photos", "mp22", 118, 78).'</td>
   </tr>
   <tr>
-    <td>'.createMiniTile("../images/m31.png", "../Registry/", "Registry", "mp31", 117, 77).'</td>
-    <td>'.createMiniTile("../images/m32.png", "../RSVP/", "RSVP", "mp32", 118, 77).'</td>
+    <td>'.createMiniTile($basePath."/images/m31.png", $basePath."/Registry/", "Registry", "mp31", 117, 77).'</td>
+    <td>'.createMiniTile($basePath."/images/m32.png", $basePath."/RSVP/", "RSVP", "mp32", 118, 77).'</td>
   </tr>
   </tbody>
   </table>';
@@ -120,7 +120,7 @@ function pageHeader($pathToBase, $pageName)
   function fixHeight() {
     var h = document.getElementById("main_panel").offsetHeight;
     if (h == 701) {
-      document.getElementById("footer").style.backgroundImage = "url(../images/shortFooter.png)";
+      document.getElementById("footer").style.backgroundImage = "url('.$pathToBase.'/images/shortFooter.png)";
     }
   }
 </script>
@@ -129,7 +129,7 @@ function pageHeader($pathToBase, $pageName)
 }
 
 /* Function to set up common top section of a sub-page */
-function subPageTop()
+function subPageTop($pathToBase = "..")
 {
   echo '<body bgcolor="White" onload="fixHeight();">
 <center>
@@ -155,7 +155,7 @@ function subPageTop()
 </div>
 
 <!-- Mini Links -->
-<div>'.createLinkTiles().'</div>
+<div>'.createLinkTiles($pathToBase).'</div>
 
 </div> <!-- end left panel -->
 

@@ -36,6 +36,11 @@ require '../scripts/db.php';
   </div>
 
   <!-- Item Grid -->
-  <?php $reg->populateItems(); ?>
+  <?php
+  $reg->populateItems();
+  $reg->showItems();
+  ?>
+
+  <p style="clear:both;"></p>
 
 <?php subPageBottom(); ?>

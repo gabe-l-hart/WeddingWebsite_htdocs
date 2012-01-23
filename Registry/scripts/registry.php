@@ -3,43 +3,10 @@
 $fadeInTime = 700;
 $fadeOutTime = 500;
 
-/* Function to create a thumbnail
- * Credit: http://www.webcheatsheet.com/php/create_thumbnail_images.php */
-function createThumbs( $pathToImages, $pathToThumbs, $thumbWidth ) 
+/* Replace the spaces in a string with underscores */
+function noSpace($s)
 {
-  // open the directory
-  $dir = opendir( $pathToImages );
-
-  // loop through it, looking for any/all JPG files:
-  while (false !== ($fname = readdir( $dir ))) {
-    // parse path for the extension
-    $info = pathinfo($pathToImages . $fname);
-    // continue only if this is a JPEG image
-    if ( strtolower($info['extension']) == 'jpg' ) 
-    {
-      echo "Creating thumbnail for {$fname} <br />";
-
-      // load image and get image size
-      $img = imagecreatefromjpeg( "{$pathToImages}{$fname}" );
-      $width = imagesx( $img );
-      $height = imagesy( $img );
-
-      // calculate thumbnail size
-      $new_width = $thumbWidth;
-      $new_height = floor( $height * ( $thumbWidth / $width ) );
-
-      // create a new temporary image
-      $tmp_img = imagecreatetruecolor( $new_width, $new_height );
-
-      // copy and resize old image into new image 
-      imagecopyresized( $tmp_img, $img, 0, 0, 0, 0, $new_width, $new_height, $width, $height );
-
-      // save thumbnail into a file
-      imagejpeg( $tmp_img, "{$pathToThumbs}{$fname}" );
-    }
-  }
-  // close the directory
-  closedir( $dir );
+  return str_replace(" ","_",$s);
 }
 
 /* Class to represent info for a registry item */
@@ -51,6 +18,7 @@ class RegistryItem
   private $shortDescrip = '';
   private $longDescrip = '';
   private $name = '';
+  private $noSpaceName = '';
   private $link = '';
   private $purchased = False;
 
@@ -62,6 +30,7 @@ class RegistryItem
     $this->shortDescrip = $sd;
     $this->longDescrip = $ld;
     $this->name = $n;
+    $this->noSpaceName = noSpace($n);
     $this->link = $l;
     $this->purchased = $p;
   }
@@ -70,13 +39,13 @@ class RegistryItem
   function createSmallTile()
   {
     $out = '<div class="regTileDiv">
-    <a class="regTile show-overlay_'.$this->name.'" href="#">
+    <a class="regTile show-overlay_'.$this->noSpaceName.'" href="#">
       <span class="overlay">
       <table cellpadding="0" cellspacing="0" border="0" class="fixedTable">
       <tbody>
         <tr><td height="10" width="212"></td></tr>
         <tr><td align="center">
-        <img src="'.$this->thumbnailPath.'" height="160">
+        <img src="'.$this->thumbnailPath.'" class="regThubnail">
         <div style="color:#4a002f; text-align:center">'.$this->shortDescrip.'</div>
         </td></tr>
         <tr><td></td></tr>
@@ -100,7 +69,7 @@ class RegistryItem
       <div class=\'overlayPanelBody\'>\
         <img src=\''.$this->imagePath.'\'>\
         <div style=\'float:right;\'>\
-          <a href=\'#\' class=\'hide-overlay_'.$this->name.' \'><img src=\'../images/closePanel.png\'></a>\
+          <a href=\'#\' class=\'hide-overlay_'.$this->noSpaceName.' \'><img src=\'../images/closePanel.png\'></a>\
         </div>\
         <div class=\'overlayPanelInfoContainer\'>\
           <a href=\''.$this->link.'\' class=\'overlayButton overlayPanelLink\'>Visit their website</a>';
@@ -108,7 +77,7 @@ class RegistryItem
       if ($this->purchased) {
         $out = $out.'<div class=\'overlayButton overlayPanelBuy\' style=\'color:#616161\'>Already Purchased</div>';
       } else {
-        $out = $out.'<a href=\'#\' class=\'overlay-purchase-transition_'.$this->name.' overlayButton overlayPanelBuy\'>Purchase</a>';
+        $out = $out.'<a href=\'#\' class=\'overlay-purchase-transition_'.$this->noSpaceName.' overlayButton overlayPanelBuy\'>Purchase</a>';
       }
 
       $out = $out.'<div class=\'overlayPanelTitle\'>'.$this->shortDescrip.'</div>\
@@ -125,17 +94,17 @@ class RegistryItem
     $out = '<div class=\'overlayPanelTop\'></div>\
       <div class=\'overlayPanelBody\'>\
         <div style=\'float:right;\'>\
-          <a href=\'#\' class=\'hide-overlay_'.$this->name.' \'><img src=\'../images/closePanel.png\'></a>\
+          <a href=\'#\' class=\'hide-overlay_'.$this->noSpaceName.' \'><img src=\'../images/closePanel.png\'></a>\
         </div>\
         <div class=\'overlayPanelTitle\'>'.$this->shortDescrip.'</div>\
         <div>FIXME!!! Please provide us with contact information so that we can organize payment.</div>\
         <div>\
-          <a href=\'#\' class=\'overlay-purchase-back_'.$this->name.' overlayButton overlayPanelBack\'>Back</a>\
-          <a href=\'#\' class=\'overlay-purchase-submit_'.$this->name.' overlayButton overlayPanelSubmit\'>Purchase</a>\
-          <form class=\'purchaseForm\' id=\'purchase_form_'.$this->name.'\' action=\'./scripts/process.php\' method=\'post\'>\
+          <a href=\'#\' class=\'overlay-purchase-back_'.$this->noSpaceName.' overlayButton overlayPanelBack\'>Back</a>\
+          <a href=\'#\' class=\'overlay-purchase-submit_'.$this->noSpaceName.' overlayButton overlayPanelSubmit\'>Purchase</a>\
+          <form class=\'purchaseForm\' id=\'purchase_form_'.$this->noSpaceName.'\' action=\'./scripts/process.php\' method=\'post\'>\
             name <input type=\'text\' name=\'buyer_name\'>\
             email <input type=\'text\' name=\'email\'><br />\
-            <input type=\'hidden\' name=\'item_name\' value=\''.$this->name.'\'>\
+            <input type=\'hidden\' name=\'item_name\' value=\''.$this->noSpaceName.'\'>\
           </form>\
         </div>\
       </div>\
@@ -149,55 +118,55 @@ class RegistryItem
     global $fadeInTime;
     global $fadeOutTime;
     return '<script>
-  var $overlay_wrapper_'.$this->name.';
-  var $overlay_panel_'.$this->name.';
-  var $overlay_panel_info_'.$this->name.';
-  var $overlay_panel_purchase_'.$this->name.';
+  var $overlay_wrapper_'.$this->noSpaceName.';
+  var $overlay_panel_'.$this->noSpaceName.';
+  var $overlay_panel_info_'.$this->noSpaceName.';
+  var $overlay_panel_purchase_'.$this->noSpaceName.';
   
-  function show_overlay_'.$this->name.'() {
-      if ( !$overlay_wrapper_'.$this->name.' ) append_overlay_'.$this->name.'();
-      $overlay_wrapper_'.$this->name.'.fadeIn('.$fadeInTime.');
+  function show_overlay_'.$this->noSpaceName.'() {
+      if ( !$overlay_wrapper_'.$this->noSpaceName.' ) append_overlay_'.$this->noSpaceName.'();
+      $overlay_wrapper_'.$this->noSpaceName.'.fadeIn('.$fadeInTime.');
   }
 
-  function hide_overlay_'.$this->name.'() {
-      $overlay_wrapper_'.$this->name.'.fadeOut('.$fadeOutTime.', delay_reset_'.$this->name.'());
+  function hide_overlay_'.$this->noSpaceName.'() {
+      $overlay_wrapper_'.$this->noSpaceName.'.fadeOut('.$fadeOutTime.', delay_reset_'.$this->noSpaceName.'());
   }
 
-  function show_purchase_'.$this->name.'() {
-      $overlay_panel_info_'.$this->name.'.fadeOut(0);
-      $overlay_panel_purchase_'.$this->name.'.fadeIn(0);
+  function show_purchase_'.$this->noSpaceName.'() {
+      $overlay_panel_info_'.$this->noSpaceName.'.fadeOut(0);
+      $overlay_panel_purchase_'.$this->noSpaceName.'.fadeIn(0);
   }
 
-  function show_info_'.$this->name.'() {
-      $overlay_panel_info_'.$this->name.'.fadeIn(0);
-      $overlay_panel_purchase_'.$this->name.'.fadeOut(0);
+  function show_info_'.$this->noSpaceName.'() {
+      $overlay_panel_info_'.$this->noSpaceName.'.fadeIn(0);
+      $overlay_panel_purchase_'.$this->noSpaceName.'.fadeOut(0);
   }
 
-  function delay_reset_'.$this->name.'() {
-      $overlay_panel_info_'.$this->name.'.delay('.$fadeOutTime.');
-      show_info_'.$this->name.'();
+  function delay_reset_'.$this->noSpaceName.'() {
+      $overlay_panel_info_'.$this->noSpaceName.'.delay('.$fadeOutTime.');
+      show_info_'.$this->noSpaceName.'();
   }
 
-  function append_overlay_'.$this->name.'() {
-      $overlay_wrapper_'.$this->name.' = $("<div class=\'regOverlay\'></div>").appendTo( $("BODY") );
-      $overlay_panel_'.$this->name.' = $("<div class=\'regOverlayPanel\'></div>").appendTo( $overlay_wrapper_'.$this->name.' );
-      $overlay_panel_info_'.$this->name.' = $("<div class=\'regOverlayPanelInfo\'></div>").appendTo( $overlay_panel_'.$this->name.' );
-      $overlay_panel_purchase_'.$this->name.' = $("<div class=\'regOverlayPanelPurchase\'></div>").appendTo( $overlay_panel_'.$this->name.' );
+  function append_overlay_'.$this->noSpaceName.'() {
+      $overlay_wrapper_'.$this->noSpaceName.' = $("<div class=\'regOverlay\'></div>").appendTo( $("BODY") );
+      $overlay_panel_'.$this->noSpaceName.' = $("<div class=\'regOverlayPanel\'></div>").appendTo( $overlay_wrapper_'.$this->noSpaceName.' );
+      $overlay_panel_info_'.$this->noSpaceName.' = $("<div class=\'regOverlayPanelInfo\'></div>").appendTo( $overlay_panel_'.$this->noSpaceName.' );
+      $overlay_panel_purchase_'.$this->noSpaceName.' = $("<div class=\'regOverlayPanelPurchase\'></div>").appendTo( $overlay_panel_'.$this->noSpaceName.' );
   
-      $overlay_panel_info_'.$this->name.'.html( "'.$this->createOverlayInfo().'" );
-      $overlay_panel_purchase_'.$this->name.'.html( "'.$this->createOverlayPurchase().'" );
+      $overlay_panel_info_'.$this->noSpaceName.'.html( "'.$this->createOverlayInfo().'" );
+      $overlay_panel_purchase_'.$this->noSpaceName.'.html( "'.$this->createOverlayPurchase().'" );
   
-      attach_overlay_events_'.$this->name.'();
+      attach_overlay_events_'.$this->noSpaceName.'();
   }
 
-  function validate_form_'.$this->name.'() {
-    var name = document.forms[\'purchase_form_'.$this->name.'\']["buyer_name"].value;
+  function validate_form_'.$this->noSpaceName.'() {
+    var name = document.forms[\'purchase_form_'.$this->noSpaceName.'\']["buyer_name"].value;
     if (name == null || name == "")
     {
       alert("Please enter your name");
       return false;
     }
-    var email = document.forms[\'purchase_form_'.$this->name.'\']["email"].value;
+    var email = document.forms[\'purchase_form_'.$this->noSpaceName.'\']["email"].value;
     if (email == null || email == "")
     {
       alert("Please enter your email address");
@@ -206,35 +175,35 @@ class RegistryItem
     return true;
   }
 
-  function submit_form_if_valid_'.$this->name.'() {
-    if (validate_form_'.$this->name.'()) {
-      document.forms[\'purchase_form_'.$this->name.'\'].submit()
+  function submit_form_if_valid_'.$this->noSpaceName.'() {
+    if (validate_form_'.$this->noSpaceName.'()) {
+      document.forms[\'purchase_form_'.$this->noSpaceName.'\'].submit()
     }
   }
 
-  function attach_overlay_events_'.$this->name.'() {
-      $("A.hide-overlay_'.$this->name.'", $overlay_wrapper_'.$this->name.').click( function(ev) {
+  function attach_overlay_events_'.$this->noSpaceName.'() {
+      $("A.hide-overlay_'.$this->noSpaceName.'", $overlay_wrapper_'.$this->noSpaceName.').click( function(ev) {
           ev.preventDefault();
-          hide_overlay_'.$this->name.'();
+          hide_overlay_'.$this->noSpaceName.'();
       });
-      $("A.overlay-purchase-transition_'.$this->name.'").click( function(ev) {
+      $("A.overlay-purchase-transition_'.$this->noSpaceName.'").click( function(ev) {
           ev.preventDefault();
-          show_purchase_'.$this->name.'();
+          show_purchase_'.$this->noSpaceName.'();
       });
-      $("A.overlay-purchase-submit_'.$this->name.'").click( function(ev) {
+      $("A.overlay-purchase-submit_'.$this->noSpaceName.'").click( function(ev) {
           ev.preventDefault();
-          submit_form_if_valid_'.$this->name.'();
+          submit_form_if_valid_'.$this->noSpaceName.'();
       });
-      $("A.overlay-purchase-back_'.$this->name.'").click( function(ev) {
+      $("A.overlay-purchase-back_'.$this->noSpaceName.'").click( function(ev) {
           ev.preventDefault();
-          show_info_'.$this->name.'();
+          show_info_'.$this->noSpaceName.'();
       });
   }
 
   $(function() {
-      $("A.show-overlay_'.$this->name.'").click( function(ev) {
+      $("A.show-overlay_'.$this->noSpaceName.'").click( function(ev) {
           ev.preventDefault();
-          show_overlay_'.$this->name.'();
+          show_overlay_'.$this->noSpaceName.'();
       });
   });
   </script>';
@@ -282,6 +251,17 @@ class Registry
     mysql_select_db($this->name);
   }
 
+  /* Add an item to the database. */
+  public function addItem($name, $imagePath, $thumbnailPath, $shortDescrip, $longDescrip, $link)
+  {
+    $query = 'INSERT INTO `'.$this->name.'`.`Registry` (`name`, `link`, `imagePath`, `thumbnailPath`, `shortDescrip`, `longDescrip`, `purchased`, `buyer_email`, `buyer_name`) VALUES ("'.$name.'", "'.$link.'", "'.$imagePath.'", "'.$thumbnailPath.'", "'.$shortDescrip.'", "'.$longDescrip.'", "0", "", "");';
+    $result = mysql_query($query);
+    if (!$result) {
+      return false;
+    }
+    return true;
+  }
+
   /* Populate the array of items */
   public function populateItems()
   {
@@ -306,13 +286,17 @@ class Registry
       $ld = $row['longDescrip'];
       $l = $row['link'];
       $p = $row['purchased'];
-      $this->items[$n] = new RegistryItem($ip, $tp, $sd, $ld, $n, $l, $p);
+      $this->items[] = new RegistryItem($ip, $tp, $sd, $ld, $n, $l, $p);
+    }
+  }
 
-      // Display it's tile
-      echo $this->items[$n]->createSmallTile();
-
-      // Set up it's overlay
-      echo $this->items[$n]->createOverlay();
+  /* Display items for main page */
+  public function showItems()
+  {
+    foreach($this->items as $item)
+    {
+      echo $item->createSmallTile();
+      echo $item->createOverlay();
     }
   }
 
