@@ -7,6 +7,10 @@
   text-align:left;
 }
 
+a img {
+  border:none;
+}
+
 .panelImage {
   position: absolute;
   z-index:1;
