@@ -15,15 +15,15 @@ Zend_Loader::loadClass('Zend_Gdata_Photos_PhotoQuery');
 
 /*--Functions/Classes--------------------------------------------------------*/
 
-/** This class represents an album */
+/* This class represents an album */
 class Album
 {
-  /** Private members */
-  private $title = null;
-  private $gphotoID = null;
-  private $thumbnail = null;
+  /* Private members */
+  public $title = null;
+  public $gphotoID = null;
+  public $thumbnail = null;
 
-  /** Constructor */
+  /* Constructor */
   public function __construct($title, $id, $thumb)
   {
     $this->title = $title;
@@ -31,46 +31,65 @@ class Album
     $this->thumbnail = $thumb;
   }
 
-  /** Create the album tile */
-  function createTile()
+  /* Create the album tile */
+  public function createTile()
   {
-    return '<div class="albumTileDiv">
-    <a class="albumTile" href="#" style="opacity:0.'.$this->mainOpacity.';">
-      <span class="overlay">
-
-      </span>
-      </a>';
+    return '
+    <div class="albumTileDiv commonText">
+      <a class="albumTile itemTile" href="#">
+        <span class="overlay">
+          <div class="albumThumbnail">
+            <img src="'.$this->thumbnail[0]->getURL().'">
+          </div>
+          <div class="albumCaption">'.$this->title.'</div>
+        </span>
+      </a>
+    </div>';
   }
 }
 
-/** Get the list of albums */
-function getAlbumList($client = null)
+/* This class represents the full photo set for a user */
+class UserSet
 {
-  $photos = new Zend_Gdata_Photos($client);
-  $query = new Zend_Gdata_Photos_UserQuery();
-  $query->setUser('rebekkah.gabe@googlemail.com');
 
-  $userFeed = $photos->getUserFeed(null, $query);
-  $albums = array();
-  foreach ($userFeed as $entry) {
-    if ($entry instanceof Zend_Gdata_Photos_AlbumEntry)
-    {
-      $albums[] = new Album($entry->getTitle(),
-                            $entry->getGphotoId(),
-                            $entry->getMediaGroup()->getThumbnail());
+  /* private members */
+  private $user = '';
+  private $albums = array();
+  private $client = null;
+
+  /* Constructor */
+  public function __construct($user)
+  {
+    $this->user = $user;
+  }
+
+  /* Get the list of albums */
+  function populateAlbums()
+  {
+    $photos = new Zend_Gdata_Photos($this->client);
+    $query = new Zend_Gdata_Photos_UserQuery();
+    $query->setUser($this->user);
+
+    $userFeed = $photos->getUserFeed(null, $query);
+    $this->albums = array();
+    foreach ($userFeed as $entry) {
+      if ($entry instanceof Zend_Gdata_Photos_AlbumEntry)
+      {
+        $this->albums[] = new Album($entry->getTitle(),
+                                    $entry->getGphotoId(),
+                                    $entry->getMediaGroup()->getThumbnail());
+      }
     }
   }
-  return $albums;
-}
 
-/** Display albums */
-function displayAlbums()
-{
-  $albums = getAlbumList();
-  foreach ($albums as $album)
+  /* Display albums */
+  function displayAlbums()
   {
-    echo $album->createTile();
+    foreach ($this->albums as $album)
+    {
+      echo $album->createTile();
+    }
   }
-}
 
+}
 ?>

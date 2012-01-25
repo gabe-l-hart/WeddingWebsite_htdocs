@@ -12,3 +12,12 @@
   display:block;
   text-align:center;
 }
+
+.albumThumbnail {
+  padding:10px;
+}
+
+.albumCaption {
+  color:#4a002f;
+  text-align:center;
+}

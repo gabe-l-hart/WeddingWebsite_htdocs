@@ -39,7 +39,7 @@ class RegistryItem
   function createSmallTile()
   {
     $out = '<div class="regTileDiv">
-    <a class="regTile show-overlay_'.$this->noSpaceName.'" href="#">
+    <a class="regTile itemTile show-overlay_'.$this->noSpaceName.'" href="#">
       <span class="overlay">
       <table cellpadding="0" cellspacing="0" border="0" class="fixedTable">
       <tbody>

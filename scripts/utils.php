@@ -105,12 +105,12 @@ function pageHeader($pathToBase, $pageName)
     });
 
     // Fade registry tile out on mouse over
-    $(".regTile").mouseover(function(event){
+    $(".itemTile").mouseover(function(event){
       $(this).fadeTo(0,0.75);
     });
   
     // Fade registry in on mouse out
-    $(".regTile").mouseout(function(event){
+    $(".itemTile").mouseout(function(event){
       $(this).fadeTo(0,0.95);
     });
 
