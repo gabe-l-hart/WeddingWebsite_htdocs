@@ -119,7 +119,7 @@ function pageHeader($pathToBase, $pageName)
 
   function fixHeight() {
     var h = document.getElementById("main_panel").offsetHeight;
-    if (h == 701) {
+    if (h < 704) {
       document.getElementById("footer").style.backgroundImage = "url('.$pathToBase.'/images/shortFooter.png)";
     }
   }
@@ -131,7 +131,7 @@ function pageHeader($pathToBase, $pageName)
 /* Function to set up common top section of a sub-page */
 function subPageTop($pathToBase = "..")
 {
-  echo '<body bgcolor="White" onload="fixHeight();">
+  echo '<body bgcolor="White" id="pageBody" onload="fixHeight();">
 <center>
 
 <!-- Main Panel------------------------------------------------------------ -->

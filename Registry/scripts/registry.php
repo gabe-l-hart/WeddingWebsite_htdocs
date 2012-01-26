@@ -122,7 +122,7 @@ class RegistryItem
   var $overlay_panel_'.$this->noSpaceName.';
   var $overlay_panel_info_'.$this->noSpaceName.';
   var $overlay_panel_purchase_'.$this->noSpaceName.';
-  
+
   function show_overlay_'.$this->noSpaceName.'() {
       if ( !$overlay_wrapper_'.$this->noSpaceName.' ) append_overlay_'.$this->noSpaceName.'();
       $overlay_wrapper_'.$this->noSpaceName.'.fadeIn('.$fadeInTime.');
@@ -148,8 +148,8 @@ class RegistryItem
   }
 
   function append_overlay_'.$this->noSpaceName.'() {
-      $overlay_wrapper_'.$this->noSpaceName.' = $("<div class=\'regOverlay\'></div>").appendTo( $("BODY") );
-      $overlay_panel_'.$this->noSpaceName.' = $("<div class=\'regOverlayPanel\'></div>").appendTo( $overlay_wrapper_'.$this->noSpaceName.' );
+      $overlay_wrapper_'.$this->noSpaceName.' = $("<div class=\'regOverlay\' id=\'overlayBG\'></div>").appendTo( $("BODY") );
+      $overlay_panel_'.$this->noSpaceName.' = $("<div class=\'regOverlayPanel\' id=\'overlayPanel\'></div>").appendTo( $overlay_wrapper_'.$this->noSpaceName.' );
       $overlay_panel_info_'.$this->noSpaceName.' = $("<div class=\'regOverlayPanelInfo\'></div>").appendTo( $overlay_panel_'.$this->noSpaceName.' );
       $overlay_panel_purchase_'.$this->noSpaceName.' = $("<div class=\'regOverlayPanelPurchase\'></div>").appendTo( $overlay_panel_'.$this->noSpaceName.' );
   
@@ -204,8 +204,10 @@ class RegistryItem
       $("A.show-overlay_'.$this->noSpaceName.'").click( function(ev) {
           ev.preventDefault();
           show_overlay_'.$this->noSpaceName.'();
+          fixOverlayHeight();
       });
   });
+
   </script>';
   }
 }

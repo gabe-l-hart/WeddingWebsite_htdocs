@@ -23,8 +23,8 @@
 
 .regOverlay {
   width: 100%;
-  min-height: 100%;
-  position: fixed;
+  min-height:100%;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: 1000;
@@ -38,6 +38,7 @@ html, body {
   width: 100%;
   margin: 10;
   padding: 0;
+  position: relative;
 }
 
 .regOverlayExit {
