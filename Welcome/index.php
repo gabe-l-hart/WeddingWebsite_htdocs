@@ -1,4 +1,3 @@
-<!-- Get PHP Utils -->
 <?php require '../scripts/utils.php'; ?>
 
 <?php pageHeader("..", "Welcome"); ?>

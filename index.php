@@ -1,4 +1,3 @@
-<!-- Get PHP Scripts -->
 <?php include './scripts/utils.php'; ?>
 <?php pageHeader(".", "Home"); ?>
 
