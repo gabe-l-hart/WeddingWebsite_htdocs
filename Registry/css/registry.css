@@ -48,7 +48,7 @@ html, body {
 
 .regOverlayPanel {
   position:relative;
-  margin: 20px auto 0 auto;
+  margin: 20px auto 20px auto;
   width: 450px;
 }
 
@@ -60,7 +60,7 @@ html, body {
   background: url('../images/overlayPanelTop.png') no-repeat 0 0;
   width:450px;
   height:10px;
-  padding:0px;
+  overflow:hidden;
 }
 
 .overlayPanelBody {
@@ -111,6 +111,7 @@ html, body {
   background: url('../images/overlayPanelBottom.png') no-repeat 0 0;
   width:450px;
   height:10px;
+  overflow:hidden;
 }
 
 .overlayPanelTitle {

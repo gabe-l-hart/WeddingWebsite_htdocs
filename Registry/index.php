@@ -1,13 +1,9 @@
 <!-- Get PHP Utils -->
 <?php
-require '../scripts/utils.php';
-require './scripts/registry.php';
-require '../scripts/db.php';
-?>
+  require '../scripts/utils.php';
+  require './scripts/registry.php';
+  require '../scripts/db.php';
 
-<link rel="stylesheet" type="text/css" href="./css/registry.css">
-
-<?php
   global $db_hostname;
   global $db_user;
   global $db_pw;
@@ -25,6 +21,9 @@ require '../scripts/db.php';
 ?>
 
 <?php pageHeader("..", "Registry"); ?>
+
+<link rel="stylesheet" type="text/css" href="./css/registry.css">
+
 <?php subPageTop(); ?>
 
   <!-- Title -->
