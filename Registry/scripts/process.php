@@ -15,7 +15,8 @@ mysql_select_db($db_name) or die(mysql_error());
 $item_name=$_POST["item_name"];
 $email=$_POST["email"];
 $buyer_name=$_POST["buyer_name"];
-mysql_query("UPDATE  `".$db_name."`.`Registry` SET  `purchased` =  '1',
+$number_purchased=$_POST["num_purchased"];
+mysql_query("UPDATE  `".$db_name."`.`Registry` SET  `purchased` =  'purchased+$number_purchased',
 `buyer_email` =  '".$email."',
 `buyer_name` =  '".$buyer_name."' WHERE  `Registry`.`name` =  '".$item_name."';");
 

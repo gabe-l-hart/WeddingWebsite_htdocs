@@ -84,6 +84,14 @@ require '../scripts/registry.php';
       <input id="link" type="text" name="link" maxlength=256></input>
     </p>
     <p>
+      <label for="requested">Number Requested:</label>
+      <input id="requested" type="text" name="requested" maxlength=3></input>
+    </p>
+    <p>
+      <label for="unit_price">Unit Price: $</label>
+      <input id="unit_price" type="text" name="unit_price" maxlength=3></input>
+    </p>
+    <p>
       <label for="file">Image to upload:</label> 
       <input id="file" type="file" name="file"> 
     </p>

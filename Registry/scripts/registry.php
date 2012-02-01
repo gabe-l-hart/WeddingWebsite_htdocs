@@ -20,10 +20,12 @@ class RegistryItem
   private $name = '';
   private $noSpaceName = '';
   private $link = '';
-  private $purchased = False;
+  private $purchased = 0;
+  private $requested = 1;
+  private $unitPrice = 1.00;
 
   /* Constructor */
-  public function __construct($ip, $tp, $sd, $ld, $n, $l, $p)
+  public function __construct($ip, $tp, $sd, $ld, $n, $l, $p, $r, $pr)
   {
     $this->imagePath = $ip;
     $this->thumbnailPath = $tp;
@@ -33,6 +35,8 @@ class RegistryItem
     $this->noSpaceName = noSpace($n);
     $this->link = $l;
     $this->purchased = $p;
+    $this->requested = $r;
+    $this->unitPrice = $pr;
   }
 
   /* Method to create the small tile */
@@ -254,9 +258,10 @@ class Registry
   }
 
   /* Add an item to the database. */
-  public function addItem($name, $imagePath, $thumbnailPath, $shortDescrip, $longDescrip, $link)
+  public function addItem($name, $imagePath, $thumbnailPath, $shortDescrip, $longDescrip,
+                          $link, $unit_price, $requested)
   {
-    $query = 'INSERT INTO `'.$this->name.'`.`Registry` (`name`, `link`, `imagePath`, `thumbnailPath`, `shortDescrip`, `longDescrip`, `purchased`, `buyer_email`, `buyer_name`) VALUES ("'.$name.'", "'.$link.'", "'.$imagePath.'", "'.$thumbnailPath.'", "'.$shortDescrip.'", "'.$longDescrip.'", "0", "", "");';
+    $query = 'INSERT INTO `'.$this->name.'`.`Registry` (`name`, `link`, `imagePath`, `thumbnailPath`, `shortDescrip`, `longDescrip`, `purchased`, `requested`, `unit_price`, `buyer_email`, `buyer_name`) VALUES ("'.$name.'", "'.$link.'", "'.$imagePath.'", "'.$thumbnailPath.'", "'.$shortDescrip.'", "'.$longDescrip.'", "0", "'.$requested.'", "'.$unit_price.'", "", "");';
     $result = mysql_query($query);
     if (!$result) {
       return false;
@@ -268,7 +273,7 @@ class Registry
   public function populateItems()
   {
     // Get the contents of the Registry table
-    $result = mysql_query('SELECT * FROM Registry ORDER BY purchased');
+    $result = mysql_query('SELECT * FROM Registry');
     if (!$result) {
       die('Invalid Query');
     }

@@ -202,7 +202,8 @@ $reg->connect();
 // Add the item
 if (!$reg->addItem($_POST['name'], $imageDirFromReg.$fullFileName,
                    $imageDirFromReg.$thumbFileName, $_POST['shortDescrip'],
-                   $_POST['longDescrip'], $_POST['link']))
+                   $_POST['longDescrip'], $_POST['link'],
+                   $_POST['unit_price'], $_POST['requested']))
 {
   // Remove the images
   unlink($imageDirFromHere.$fullFileName);
