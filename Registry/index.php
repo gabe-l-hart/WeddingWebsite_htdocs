@@ -24,15 +24,14 @@
 <link rel="stylesheet" type="text/css" href="./css/registry.css">
 <script type="text/javascript" >
 
-	// Fix the overlay background height
-	function fixOverlayHeight() {
-		
-		var bodyH = document.getElementById("pageBody").offsetHeight;
-		var overlayH = document.getElementById("overlayPanel").offsetHeight;
+  // Fix the overlay background height
+  function fixOverlayHeight() {
+    var bodyH = document.getElementById("pageBody").scrollHeight;
+    var overlayH = document.getElementById("overlayPanel").scrollHeight;
     if (bodyH > overlayH) {
-      document.getElementById("overlayBG").style.height = bodyH;
+      document.getElementById("overlayBG").style.height = bodyH + "px";
     } else {
-    	document.getElementById("overlayBG").style.height = overlayH;
+      document.getElementById("overlayBG").style.height = overlayH + "px";
     }
   }
 </script>
