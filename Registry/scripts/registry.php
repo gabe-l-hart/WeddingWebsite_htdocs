@@ -15,7 +15,6 @@ class RegistryItem
   /* Members */
   private $imagePath = '';
   private $thumbnailPath = '';
-  private $shortDescrip = '';
   private $longDescrip = '';
   private $name = '';
   private $noSpaceName = '';
@@ -25,11 +24,10 @@ class RegistryItem
   private $unitPrice = 1.00;
 
   /* Constructor */
-  public function __construct($ip, $tp, $sd, $ld, $n, $l, $p, $r, $pr)
+  public function __construct($ip, $tp, $ld, $n, $l, $p, $r, $pr)
   {
     $this->imagePath = $ip;
     $this->thumbnailPath = $tp;
-    $this->shortDescrip = $sd;
     $this->longDescrip = $ld;
     $this->name = $n;
     $this->noSpaceName = noSpace($n);
@@ -50,7 +48,7 @@ class RegistryItem
         <tr><td height="10" width="212"></td></tr>
         <tr><td align="center">
         <img src="'.$this->thumbnailPath.'" class="regThubnail">
-        <div style="color:#4a002f; text-align:center">'.$this->shortDescrip.'</div>
+        <div style="color:#4a002f; text-align:center">'.$this->name.'</div>
         </td></tr>
         <tr><td></td></tr>
       </tbody>
@@ -58,8 +56,12 @@ class RegistryItem
       </span>
       </a>';
 
-    if ($this->purchased) {
+    if ($this->purchased == $this->requested) {
       $out = $out.'<div class="regBoughtBanner">ALREADY PURCHASED</div>';
+    }
+    // Catch errors... should never need this
+    elseif ($this->purchased > $this->requested) {
+      $out = $out.'<div class="regBoughtBanner">TOO MANY PURCHASED!!!!! ('.$this->purchased.' > '.$this->requested.')</div>';
     }
 
     $out = $out.'</div>';
@@ -84,7 +86,7 @@ class RegistryItem
         $out = $out.'<a href=\'#\' class=\'overlay-purchase-transition_'.$this->noSpaceName.' overlayButton overlayPanelBuy\'>Purchase</a>';
       }
 
-      $out = $out.'<div class=\'overlayPanelTitle\'>'.$this->shortDescrip.'</div>\
+      $out = $out.'<div class=\'overlayPanelTitle\'>'.$this->name.'</div>\
           <div class=\'overlayPanelText\'>'.$this->longDescrip.'</div>\
         </div>\
       </div>\
@@ -100,7 +102,7 @@ class RegistryItem
         <div class=\'regOverlayExit\'>\
           <a href=\'#\' class=\'hide-overlay_'.$this->noSpaceName.' \'><img src=\'../images/closePanel.png\'></a>\
         </div>\
-        <div class=\'overlayPanelTitle\'>'.$this->shortDescrip.'</div>\
+        <div class=\'overlayPanelTitle\'>'.$this->name.'</div>\
         <div>FIXME!!! Please provide us with contact information so that we can organize payment.</div>\
         <div>\
           <a href=\'#\' class=\'overlay-purchase-back_'.$this->noSpaceName.' overlayButton overlayPanelBack\'>Back</a>\
@@ -258,10 +260,10 @@ class Registry
   }
 
   /* Add an item to the database. */
-  public function addItem($name, $imagePath, $thumbnailPath, $shortDescrip, $longDescrip,
+  public function addItem($name, $imagePath, $thumbnailPath, $longDescrip,
                           $link, $unit_price, $requested)
   {
-    $query = 'INSERT INTO `'.$this->name.'`.`Registry` (`name`, `link`, `imagePath`, `thumbnailPath`, `shortDescrip`, `longDescrip`, `purchased`, `requested`, `unit_price`, `buyer_email`, `buyer_name`) VALUES ("'.$name.'", "'.$link.'", "'.$imagePath.'", "'.$thumbnailPath.'", "'.$shortDescrip.'", "'.$longDescrip.'", "0", "'.$requested.'", "'.$unit_price.'", "", "");';
+    $query = 'INSERT INTO `'.$this->name.'`.`Registry` (`name`, `link`, `imagePath`, `thumbnailPath`, `longDescrip`, `purchased`, `requested`, `unit_price`, `buyer_email`, `buyer_name`) VALUES ("'.$name.'", "'.$link.'", "'.$imagePath.'", "'.$thumbnailPath.'", "'.$longDescrip.'", "0", "'.$requested.'", "'.$unit_price.'", "", "");';
     $result = mysql_query($query);
     if (!$result) {
       return false;
@@ -289,11 +291,12 @@ class Registry
       $n = $row['name'];
       $ip = $row['imagePath'];
       $tp = $row['thumbnailPath'];
-      $sd = $row['shortDescrip'];
       $ld = $row['longDescrip'];
       $l = $row['link'];
       $p = $row['purchased'];
-      $this->items[] = new RegistryItem($ip, $tp, $sd, $ld, $n, $l, $p);
+      $r = $row['requested'];
+      $pr = $row['unit_price'];
+      $this->items[] = new RegistryItem($ip, $tp, $ld, $n, $l, $p, $r, $pr);
     }
   }
 

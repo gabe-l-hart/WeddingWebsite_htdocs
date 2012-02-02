@@ -66,8 +66,9 @@ require '../scripts/registry.php';
   function submitAddFormIfValid() {
     if (!validate_field("Upload","name")) { return false; }
     if (!validate_field("Upload","link")) { return false; }
+    if (!validate_field("Upload","requested")) { return false; }
+    if (!validate_field("Upload","unit_price")) { return false; }
     if (!validate_field("Upload","file")) { return false; }
-    if (!validate_field("Upload","shortDescrip")) { return false; }
     if (!validate_field("Upload","longDescrip")) { return false; }
     return true;
   }
@@ -94,10 +95,6 @@ require '../scripts/registry.php';
     <p>
       <label for="file">Image to upload:</label> 
       <input id="file" type="file" name="file"> 
-    </p>
-    <p>
-      <label for="shortDescrip">Short Description:</label>
-      <input id="shortDescrip" type="text" name="shortDescrip" maxlength=1024></input>
     </p>
     <p>
       <label for="longDescrip">Full Description:</label>
