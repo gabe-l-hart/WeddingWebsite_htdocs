@@ -17,7 +17,7 @@ class RegistryItem
   private $thumbnailPath = '';
   private $longDescrip = '';
   private $name = '';
-  private $noSpaceName = '';
+  private $id = '';
   private $link = '';
   private $purchased = 0;
   private $requested = 1;
@@ -30,7 +30,7 @@ class RegistryItem
     $this->thumbnailPath = $tp;
     $this->longDescrip = $ld;
     $this->name = $n;
-    $this->noSpaceName = noSpace($n);
+    $this->id = noSpace($n);
     $this->link = $l;
     $this->purchased = $p;
     $this->requested = $r;
@@ -41,7 +41,7 @@ class RegistryItem
   function createSmallTile()
   {
     $out = '<div class="regTileDiv">
-    <a class="regTile itemTile show-overlay_'.$this->noSpaceName.'" href="#">
+    <a class="regTile itemTile show-overlay_'.$this->id.'" href="#">
       <div class="overlay regTileWrapper">
         <div class="regTileCaption">'.$this->name.'</div>
         <div class="regTileThumbnail">
@@ -71,32 +71,32 @@ class RegistryItem
       <div class=\'overlayPanelBody\'>\
         <img src=\''.$this->imagePath.'\'>\
         <div class=\'regOverlayExit\'>\
-          <a href=\'#\' class=\'hide-overlay_'.$this->noSpaceName.' \'><img src=\'../images/closePanel.png\'></a>\
+          <a href=\'#\' class=\'hide-overlay_'.$this->id.' \'><img src=\'../images/closePanel.png\'></a>\
         </div>\
         <div class=\'overlayPanelInfoContainer\'>\
           <div class=\'overlayPanelTitle\'>'.$this->name.'</div>\
             <div class=\'overlayPanelInfoText\'>Bought: '.$this->purchased.' / '.$this->requested.'</div>\
             <div class=\'overlayPanelInfoText\'>Unit Price: $'.$this->unitPrice.'</div>\
             <div class=\'overlayPanelInfoText\'>\
-              <form id=\'quantity_form_'.$this->noSpaceName.'\'>\
-                <label for=\'quantity_'.$this->noSpaceName.'\'>Qty: </label>\
-                <input type=\'text\' maxlength=3 size=3 id=\'quantity_'.$this->noSpaceName.'\' value=\'1\'></input>\
+              <form id=\'quantity_form_'.$this->id.'\'>\
+                <label for=\'quantity_'.$this->id.'\'>Qty: </label>\
+                <input type=\'text\' maxlength=3 size=3 id=\'quantity_'.$this->id.'\' value=\'1\' />\
               </form>\
             </div>';
 
-      if ($this->purchased) {
+      if ($this->purchased >= $this->requested) {
         $out = $out.'<div class=\'overlayButton\' style=\'color:#616161\'>Sold Out</div>';
       } else {
         $out = $out.'\
-          <div class=\'overlayButton\'>\
-            <a href=\'#\' class=\'overlay-purchase-transition_'.$this->noSpaceName.' overlayButtonLink\'>Purchase</a>\
-          </div>';
+          <a href=\'#\' class=\'overlay-purchase-transition_'.$this->id.' overlayButtonLink\'>\
+            <div class=\'overlayButton\'>Purchase</div>\
+          </a>';
       }
 
       $out = $out.'\
-          <div class=\'overlayButton\'>\
-            <a class=\'overlayButtonLink\' href=\''.$this->link.'\'>Visit their website</a>\
-          </div>\
+          <a class=\'overlayButtonLink\' href=\''.$this->link.'\'>\
+            <div class=\'overlayButton\'>Visit their website</div>\
+          </a>\
         </div>\
         <div class=\'overlayPanelText\'>'.$this->longDescrip.'</div>\
         <div style=\'clear:both;\'></div>\
@@ -111,19 +111,40 @@ class RegistryItem
     $out = '<div class=\'overlayPanelTop\'></div>\
       <div class=\'overlayPanelBody\'>\
         <div class=\'regOverlayExit\'>\
-          <a href=\'#\' class=\'hide-overlay_'.$this->noSpaceName.' \'><img src=\'../images/closePanel.png\'></a>\
+          <a href=\'#\' class=\'hide-overlay_'.$this->id.' \'><img src=\'../images/closePanel.png\'></a>\
         </div>\
-        <div class=\'overlayPanelTitle\'>'.$this->name.'</div>\
-        <div>FIXME!!! Please provide us with contact information so that we can organize payment.</div>\
-        <div>\
-          <a href=\'#\' class=\'overlay-purchase-back_'.$this->noSpaceName.' overlayButton overlayPanelBack\'>Back</a>\
-          <a href=\'#\' class=\'overlay-purchase-submit_'.$this->noSpaceName.' overlayButton overlayPanelSubmit\'>Purchase</a>\
-          <form class=\'purchaseForm\' id=\'purchase_form_'.$this->noSpaceName.'\' action=\'./scripts/process.php\' method=\'post\'>\
-            name <input type=\'text\' name=\'buyer_name\'>\
-            email <input type=\'text\' name=\'email\'><br />\
-            <input type=\'hidden\' name=\'item_name\' value=\''.$this->noSpaceName.'\'>\
+        <div>Thank You! Your gift will help make our honeymoon incredible!</div>\
+        <div class=\'overlayPanelInfoContainer\'>\
+          <div class=\'overlayPanelTitle\'>'.$this->name.'</div>\
+          <div class=\'overlayPanelInfoText\'>Bought: '.$this->purchased.' / '.$this->requested.'</div>\
+          <div class=\'overlayPanelInfoText\'>Unit Price: $'.$this->unitPrice.'</div>\
+          <div class=\'overlayPanelInfoText\'>Quantity: <span id=\'fixed_qty_'.$this->id.'\'></span></div>\
+          <div class=\'overlayPanelInfoText\'>Total Price: $<span id=\'total_price_'.$this->id.'\'></span></div>\
+          <a href=\'#\' class=\'overlay-purchase-back_'.$this->id.' overlayButtonLink\'>\
+              <div class=\'overlayButton overlayPanelBack\'>Back</div>\
+          </a>\
+          <a href=\'#\' class=\'overlay-purchase-submit_'.$this->id.' overlayButtonLink\'>\
+            <div class=\'overlayButton overlayPanelSubmit\'>Purchase</div>\
+          </a>\
+        </div>\
+        <div class=\'purchaseFormDiv\'>\
+          <form class=\'purchaseForm\' id=\'purchase_form_'.$this->id.'\' action=\'./scripts/process.php\' method=\'post\'>\
+            <p>\
+              <label for=\'buyer_first_name_'.$this->id.'\'>First Name</label>\
+              <input type=\'text\' name=\'buyer_first_name\' id=\'buyer_first_name_'.$this->id.'\'>\
+            <br />\
+              <label for=\'buyer_last_name_'.$this->id.'\'>Last Name</label>\
+              <input type=\'text\' name=\'buyer_last_name\' id=\'buyer_last_name_'.$this->id.'\'>\
+            </p>\
+            <p>\
+              <label for=\'buyer_email_'.$this->id.'\'>Email</label>\
+              <input type=\'text\' name=\'email\' id=\'buyer_email_'.$this->id.'\'><br />\
+            </p>\
+            <input type=\'hidden\' name=\'item_name\' value=\''.$this->name.'\'>\
+            <input type=\'hidden\' name=\'quantity\' id=\'quantity_hidden_'.$this->id.'\'>\
           </form>\
         </div>\
+        <div style=\'clear:both;\'></div>\
       </div>\
       <div class=\'overlayPanelBottom\'></div>';
     return $out;
@@ -135,24 +156,28 @@ class RegistryItem
     global $fadeInTime;
     global $fadeOutTime;
     return '<script>
-  var $overlay_wrapper_'.$this->noSpaceName.';
-  var $overlay_panel_'.$this->noSpaceName.';
-  var $overlay_panel_info_'.$this->noSpaceName.';
-  var $overlay_panel_purchase_'.$this->noSpaceName.';
+  var $overlay_wrapper_'.$this->id.';
+  var $overlay_panel_'.$this->id.';
+  var $overlay_panel_info_'.$this->id.';
+  var $overlay_panel_purchase_'.$this->id.';
 
-  function show_overlay_'.$this->noSpaceName.'() {
-      if ( !$overlay_wrapper_'.$this->noSpaceName.' ) append_overlay_'.$this->noSpaceName.'();
-      $overlay_wrapper_'.$this->noSpaceName.'.fadeIn('.$fadeInTime.');
+  function show_overlay_'.$this->id.'() {
+      if ( !$overlay_wrapper_'.$this->id.' ) append_overlay_'.$this->id.'();
+      $overlay_wrapper_'.$this->id.'.fadeIn('.$fadeInTime.');
   }
 
-  function hide_overlay_'.$this->noSpaceName.'() {
-      $overlay_wrapper_'.$this->noSpaceName.'.fadeOut('.$fadeOutTime.', delay_reset_'.$this->noSpaceName.'());
+  function hide_overlay_'.$this->id.'() {
+      $overlay_wrapper_'.$this->id.'.fadeOut('.$fadeOutTime.', delay_reset_'.$this->id.'());
   }
 
-  function show_purchase_'.$this->noSpaceName.'() {
-      if (validateQuantity("quantity_'.$this->noSpaceName.'", '.($this->requested - $this->purchased).')) {
-        $overlay_panel_info_'.$this->noSpaceName.'.fadeOut(0);
-        $overlay_panel_purchase_'.$this->noSpaceName.'.fadeIn(0);
+  function show_purchase_'.$this->id.'() {
+      if (validateQuantity("quantity_'.$this->id.'", '.($this->requested - $this->purchased).')) {
+        var qty = document.getElementById("quantity_'.$this->id.'").value;
+        document.getElementById("fixed_qty_'.$this->id.'").innerHTML = qty;
+        document.getElementById("quantity_hidden_'.$this->id.'").value = qty;
+        document.getElementById("total_price_'.$this->id.'").innerHTML = (parseInt(qty) * '.$this->unitPrice.').toFixed(2)
+        $overlay_panel_info_'.$this->id.'.fadeOut(0);
+        $overlay_panel_purchase_'.$this->id.'.fadeIn(0);
       }
       else
       {
@@ -160,36 +185,42 @@ class RegistryItem
       }
   }
 
-  function show_info_'.$this->noSpaceName.'() {
-      $overlay_panel_info_'.$this->noSpaceName.'.fadeIn(0);
-      $overlay_panel_purchase_'.$this->noSpaceName.'.fadeOut(0);
+  function show_info_'.$this->id.'() {
+      $overlay_panel_info_'.$this->id.'.fadeIn(0);
+      $overlay_panel_purchase_'.$this->id.'.fadeOut(0);
   }
 
-  function delay_reset_'.$this->noSpaceName.'() {
-      $overlay_panel_info_'.$this->noSpaceName.'.delay('.$fadeOutTime.');
-      show_info_'.$this->noSpaceName.'();
+  function delay_reset_'.$this->id.'() {
+      $overlay_panel_info_'.$this->id.'.delay('.$fadeOutTime.');
+      show_info_'.$this->id.'();
   }
 
-  function append_overlay_'.$this->noSpaceName.'() {
-      $overlay_wrapper_'.$this->noSpaceName.' = $("<div class=\'regOverlay\' id=\'overlayBG\'></div>").appendTo( $("BODY") );
-      $overlay_panel_'.$this->noSpaceName.' = $("<div class=\'regOverlayPanel\' id=\'overlayPanel\'></div>").appendTo( $overlay_wrapper_'.$this->noSpaceName.' );
-      $overlay_panel_info_'.$this->noSpaceName.' = $("<div class=\'regOverlayPanelInfo\'></div>").appendTo( $overlay_panel_'.$this->noSpaceName.' );
-      $overlay_panel_purchase_'.$this->noSpaceName.' = $("<div class=\'regOverlayPanelPurchase\'></div>").appendTo( $overlay_panel_'.$this->noSpaceName.' );
+  function append_overlay_'.$this->id.'() {
+      $overlay_wrapper_'.$this->id.' = $("<div class=\'regOverlay\' id=\'overlayBG\'></div>").appendTo( $("BODY") );
+      $overlay_panel_'.$this->id.' = $("<div class=\'regOverlayPanel\' id=\'overlayPanel\'></div>").appendTo( $overlay_wrapper_'.$this->id.' );
+      $overlay_panel_info_'.$this->id.' = $("<div class=\'regOverlayPanelInfo\'></div>").appendTo( $overlay_panel_'.$this->id.' );
+      $overlay_panel_purchase_'.$this->id.' = $("<div class=\'regOverlayPanelPurchase\'></div>").appendTo( $overlay_panel_'.$this->id.' );
   
-      $overlay_panel_info_'.$this->noSpaceName.'.html( "'.$this->createOverlayInfo().'" );
-      $overlay_panel_purchase_'.$this->noSpaceName.'.html( "'.$this->createOverlayPurchase().'" );
+      $overlay_panel_info_'.$this->id.'.html( "'.$this->createOverlayInfo().'" );
+      $overlay_panel_purchase_'.$this->id.'.html( "'.$this->createOverlayPurchase().'" );
   
-      attach_overlay_events_'.$this->noSpaceName.'();
+      attach_overlay_events_'.$this->id.'();
   }
 
-  function validate_form_'.$this->noSpaceName.'() {
-    var name = document.forms[\'purchase_form_'.$this->noSpaceName.'\']["buyer_name"].value;
-    if (name == null || name == "")
+  function validate_form_'.$this->id.'() {
+    var fname = document.forms[\'purchase_form_'.$this->id.'\']["buyer_first_name"].value;
+    if (fname == null || fname == "")
     {
-      alert("Please enter your name");
+      alert("Please enter your First Name");
       return false;
     }
-    var email = document.forms[\'purchase_form_'.$this->noSpaceName.'\']["email"].value;
+    var lname = document.forms[\'purchase_form_'.$this->id.'\']["buyer_last_name"].value;
+    if (lname == null || lname == "")
+    {
+      alert("Please enter your Last Name");
+      return false;
+    }
+    var email = document.forms[\'purchase_form_'.$this->id.'\']["email"].value;
     if (email == null || email == "")
     {
       alert("Please enter your email address");
@@ -198,35 +229,35 @@ class RegistryItem
     return true;
   }
 
-  function submit_form_if_valid_'.$this->noSpaceName.'() {
-    if (validate_form_'.$this->noSpaceName.'()) {
-      document.forms[\'purchase_form_'.$this->noSpaceName.'\'].submit()
+  function submit_form_if_valid_'.$this->id.'() {
+    if (validate_form_'.$this->id.'()) {
+      document.forms[\'purchase_form_'.$this->id.'\'].submit()
     }
   }
 
-  function attach_overlay_events_'.$this->noSpaceName.'() {
-      $("A.hide-overlay_'.$this->noSpaceName.'", $overlay_wrapper_'.$this->noSpaceName.').click( function(ev) {
+  function attach_overlay_events_'.$this->id.'() {
+      $("A.hide-overlay_'.$this->id.'", $overlay_wrapper_'.$this->id.').click( function(ev) {
           ev.preventDefault();
-          hide_overlay_'.$this->noSpaceName.'();
+          hide_overlay_'.$this->id.'();
       });
-      $("A.overlay-purchase-transition_'.$this->noSpaceName.'").click( function(ev) {
+      $("A.overlay-purchase-transition_'.$this->id.'").click( function(ev) {
           ev.preventDefault();
-          show_purchase_'.$this->noSpaceName.'();
+          show_purchase_'.$this->id.'();
       });
-      $("A.overlay-purchase-submit_'.$this->noSpaceName.'").click( function(ev) {
+      $("A.overlay-purchase-submit_'.$this->id.'").click( function(ev) {
           ev.preventDefault();
-          submit_form_if_valid_'.$this->noSpaceName.'();
+          submit_form_if_valid_'.$this->id.'();
       });
-      $("A.overlay-purchase-back_'.$this->noSpaceName.'").click( function(ev) {
+      $("A.overlay-purchase-back_'.$this->id.'").click( function(ev) {
           ev.preventDefault();
-          show_info_'.$this->noSpaceName.'();
+          show_info_'.$this->id.'();
       });
   }
 
   $(function() {
-      $("A.show-overlay_'.$this->noSpaceName.'").click( function(ev) {
+      $("A.show-overlay_'.$this->id.'").click( function(ev) {
           ev.preventDefault();
-          show_overlay_'.$this->noSpaceName.'();
+          show_overlay_'.$this->id.'();
           fixOverlayHeight();
       });
   });

@@ -14,18 +14,12 @@ mysql_select_db($db_name) or die(mysql_error());
 // Make db changes
 $item_name=$_POST["item_name"];
 $email=$_POST["email"];
-$buyer_name=$_POST["buyer_name"];
-$number_purchased=$_POST["num_purchased"];
-mysql_query("UPDATE  `".$db_name."`.`Registry` SET  `purchased` =  'purchased+$number_purchased',
-`buyer_email` =  '".$email."',
-`buyer_name` =  '".$buyer_name."' WHERE  `Registry`.`name` =  '".$item_name."';");
-
-// Send email to reg admin
-/*
-global $reg_admin_email;
-$message = "REGISTRY UPDATE\n\nItem: ".$item_name."\nBuyer Name: ".$buyer_name."\nBuyer Email: ".$email."\n";
-mail($reg_admin_email, 'Rebekkah and Gabe - Registry Update', wordwrap($message, 70));
-*/
+$buyer_name=$_POST["buyer_first_name"]."_".$_POST["buyer_last_name"];
+$quantity=$_POST["quantity"];
+$query = "UPDATE  `".$db_name."`.`Registry` SET  `purchased` =  purchased + ".$quantity.",
+`buyer_email` =  CONCAT(buyer_email,'".$email.",'),
+`buyer_name` =  CONCAT(buyer_name,'".$buyer_name.":".$quantity.",') WHERE  `Registry`.`name` =  '".$item_name."';";
+mysql_query($query);
 
 // Link back to registry page
 header("Location: ..");

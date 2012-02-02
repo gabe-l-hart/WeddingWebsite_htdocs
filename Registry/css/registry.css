@@ -115,23 +115,12 @@ html, body {
   text-align:center;
   font-weight:bold;
   font-size:large;
-  margin:5px;
 }
 
 .overlayPanelInfoText {
   height:20px;
   text-align:left;
   padding:0px 0px 0px 10px;
-}
-
-.overlayPanelSubmit {
-  float:right;
-  margin:5px 5px 0px 5px;
-}
-
-.overlayPanelBack {
-  float:left;
-  margin:5px 5px 0px 5px;
 }
 
 .overlayPanelText {
@@ -155,8 +144,11 @@ html, body {
   font-size:large;
 }
 
+.purchaseFormDiv {
+  padding:0px 20px 0px 175px;
+}
+
 .purchaseForm {
   background-color:#FFFFFF;
-  padding:0;
-  margin:0;
+  text-align:left;
 }
