@@ -26,8 +26,8 @@
 
   // Fix the overlay background height
   function fixOverlayHeight() {
-    var bodyH = document.getElementById("pageBody").scrollHeight;
-    var overlayH = document.getElementById("overlayPanel").scrollHeight;
+    var bodyH = $(document).height();
+    var overlayH = $("#overlayPanel").height();
     if (bodyH > overlayH) {
       document.getElementById("overlayBG").style.height = bodyH + "px";
     } else {
