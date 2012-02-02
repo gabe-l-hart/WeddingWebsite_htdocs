@@ -90,27 +90,38 @@ html, body {
 }
 
 .overlayPanelInfoContainer {
-  padding:10px;
+  margin:10px;
+  border: 2px solid;
+  float:left;
+  position:relative;
+  width:130px;
 }
 
 .overlayButton {
   font-family:"Gabriola";
-  text-decoration:none;
-  color:#000000;
   text-align:center;
   height:20px;
   width:120px;
+  margin:5px;
   background: url('../images/overlayPanelButton.png') no-repeat 0 0;
 }
 
-.overlayPanelLink {
-  float:left;
-  margin:0px 5px 0px 0px;
+.overlayButtonLink {
+  text-decoration:none;
+  color:#000000;
 }
 
-.overlayPanelBuy {
-  float:right;
-  margin:0px 0px 0px 5px;
+.overlayPanelTitle {
+  text-align:center;
+  font-weight:bold;
+  font-size:large;
+  margin:5px;
+}
+
+.overlayPanelInfoText {
+  height:20px;
+  text-align:left;
+  padding:0px 0px 0px 10px;
 }
 
 .overlayPanelSubmit {
@@ -125,6 +136,7 @@ html, body {
 
 .overlayPanelText {
   text-align:left;
+  padding:5px;
 }
 
 .overlayPanelBottom {
@@ -132,12 +144,6 @@ html, body {
   width:450px;
   height:10px;
   overflow:hidden;
-}
-
-.overlayPanelTitle {
-  text-align:center;
-  font-weight:bold;
-  font-size:large;
 }
 
 .regBoughtBanner {

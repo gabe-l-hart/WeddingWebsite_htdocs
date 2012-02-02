@@ -40,32 +40,6 @@ class RegistryItem
   /* Method to create the small tile */
   function createSmallTile()
   {
-/*
-    return '
-    <div class="albumTileDiv commonText">
-      <a class="albumTile itemTile" href="#">
-        <span class="overlay">
-          <div class="albumThumbnail">
-            <img src="'.$this->thumbnail[0]->getURL().'">
-          </div>
-          <div class="albumCaption">'.$this->title.'</div>
-        </span>
-      </a>
-    </div>';
-
-
-      '<table cellpadding="0" cellspacing="0" border="0" class="fixedTable">
-      <tbody>
-        <tr><td height="10" width="212"></td></tr>
-        <tr><td align="center">
-        <img src="'.$this->thumbnailPath.'" class="regThubnail">
-        <div style="color:#4a002f; text-align:center">'.$this->name.'</div>
-        </td></tr>
-        <tr><td></td></tr>
-      </tbody>
-      </table>'
-*/
-
     $out = '<div class="regTileDiv">
     <a class="regTile itemTile show-overlay_'.$this->noSpaceName.'" href="#">
       <div class="overlay regTileWrapper">
@@ -100,17 +74,32 @@ class RegistryItem
           <a href=\'#\' class=\'hide-overlay_'.$this->noSpaceName.' \'><img src=\'../images/closePanel.png\'></a>\
         </div>\
         <div class=\'overlayPanelInfoContainer\'>\
-          <a href=\''.$this->link.'\' class=\'overlayButton overlayPanelLink\'>Visit their website</a>';
+          <div class=\'overlayPanelTitle\'>'.$this->name.'</div>\
+            <div class=\'overlayPanelInfoText\'>Bought: '.$this->purchased.' / '.$this->requested.'</div>\
+            <div class=\'overlayPanelInfoText\'>Unit Price: $'.$this->unitPrice.'</div>\
+            <div class=\'overlayPanelInfoText\'>\
+              <form id=\'quantity_form_'.$this->noSpaceName.'\'>\
+                <label for=\'quantity_'.$this->noSpaceName.'\'>Qty: </label>\
+                <input type=\'text\' maxlength=3 size=3 id=\'quantity_'.$this->noSpaceName.'\' value=\'1\'></input>\
+              </form>\
+            </div>';
 
       if ($this->purchased) {
-        $out = $out.'<div class=\'overlayButton overlayPanelBuy\' style=\'color:#616161\'>Already Purchased</div>';
+        $out = $out.'<div class=\'overlayButton\' style=\'color:#616161\'>Sold Out</div>';
       } else {
-        $out = $out.'<a href=\'#\' class=\'overlay-purchase-transition_'.$this->noSpaceName.' overlayButton overlayPanelBuy\'>Purchase</a>';
+        $out = $out.'\
+          <div class=\'overlayButton\'>\
+            <a href=\'#\' class=\'overlay-purchase-transition_'.$this->noSpaceName.' overlayButtonLink\'>Purchase</a>\
+          </div>';
       }
 
-      $out = $out.'<div class=\'overlayPanelTitle\'>'.$this->name.'</div>\
-          <div class=\'overlayPanelText\'>'.$this->longDescrip.'</div>\
+      $out = $out.'\
+          <div class=\'overlayButton\'>\
+            <a class=\'overlayButtonLink\' href=\''.$this->link.'\'>Visit their website</a>\
+          </div>\
         </div>\
+        <div class=\'overlayPanelText\'>'.$this->longDescrip.'</div>\
+        <div style=\'clear:both;\'></div>\
       </div>\
       <div class=\'overlayPanelBottom\'></div>';
     return $out;
@@ -161,8 +150,14 @@ class RegistryItem
   }
 
   function show_purchase_'.$this->noSpaceName.'() {
-      $overlay_panel_info_'.$this->noSpaceName.'.fadeOut(0);
-      $overlay_panel_purchase_'.$this->noSpaceName.'.fadeIn(0);
+      if (validateQuantity("quantity_'.$this->noSpaceName.'", '.($this->requested - $this->purchased).')) {
+        $overlay_panel_info_'.$this->noSpaceName.'.fadeOut(0);
+        $overlay_panel_purchase_'.$this->noSpaceName.'.fadeIn(0);
+      }
+      else
+      {
+        alert("Please enter a valid quantity between 1 and '.($this->requested - $this->purchased).'");
+      }
   }
 
   function show_info_'.$this->noSpaceName.'() {
@@ -269,6 +264,32 @@ class Registry
   /* Set table */
   public function setDBName($n) {
     $this->name = $n;
+  }
+
+  /* Create one-time scripts */
+  public function createCommonScripts()
+  {
+    echo '<script type="text/javascript" >
+
+      // Fix the overlay background height
+      function fixOverlayHeight() {
+        var bodyH = $(document).height();
+        var overlayH = $("#overlayPanel").height();
+        if (bodyH > overlayH) {
+          document.getElementById("overlayBG").style.height = bodyH + "px";
+        } else {
+          document.getElementById("overlayBG").style.height = overlayH + "px";
+        }
+      }
+
+      // Validate input text as integer less than a given max
+      function validateQuantity(id, max) {
+        var n = document.getElementById(id).value;
+        var nInt = parseInt(n);
+        return !isNaN(nInt) && isFinite(n) && nInt <= max && nInt >= 1;
+      }
+
+    </script>';
   }
 
   /* Connect to the MySQL server */

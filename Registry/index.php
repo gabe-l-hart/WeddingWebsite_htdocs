@@ -22,19 +22,7 @@
 <?php pageHeader("..", "Registry"); ?>
 
 <link rel="stylesheet" type="text/css" href="./css/registry.css">
-<script type="text/javascript" >
-
-  // Fix the overlay background height
-  function fixOverlayHeight() {
-    var bodyH = $(document).height();
-    var overlayH = $("#overlayPanel").height();
-    if (bodyH > overlayH) {
-      document.getElementById("overlayBG").style.height = bodyH + "px";
-    } else {
-      document.getElementById("overlayBG").style.height = overlayH + "px";
-    }
-  }
-</script>
+<?php $reg->createCommonScripts(); ?>
 
 <?php subPageTop(); ?>
 
