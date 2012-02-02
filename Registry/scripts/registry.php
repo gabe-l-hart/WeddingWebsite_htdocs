@@ -40,10 +40,21 @@ class RegistryItem
   /* Method to create the small tile */
   function createSmallTile()
   {
-    $out = '<div class="regTileDiv">
-    <a class="regTile itemTile show-overlay_'.$this->noSpaceName.'" href="#">
-      <span class="overlay">
-      <table cellpadding="0" cellspacing="0" border="0" class="fixedTable">
+/*
+    return '
+    <div class="albumTileDiv commonText">
+      <a class="albumTile itemTile" href="#">
+        <span class="overlay">
+          <div class="albumThumbnail">
+            <img src="'.$this->thumbnail[0]->getURL().'">
+          </div>
+          <div class="albumCaption">'.$this->title.'</div>
+        </span>
+      </a>
+    </div>';
+
+
+      '<table cellpadding="0" cellspacing="0" border="0" class="fixedTable">
       <tbody>
         <tr><td height="10" width="212"></td></tr>
         <tr><td align="center">
@@ -52,12 +63,23 @@ class RegistryItem
         </td></tr>
         <tr><td></td></tr>
       </tbody>
-      </table>
-      </span>
+      </table>'
+*/
+
+    $out = '<div class="regTileDiv">
+    <a class="regTile itemTile show-overlay_'.$this->noSpaceName.'" href="#">
+      <div class="overlay regTileWrapper">
+        <div class="regTileCaption">'.$this->name.'</div>
+        <div class="regTileThumbnail">
+          <img src="'.$this->thumbnailPath.'" class="regThubnail">
+        </div>
+        <div class="regTileBought">Bought: '.$this->purchased.' / '.$this->requested.'</div>
+        <div class="regTilePrice">Price: $'.$this->unitPrice.'</div>
+      </div>
       </a>';
 
     if ($this->purchased == $this->requested) {
-      $out = $out.'<div class="regBoughtBanner">ALREADY PURCHASED</div>';
+      $out = $out.'<div class="regBoughtBanner">SOLD OUT</div>';
     }
     // Catch errors... should never need this
     elseif ($this->purchased > $this->requested) {

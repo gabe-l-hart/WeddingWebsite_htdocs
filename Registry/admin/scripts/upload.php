@@ -111,8 +111,8 @@ $imageDirFromReg = './images/items/';
 $fieldname = 'file';
 $maxImgW = 400;
 $maxImgH = 400;
-$maxThumbW = 160;
-$maxThumbH = 160;
+$maxThumbW = 140;
+$maxThumbH = 140;
 
 
 // Make sure we got here correctly
