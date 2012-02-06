@@ -76,6 +76,10 @@ html, body {
   display: none;
 }
 
+.regOverlayPanelConf {
+  display: none;
+}
+
 .overlayPanelTop {
   background: url('../images/overlayPanelTop.png') no-repeat 0 0;
   width:450px;
@@ -151,4 +155,18 @@ html, body {
 .purchaseForm {
   background-color:#FFFFFF;
   text-align:left;
+}
+
+.overlayConfHeader {
+  font-size:large;
+  font-weight:bold;
+}
+
+.overlayConfDetails {
+  text-align:left;
+  padding:10px;
+}
+
+.confThumb {
+  float:left;
 }

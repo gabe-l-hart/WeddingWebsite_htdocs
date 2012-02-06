@@ -113,7 +113,7 @@ class RegistryItem
         <div class=\'regOverlayExit\'>\
           <a href=\'#\' class=\'hide-overlay_'.$this->id.' \'><img src=\'../images/closePanel.png\'></a>\
         </div>\
-        <div>Thank You! Your gift will help make our honeymoon incredible!</div>\
+        <div>Pelase enter your purchase information.</div>\
         <div class=\'overlayPanelInfoContainer\'>\
           <div class=\'overlayPanelTitle\'>'.$this->name.'</div>\
           <div class=\'overlayPanelInfoText\'>Bought: '.$this->purchased.' / '.$this->requested.'</div>\
@@ -141,8 +141,42 @@ class RegistryItem
               <input type=\'text\' name=\'email\' id=\'buyer_email_'.$this->id.'\'><br />\
             </p>\
             <input type=\'hidden\' name=\'item_name\' value=\''.$this->name.'\'>\
+            <input type=\'hidden\' name=\'item_id\' value=\''.$this->id.'\'>\
             <input type=\'hidden\' name=\'quantity\' id=\'quantity_hidden_'.$this->id.'\'>\
+            <input type=\'hidden\' name=\'price\' id=\'price_hidden_'.$this->id.'\'>\
           </form>\
+        </div>\
+        <div style=\'clear:both;\'></div>\
+      </div>\
+      <div class=\'overlayPanelBottom\'></div>';
+    return $out;
+  }
+
+  /* Method to create the html for the overlay confirmation panel */
+  function createOverlayConf()
+  {
+    $price = '-1';
+    if (isset($_POST['price'])) {
+      $price = $_POST['price'];
+    }
+    $qty = '0';
+    if (isset($_POST['quantity'])) {
+      $qty = $_POST['quantity'];
+    }
+    $out = '<div class=\'overlayPanelTop\'></div>\
+      <div class=\'overlayPanelBody\'>\
+        <div class=\'regOverlayExit\'>\
+          <a href=\'#\' class=\'hide-overlay_'.$this->id.' \'><img src=\'../images/closePanel.png\'></a>\
+        </div>\
+        <div class=\'overlayConfHeader\'>Thank You! Your gift will help make our honeymoon incredible!</div>\
+        <div class=\'overlayConfDetails\'>\
+          <img class=\'confThumb\' src=\''.$this->thumbnailPath.'\'>\
+          <div class=\'overlayPanelInfoContainer\'>\
+            <div class=\'overlayPanelTitle\'>'.$this->name.'</div>\
+            <div class=\'overlayPanelInfoText\'>Unit Price: $'.$this->unitPrice.'</div>\
+            <div class=\'overlayPanelInfoText\'>Quantity: '.$qty.'</div>\
+            <div class=\'overlayPanelInfoText\'>Total Price: $'.$price.'</div>\
+          </div>\
         </div>\
         <div style=\'clear:both;\'></div>\
       </div>\
@@ -160,6 +194,7 @@ class RegistryItem
   var $overlay_panel_'.$this->id.';
   var $overlay_panel_info_'.$this->id.';
   var $overlay_panel_purchase_'.$this->id.';
+  var $overlay_panel_conf_'.$this->id.';
 
   function show_overlay_'.$this->id.'() {
       if ( !$overlay_wrapper_'.$this->id.' ) append_overlay_'.$this->id.'();
@@ -175,8 +210,11 @@ class RegistryItem
         var qty = document.getElementById("quantity_'.$this->id.'").value;
         document.getElementById("fixed_qty_'.$this->id.'").innerHTML = qty;
         document.getElementById("quantity_hidden_'.$this->id.'").value = qty;
-        document.getElementById("total_price_'.$this->id.'").innerHTML = (parseInt(qty) * '.$this->unitPrice.').toFixed(2)
+        var price = (parseInt(qty) * '.$this->unitPrice.').toFixed(2);
+        document.getElementById("total_price_'.$this->id.'").innerHTML = price;
+        document.getElementById("price_hidden_'.$this->id.'").value = price;
         $overlay_panel_info_'.$this->id.'.fadeOut(0);
+        $overlay_panel_conf_'.$this->id.'.fadeOut(0);
         $overlay_panel_purchase_'.$this->id.'.fadeIn(0);
       }
       else
@@ -186,8 +224,17 @@ class RegistryItem
   }
 
   function show_info_'.$this->id.'() {
-      $overlay_panel_info_'.$this->id.'.fadeIn(0);
       $overlay_panel_purchase_'.$this->id.'.fadeOut(0);
+      $overlay_panel_conf_'.$this->id.'.fadeOut(0);
+      $overlay_panel_info_'.$this->id.'.fadeIn(0);
+  }
+
+  function show_conf_'.$this->id.'() {
+      show_overlay_'.$this->id.'();
+      $overlay_panel_info_'.$this->id.'.fadeOut(0);
+      $overlay_panel_purchase_'.$this->id.'.fadeOut(0);
+      $overlay_panel_conf_'.$this->id.'.fadeIn(0);
+      fixOverlayHeight();
   }
 
   function delay_reset_'.$this->id.'() {
@@ -200,9 +247,11 @@ class RegistryItem
       $overlay_panel_'.$this->id.' = $("<div class=\'regOverlayPanel\' id=\'overlayPanel\'></div>").appendTo( $overlay_wrapper_'.$this->id.' );
       $overlay_panel_info_'.$this->id.' = $("<div class=\'regOverlayPanelInfo\'></div>").appendTo( $overlay_panel_'.$this->id.' );
       $overlay_panel_purchase_'.$this->id.' = $("<div class=\'regOverlayPanelPurchase\'></div>").appendTo( $overlay_panel_'.$this->id.' );
+      $overlay_panel_conf_'.$this->id.' = $("<div class=\'regOverlayPanelConf\'></div>").appendTo( $overlay_panel_'.$this->id.' );
   
       $overlay_panel_info_'.$this->id.'.html( "'.$this->createOverlayInfo().'" );
       $overlay_panel_purchase_'.$this->id.'.html( "'.$this->createOverlayPurchase().'" );
+      $overlay_panel_conf_'.$this->id.'.html( "'.$this->createOverlayConf().'" );
   
       attach_overlay_events_'.$this->id.'();
   }
@@ -375,13 +424,35 @@ class Registry
   }
 
   /* Display items for main page */
-  public function showItems()
+  public function show()
   {
+    // First, populate the items
+    $this->populateItems();
+
+    // Then show them
     foreach($this->items as $item)
     {
       echo $item->createSmallTile();
       echo $item->createOverlay();
     }
+
+    // Add clear div if necessary
+    if (count($this->items) >= 4) {
+      echo '<div style="clear:both;"></div>';
+    }
+
+    // If we arrive from a purchase confirmation, display it
+    if (isset($_POST['success_id']))
+    {
+      echo "<script type='text/javascript'>
+        window.onload = show_conf_".$_POST['success_id'].";
+      </script>";
+    }
+    elseif (isset($_POST['failure_id']))
+    {
+      
+    }
+
   }
 
 }
