@@ -94,20 +94,29 @@ html, body {
 }
 
 .overlayPanelInfoContainer {
+  clear:both;
   margin:10px;
   border: 2px solid;
   float:left;
   position:relative;
-  width:130px;
 }
 
-.overlayButton {
+.overlayButton120 {
   font-family:"Gabriola";
   text-align:center;
   height:20px;
   width:120px;
   margin:5px;
-  background: url('../images/overlayPanelButton.png') no-repeat 0 0;
+  background: url('../images/overlayPanelButton120.png') no-repeat 0 0;
+}
+
+.overlayButton140 {
+  font-family:"Gabriola";
+  text-align:center;
+  height:20px;
+  width:140px;
+  margin:5px;
+  background: url('../images/overlayPanelButton140.png') no-repeat 0 0;
 }
 
 .overlayButtonLink {
@@ -148,12 +157,48 @@ html, body {
   font-size:large;
 }
 
+.purchaseHeader {
+  font-size:32px;
+}
+
+.purchaseThumb {
+}
+
 .purchaseFormDiv {
   padding:0px 20px 0px 175px;
 }
 
 .purchaseForm {
   background-color:#FFFFFF;
+  text-align:left;
+}
+
+.purchaseFields {
+  display:block;
+  float:left;
+  width:230px;
+  padding:10px;
+  text-align:right;
+  border:1px solid;
+}
+
+.purchaseLegend {
+  text-align:left;
+  font-weight:bold;
+  font-size:large;
+}
+
+.purchaseLabels {
+  float:left;
+  text-align:right;
+  padding:0px 5px 0px 0px;
+}
+
+.purchaseLeft {
+  text-align:right;
+}
+
+.purchaseRight {
   text-align:left;
 }
 
