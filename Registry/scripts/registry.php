@@ -116,7 +116,7 @@ class RegistryItem
         <div class=\'purchaseHeader\'>Purchase Information.</div>\
         <div class=\'overlayPanelInfoContainer\' style=\'width:150px;\'>\
           <div class=\'overlayPanelTitle\'>'.$this->name.'</div>\
-          <img src=\''.$this->thumbnailPath.'\' class=\'purchaseThumb\' />\
+          <img src=\''.$this->thumbnailPath.'\' />\
           <div class=\'overlayPanelInfoText\'>Bought: '.$this->purchased.' / '.$this->requested.'</div>\
           <div class=\'overlayPanelInfoText\'>Unit Price: $'.$this->unitPrice.'</div>\
           <div class=\'overlayPanelInfoText\'>Quantity: <span id=\'fixed_qty_'.$this->id.'\'></span></div>\

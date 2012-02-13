@@ -159,9 +159,7 @@ html, body {
 
 .purchaseHeader {
   font-size:32px;
-}
-
-.purchaseThumb {
+  font-weight:bold;
 }
 
 .purchaseFormDiv {
