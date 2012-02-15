@@ -1,5 +1,7 @@
 <?php
 
+require_once('paypal.inc.php');
+
 $fadeInTime = 700;
 $fadeOutTime = 500;
 
@@ -7,6 +9,13 @@ $fadeOutTime = 500;
 function noSpace($s)
 {
   return str_replace(" ","_",$s);
+}
+
+function escapeQuotes($str)
+{
+  $out = str_replace("'", "\'", $str);
+  $out = str_replace('"', "\'", $out);
+  return $out;
 }
 
 /* Class to represent info for a registry item */
@@ -105,6 +114,27 @@ class RegistryItem
     return $out;
   }
 
+  /* Create a PayPal button to buy the desired quantity */
+  function createPayPalButton()
+  {
+    $button = new PayPalButton;
+    $button->accountemail = 'rebekkah.gabe@gmail.com';
+    $button->custom = 'id:'.$this->id;
+    $button->currencycode = 'USD';
+    $button->class = 'paypalbutton';
+    $button->buttontext = 'Purchase';
+    $button->askforaddress = false;
+    $button->return_url = 'http://www.rebekkahandgabe.com/registry/scripts/process.php';
+    $button->ipn_url = 'http://www.rebekkahandgabe.com/registry/scripts/process.php';
+    $button->cancel_url = 'http://www.rebekkahandgabe.com/registry/scripts/process.php';
+
+    //Items
+    $button->AddItem($this->name,'1','100.00',$this->id,'','','','0.00'); //DEBUG -- quantity					
+
+    //Output		
+    return escapeQuotes($button->GetButtonCode());
+  }
+
   /* Method to create the html for the overlay purchase panel */
   function createOverlayPurchase()
   {
@@ -123,11 +153,7 @@ class RegistryItem
           <div class=\'overlayPanelInfoText\'>Total Price: $<span id=\'total_price_'.$this->id.'\'></span></div>\
           <a href=\'#\' class=\'overlay-purchase-back_'.$this->id.' overlayButtonLink\'>\
               <div class=\'overlayButton140 overlayPanelBack\'>Back</div>\
-          </a>\
-          <a href=\'#\' class=\'overlay-purchase-submit_'.$this->id.' overlayButtonLink\'>\
-            <div class=\'overlayButton140 overlayPanelSubmit\'>Purchase</div>\
-          </a>\
-        </div>\
+          </a>'.$this->createPayPalButton().'</div>\
         <div class=\'purchaseFormDiv\'>\
           <form class=\'purchaseForm\' id=\'purchase_form_'.$this->id.'\' action=\'./scripts/process.php\' method=\'post\'>\
             <fieldset class=\'purchaseFields\'>\
