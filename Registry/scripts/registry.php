@@ -121,7 +121,7 @@ class RegistryItem
     $button->accountemail = 'rebekkah.gabe@gmail.com';
     $button->custom = 'id:'.$this->id;
     $button->currencycode = 'USD';
-    $button->class = 'paypalbutton';
+    $button->class = 'paypalbutton overlayButton140';
     $button->buttontext = 'Purchase';
     $button->askforaddress = false;
     $button->return_url = 'http://www.rebekkahandgabe.com/registry/scripts/process.php';
