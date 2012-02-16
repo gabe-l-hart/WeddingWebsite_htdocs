@@ -60,6 +60,8 @@
 
 */
 
+$use_sandbox = true;
+
 class PayPalButton {
 	
 	var $accountemail;      // email of paypal seller account 
@@ -118,13 +120,18 @@ class PayPalButton {
 	}
 	
 	function GetButtonCode() {
+		global $use_sandbox;
 		if (strlen($this->accountemail) > 0 && (count($this->items) > 0 || count($this->subscriptions) > 0)) {
 			//ok
 			if (strlen($this->target) > 0) {
 				$this->target_text = ' target="' . $this->target . '"';
 			}
 			$out = '';
-			$out = $out. '<form action="https://www.paypal.com/cgi-bin/webscr" method="post"' . $this->target_text . '>';
+			if ($use_sandbox) {
+				$out = $out. '<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post"' . $this->target_text . '>';
+			} else {
+				$out = $out. '<form action="https://www.paypal.com/cgi-bin/webscr" method="post"' . $this->target_text . '>';
+			}
 			
 			//ITEMS
 			if (count($this->items) > 0) {
