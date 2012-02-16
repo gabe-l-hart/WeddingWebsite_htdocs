@@ -103,9 +103,9 @@ class PayPalButton {
 		$this->askfornote = true;
 	}
 	
-	function AddItem($item_name,$quantity,$price,$item_no='',$shipping='',$shipping2='',$handling='',$tax='',$firstfieldname='',$firstfieldoptions='',$secondfieldname='',$secondfieldoptions='') {
+	function AddItem($item_name,$quantityID,$price,$item_no='',$shipping='',$shipping2='',$handling='',$tax='',$firstfieldname='',$firstfieldoptions='',$secondfieldname='',$secondfieldoptions='') {
 		//add item
-		$this->items[] = array('name'=>$item_name,'qty'=>$quantity,'price'=>$price,'item_no'=>$item_no,'shipping'=>$shipping,'shipping2'=>$shipping2,'handling'=>$handling,'tax'=>$tax,'firstfieldname'=>$firstfieldname,'firstfieldoptions'=>$firstfieldoptions,'secondfieldname'=>$secondfieldname,'secondfieldoptions'=>$secondfieldoptions);
+		$this->items[] = array('name'=>$item_name,'qty_id'=>$quantityID,'price'=>$price,'item_no'=>$item_no,'shipping'=>$shipping,'shipping2'=>$shipping2,'handling'=>$handling,'tax'=>$tax,'firstfieldname'=>$firstfieldname,'firstfieldoptions'=>$firstfieldoptions,'secondfieldname'=>$secondfieldname,'secondfieldoptions'=>$secondfieldoptions);
 		//reset subscription array incase of user error
 		$this->subscriptions = array();
 	}
@@ -133,7 +133,7 @@ class PayPalButton {
 					//only 1 item!
 					$out = $out. '<input type="hidden" name="cmd" value="_xclick" />';
 					$out = $out. '<input type="hidden" name="item_name" value="' . $this->items[0]['name'] . '" />';
-					$out = $out. '<input type="hidden" name="quantity" value="' . $this->items[0]['qty'] . '" />';
+					$out = $out. '<input type="hidden" name="quantity" value="0" id="' . $this->items[0]['qty_id'] . '" />';
 					$out = $out. '<input type="hidden" name="amount" value="' . $this->items[0]['price'] . '" />';
 					//item no
 					if (strlen($this->items[0]['item_no']) > 0) {

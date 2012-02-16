@@ -114,7 +114,8 @@ class RegistryItem
     return $out;
   }
 
-  /* Create a PayPal button to buy the desired quantity */
+  /* Create a PayPal button for the item. The quantity will be set with
+   * javascript when transitioning from the info panel to the purchase panel */
   function createPayPalButton()
   {
     $button = new PayPalButton;
@@ -129,7 +130,7 @@ class RegistryItem
     $button->cancel_url = 'http://www.rebekkahandgabe.com/registry/scripts/process.php';
 
     //Items
-    $button->AddItem($this->name,'1','100.00',$this->id,'','','','0.00'); //DEBUG -- quantity					
+    $button->AddItem($this->name,'paypal_qty_'.$this->id,$this->unitPrice,$this->id,'','','','0.00');				
 
     //Output		
     return escapeQuotes($button->GetButtonCode());
@@ -372,6 +373,7 @@ class RegistryItem
       if (validateQuantity("quantity_'.$this->id.'", '.($this->requested - $this->purchased).')) {
         var qty = document.getElementById("quantity_'.$this->id.'").value;
         document.getElementById("fixed_qty_'.$this->id.'").innerHTML = qty;
+        document.getElementById("paypal_qty_'.$this->id.'").value = qty;
         document.getElementById("quantity_hidden_'.$this->id.'").value = qty;
         var price = (parseInt(qty) * '.$this->unitPrice.').toFixed(2);
         document.getElementById("total_price_'.$this->id.'").innerHTML = price;
