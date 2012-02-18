@@ -60,7 +60,8 @@
 
 */
 
-$use_sandbox = false;
+require_once('use_sandbox.php');
+global $use_sandbox;
 
 class PayPalButton {
 	

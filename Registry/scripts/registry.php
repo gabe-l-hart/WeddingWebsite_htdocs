@@ -91,7 +91,10 @@ class RegistryItem
                 <label for=\'quantity_'.$this->id.'\'>Qty: </label>\
                 <input type=\'text\' maxlength=3 size=3 id=\'quantity_'.$this->id.'\' value=\'1\' />\
               </form>\
-            </div>';
+            </div>\
+          <a class=\'overlayButtonLink\' href=\''.$this->link.'\'>\
+            <div class=\'overlayButton120\'>Visit their website</div>\
+          </a>';
 
       if ($this->purchased >= $this->requested) {
         $out = $out.'<div class=\'overlayButton120\' style=\'color:#616161\'>Sold Out</div>';
@@ -103,9 +106,6 @@ class RegistryItem
       }
 
       $out = $out.'\
-          <a class=\'overlayButtonLink\' href=\''.$this->link.'\'>\
-            <div class=\'overlayButton120\'>Visit their website</div>\
-          </a>\
         </div>\
         <div class=\'overlayPanelText\'>'.$this->longDescrip.'</div>\
         <div style=\'clear:both;\'></div>\
@@ -118,26 +118,26 @@ class RegistryItem
    * javascript when transitioning from the info panel to the purchase panel */
   function createPayPalButton()
   {
-  	global $use_sandbox;
+    global $use_sandbox;
     $button = new PayPalButton;
     if ($use_sandbox) {
-      $button->accountemail = 'gabe.l@gmail.com';
+      $button->accountemail = 'gabe.l_1329448701_biz@gmail.com';
     } else {
       $button->accountemail = 'rebekkah.gabe@gmail.com';
     }
-    $button->custom = 'id:'.$this->id;
+    $button->custom = $this->id;
     $button->currencycode = 'USD';
     $button->class = 'paypalbutton overlayButton140';
     $button->buttontext = 'Purchase';
     $button->askforaddress = false;
-    $button->return_url = 'http://www.rebekkahandgabe.com/registry/scripts/process.php';
-    $button->ipn_url = 'http://www.rebekkahandgabe.com/registry/scripts/process.php';
-    $button->cancel_url = 'http://www.rebekkahandgabe.com/registry/scripts/process.php';
+    $button->return_url = 'http://www.rebekkahandgabe.com/Registry/scripts/process.php';
+    $button->ipn_url = 'http://www.rebekkahandgabe.com/Registry/scripts/process.php';
+    $button->cancel_url = 'http://www.rebekkahandgabe.com/Registry';
 
     //Items
-    $button->AddItem($this->name,'paypal_qty_'.$this->id,$this->unitPrice,$this->id,'','','','0.00');				
+    $button->AddItem($this->name,'paypal_qty_'.$this->id,$this->unitPrice,'','','','','0.00');
 
-    //Output		
+    //Output
     return escapeQuotes($button->GetButtonCode());
   }
 
@@ -191,124 +191,6 @@ class RegistryItem
                 </tr>\
               </table>\
             </fieldset>\
-            <fieldset class=\'purchaseFields\'>\
-              <legend class=\'purchaseLegend\'>Credit Card Information</legend>\
-              <table>\
-                <tr>\
-                  <td class=\'purchaseLeft\'>\
-                    <label for=\'cc_type_'.$this->id.'\'>Card Type:</label>\
-                  </td>\
-                  <td class=\'purchaseRight\'>\
-                    <select name=\'cc_type\' id=\'cc_type_'.$this->id.'\'>\
-                      <option value=\'Visa\'>Visa</option>\
-                      <option value=\'MasterCard\'>MasterCard</option>\
-                      <option value=\'Amex\'>American Express</option>\
-                      <option value=\'Discover\'>Discover</option>\
-                    </select>\
-                  </td>\
-                </tr>\
-                <tr>\
-                  <td class=\'purchaseLeft\'>\
-                    <label for=\'cc_number_'.$this->id.'\'>Card Number:</label>\
-                  </td>\
-                  <td class=\'purchaseRight\'>\
-                    <input type=\'text\' name=\'cc_number\' id=\'cc_number_'.$this->id.'\'>\
-                  </td>\
-                </tr>\
-                <tr>\
-                  <td class=\'purchaseLeft\'>\
-                    <label for=\'cc_addr1_'.$this->id.'\'>Address 1:</label>\
-                  </td>\
-                  <td class=\'purchaseRight\'>\
-                    <input type=\'text\' name=\'cc_addr1\' id=\'cc_addr1_'.$this->id.'\'>\
-                  </td>\
-                </tr>\
-                <tr>\
-                  <td class=\'purchaseLeft\'>\
-                    <label for=\'cc_addr2_'.$this->id.'\'>Address 2:</label>\
-                  </td>\
-                  <td class=\'purchaseRight\'>\
-                    <input type=\'text\' name=\'cc_addr2\' id=\'cc_addr2_'.$this->id.'\'>\
-                  </td>\
-                </tr>\
-                <tr>\
-                  <td class=\'purchaseLeft\'>\
-                    <label for=\'cc_city_'.$this->id.'\'>City:</label>\
-                  </td>\
-                  <td class=\'purchaseRight\'>\
-                    <input type=\'text\' name=\'cc_city\' id=\'cc_city_'.$this->id.'\'>\
-                  </td>\
-                </tr>\
-                <tr>\
-                  <td class=\'purchaseLeft\'>\
-                    <label for=\'cc_state_'.$this->id.'\'>State:</label>\
-                  </td>\
-                  <td class=\'purchaseRight\'>\
-                  <select name=\'cc_state\' id=\'cc_state_'.$this->id.'\'>\
-                    <option value=\'AL\'>Alabama</option>\
-                    <option value=\'AK\'>Alaska</option>\
-                    <option value=\'AZ\'>Arizona</option>\
-                    <option value=\'AR\'>Arkansas</option>\
-                    <option value=\'CA\'>California</option>\
-                    <option value=\'CO\'>Colorado</option>\
-                    <option value=\'CT\'>Connecticut</option>\
-                    <option value=\'DE\'>Delaware</option>\
-                    <option value=\'DC\'>District of Columbia</option>\
-                    <option value=\'FL\'>Florida</option>\
-                    <option value=\'GA\'>Georgia</option>\
-                    <option value=\'HI\'>Hawaii</option>\
-                    <option value=\'ID\'>Idaho</option>\
-                    <option value=\'IL\'>Illinois</option>\
-                    <option value=\'IN\'>Indiana</option>\
-                    <option value=\'IA\'>Iowa</option>\
-                    <option value=\'KS\'>Kansas</option>\
-                    <option value=\'KY\'>Kentucky</option>\
-                    <option value=\'LA\'>Louisiana</option>\
-                    <option value=\'ME\'>Maine</option>\
-                    <option value=\'MD\'>Maryland</option>\
-                    <option value=\'MA\'>Massachusetts</option>\
-                    <option value=\'MI\'>Michigan</option>\
-                    <option value=\'MN\'>Minnesota</option>\
-                    <option value=\'MS\'>Mississippi</option>\
-                    <option value=\'MO\'>Missouri</option>\
-                    <option value=\'MT\'>Montana</option>\
-                    <option value=\'NE\'>Nebraska</option>\
-                    <option value=\'NV\'>Nevada</option>\
-                    <option value=\'NH\'>New Hampshire</option>\
-                    <option value=\'NJ\'>New Jersey</option>\
-                    <option value=\'NM\'>New Mexico</option>\
-                    <option value=\'NY\'>New York</option>\
-                    <option value=\'NC\'>North Carolina</option>\
-                    <option value=\'ND\'>North Dakota</option>\
-                    <option value=\'OH\'>Ohio</option>\
-                    <option value=\'OK\'>Oklahoma</option>\
-                    <option value=\'OR\'>Oregon</option>\
-                    <option value=\'PA\'>Pennsylvania</option>\
-                    <option value=\'RI\'>Rhode Island</option>\
-                    <option value=\'SC\'>South Carolina</option>\
-                    <option value=\'SD\'>South Dakota</option>\
-                    <option value=\'TN\'>Tennessee</option>\
-                    <option value=\'TX\'>Texas</option>\
-                    <option value=\'UT\'>Utah</option>\
-                    <option value=\'VT\'>Vermont</option>\
-                    <option value=\'VA\'>Virginia</option>\
-                    <option value=\'WA\'>Washington</option>\
-                    <option value=\'WV\'>West Virginia</option>\
-                    <option value=\'WI\'>Wisconsin</option>\
-                    <option value=\'WY\'>Wyoming</option>\
-                  </select>\
-                  </td>\
-                </tr>\
-                <tr>\
-                  <td class=\'purchaseLeft\'>\
-                    <label for=\'cc_zip_'.$this->id.'\'>Zip Code:</label>\
-                  </td>\
-                  <td class=\'purchaseRight\'>\
-                    <input type=\'text\' name=\'cc_zip\' id=\'cc_zip_'.$this->id.'\' size=\'5\'>\
-                  </td>\
-                </tr>\
-              </table>\
-            </fieldset>\
             <input type=\'hidden\' name=\'item_name\' value=\''.$this->name.'\'>\
             <input type=\'hidden\' name=\'item_id\' value=\''.$this->id.'\'>\
             <input type=\'hidden\' name=\'quantity\' id=\'quantity_hidden_'.$this->id.'\'>\
@@ -339,9 +221,9 @@ class RegistryItem
         </div>\
         <div class=\'overlayConfHeader\'>Thank You! Your gift will help make our honeymoon incredible!</div>\
         <div class=\'overlayConfDetails\'>\
-          <img class=\'confThumb\' src=\''.$this->thumbnailPath.'\'>\
-          <div class=\'overlayPanelInfoContainer\' style=\'width:130px;\'>\
+          <div class=\'overlayPanelInfoContainer\' style=\'width:150px;\'>\
             <div class=\'overlayPanelTitle\'>'.$this->name.'</div>\
+            <div class=\'confThumb\'><img src=\''.$this->thumbnailPath.'\'></div>\
             <div class=\'overlayPanelInfoText\'>Unit Price: $'.$this->unitPrice.'</div>\
             <div class=\'overlayPanelInfoText\'>Quantity: '.$qty.'</div>\
             <div class=\'overlayPanelInfoText\'>Total Price: $'.$price.'</div>\
