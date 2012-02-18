@@ -118,8 +118,13 @@ class RegistryItem
    * javascript when transitioning from the info panel to the purchase panel */
   function createPayPalButton()
   {
+  	global $use_sandbox;
     $button = new PayPalButton;
-    $button->accountemail = 'rebekkah.gabe@gmail.com';
+    if ($use_sandbox) {
+      $button->accountemail = 'gabe.l@gmail.com';
+    } else {
+      $button->accountemail = 'rebekkah.gabe@gmail.com';
+    }
     $button->custom = 'id:'.$this->id;
     $button->currencycode = 'USD';
     $button->class = 'paypalbutton overlayButton140';

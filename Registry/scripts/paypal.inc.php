@@ -60,7 +60,7 @@
 
 */
 
-$use_sandbox = true;
+$use_sandbox = false;
 
 class PayPalButton {
 	
