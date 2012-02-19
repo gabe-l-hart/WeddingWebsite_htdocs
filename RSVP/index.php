@@ -17,10 +17,10 @@
   <div class="rsvpCard">
     <div class="rsvpCardContainer">
       <p class="dateLine">Please reply by May 1<sup>st</sup></p>
-      <form id="rsvp_card">
+      <form id="rsvp_card" action="scripts/submitRSVP.php" method="post">
         <div class="nameInputPair">
-          <label for="name">Guest Name(s)</label>
-          <input type="text" class="rsvpCardInput" size="23">
+          <label for="names">Guest Name(s)</label>
+          <input type="text" name="names" class="rsvpCardInput" size="23">
         </div>
         <div class="attendDiv">
           <input type="radio" name="attend" class="rsvpRadio" value="1">Accept with pleasure<br />
