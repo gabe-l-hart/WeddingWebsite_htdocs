@@ -131,7 +131,7 @@ function pageHeader($pathToBase, $pageName)
 /* Function to set up common top section of a sub-page */
 function subPageTop($pathToBase = "..")
 {
-  echo '<body bgcolor="White" id="pageBody" onload="fixHeight();">
+  echo '<body bgcolor="White" id="pageBody" onload="fixHeight();" onunload="">
 <center>
 
 <!-- Main Panel------------------------------------------------------------ -->
