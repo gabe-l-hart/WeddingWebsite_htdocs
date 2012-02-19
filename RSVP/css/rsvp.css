@@ -1,0 +1,53 @@
+.rsvpCard {
+  float:left;
+  background: url('../images/rsvp_card.png') no-repeat 0 0;
+  height:330px;
+  width:430px;
+  padding:15px 5px;
+  position:relative;
+}
+
+.rsvpCardContainer {
+  padding:40px;
+}
+
+.dateLine {
+  text-align:center;
+  width:100%;
+  font-size:20px;
+}
+
+.rsvpCardInput {
+  border:0px;
+  background-color:transparent;
+  border-bottom-style:solid;
+  border-bottom-width:2px;
+  border-bottom-color:#cfcfcf;
+  color:#cfcfcf;
+  font-family:"Gabriola";
+  font-size:16px;
+}
+
+.nameInputPair {
+  margin:0px 0px 0px 40px;
+}
+
+.attendDiv {
+  margin:20px 0px 0px 110px;
+}
+
+.rsvpSendDiv {
+  margin: 20px 0px 0px 225px;
+}
+
+.rsvpSendButton {
+  font-family:"Gabriola";
+  text-align:center;
+  font-size:14px;
+  height:20px;
+  width:120px;
+  margin:5px;
+  background: url('../images/button120.png') no-repeat 0 0;
+  border-style:none;
+  cursor:pointer;
+}

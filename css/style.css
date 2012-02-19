@@ -73,6 +73,11 @@ a img {
   color:#CFCFCF;
 }
 
+.subPageTitle {
+  font-size:32px;
+  text-align:center;
+}
+
 .fixedTable {
   table-layout:fixed;
 }

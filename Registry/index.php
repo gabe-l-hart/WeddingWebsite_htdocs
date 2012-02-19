@@ -27,7 +27,7 @@
 <?php subPageTop(); ?>
 
   <!-- Title -->
-  <p style="font-size:32px; text-align:center">Registry</p>
+  <p class="subPageTitle">Registry</p>
 
   <!-- Description Text -->
   <div style="margin:10px;">
