@@ -44,12 +44,12 @@ function createLinkTiles($basePath = "..")
     <td>'.createMiniTile($basePath."/images/m12.png", $basePath."/TheEvent/", "The Event", "mp12", 118, 77).'</td>
   </tr>
   <tr>
-    <td>'.createMiniTile($basePath."/images/m21.png", $basePath."/Colorado/", "Colorado", "mp21", 117, 78).'</td>
-    <td>'.createMiniTile($basePath."/images/m22.png", $basePath."/Photos/", "Photos", "mp22", 118, 78).'</td>
+    <td>'.createMiniTile($basePath."/images/m21.png", $basePath."/Registry/", "Registry", "mp21", 117, 78).'</td>
+    <td>'.createMiniTile($basePath."/images/m22.png", $basePath."/RSVP/", "RSVP", "mp22", 118, 78).'</td>
   </tr>
   <tr>
-    <td>'.createMiniTile($basePath."/images/m31.png", $basePath."/Registry/", "Registry", "mp31", 117, 77).'</td>
-    <td>'.createMiniTile($basePath."/images/m32.png", $basePath."/RSVP/", "RSVP", "mp32", 118, 77).'</td>
+    <td>'.createMiniTile($basePath."/images/m31.png", $basePath."/Colorado/", "Colorado", "mp31", 117, 77).'</td>
+    <td>'.createMiniTile($basePath."/images/m32.png", $basePath."/Photos/", "Photos", "mp32", 118, 77).'</td>
   </tr>
   </tbody>
   </table>';
