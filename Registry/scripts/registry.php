@@ -134,11 +134,13 @@ class RegistryItem
     $button->ipn_url = 'http://www.rebekkahandgabe.com/Registry/scripts/process.php';
     $button->cancel_url = 'http://www.rebekkahandgabe.com/Registry';
 
-    //Items
+    // Items
     $button->AddItem($this->name,'paypal_qty_'.$this->id,$this->unitPrice,'','','','','0.00');
 
-    //Output
-    return escapeQuotes($button->GetButtonCode());
+    // Output
+    $out = escapeQuotes($button->GetButtonCode());
+    $out .= '<div class=\'paypalLogo\'><img src=\'images/paypal.png\'></div>';
+    return $out;
   }
 
   /* Method to create the html for the overlay purchase panel */
@@ -150,52 +152,21 @@ class RegistryItem
           <a href=\'#\' class=\'hide-overlay_'.$this->id.' \'><img src=\'../images/closePanel.png\'></a>\
         </div>\
         <div class=\'purchaseHeader\'>Purchase Information.</div>\
-        <div class=\'overlayPanelInfoContainer\' style=\'width:150px;\'>\
+        <div class=\'purchaseInfoContainer\'>\
           <div class=\'overlayPanelTitle\'>'.$this->name.'</div>\
+          <div style=\'float:left;\'>\
+            <div class=\'overlayPanelInfoText\'>Bought: '.$this->purchased.' / '.$this->requested.'</div>\
+            <div class=\'overlayPanelInfoText\'>Unit Price: $'.$this->unitPrice.'</div>\
+            <div class=\'overlayPanelInfoText\'>Quantity: <span id=\'fixed_qty_'.$this->id.'\'></span></div>\
+            <div class=\'overlayPanelInfoText\'>Total Price: $<span id=\'total_price_'.$this->id.'\'></span></div>\
+            <a href=\'#\' class=\'overlay-purchase-back_'.$this->id.' overlayButtonLink\'>\
+                <div class=\'overlayButton140 overlayPanelBack\'>Back</div>\
+            </a>'.$this->createPayPalButton().'\
+          </div>\
+          <div class=\'purchaseThumb\'>\
           <img src=\''.$this->thumbnailPath.'\' />\
-          <div class=\'overlayPanelInfoText\'>Bought: '.$this->purchased.' / '.$this->requested.'</div>\
-          <div class=\'overlayPanelInfoText\'>Unit Price: $'.$this->unitPrice.'</div>\
-          <div class=\'overlayPanelInfoText\'>Quantity: <span id=\'fixed_qty_'.$this->id.'\'></span></div>\
-          <div class=\'overlayPanelInfoText\'>Total Price: $<span id=\'total_price_'.$this->id.'\'></span></div>\
-          <a href=\'#\' class=\'overlay-purchase-back_'.$this->id.' overlayButtonLink\'>\
-              <div class=\'overlayButton140 overlayPanelBack\'>Back</div>\
-          </a>'.$this->createPayPalButton().'</div>\
-        <div class=\'purchaseFormDiv\'>\
-          <form class=\'purchaseForm\' id=\'purchase_form_'.$this->id.'\' action=\'./scripts/process.php\' method=\'post\'>\
-            <fieldset class=\'purchaseFields\'>\
-              <legend class=\'purchaseLegend\'>Personal Information</legend>\
-              <table>\
-                <tr>\
-                  <td class=\'purchaseLeft\'>\
-                    <label for=\'buyer_first_name_'.$this->id.'\'>First Name:</label>\
-                  </td>\
-                  <td class=\'purchaseRight\'>\
-                    <input type=\'text\' name=\'buyer_first_name\' id=\'buyer_first_name_'.$this->id.'\'>\
-                  </td>\
-                </tr>\
-                <tr>\
-                  <td class=\'purchaseLeft\'>\
-                    <label for=\'buyer_last_name_'.$this->id.'\'>Last Name:</label>\
-                  </td>\
-                  <td class=\'purchaseRight\'>\
-                    <input type=\'text\' name=\'buyer_last_name\' id=\'buyer_last_name_'.$this->id.'\'>\
-                  </td>\
-                </tr>\
-                <tr>\
-                  <td class=\'purchaseLeft\'>\
-                    <label for=\'buyer_email_'.$this->id.'\'>Email:</label>\
-                  </td>\
-                  <td class=\'purchaseRight\'>\
-                    <input type=\'text\' name=\'email\' id=\'buyer_email_'.$this->id.'\'>\
-                  </td>\
-                </tr>\
-              </table>\
-            </fieldset>\
-            <input type=\'hidden\' name=\'item_name\' value=\''.$this->name.'\'>\
-            <input type=\'hidden\' name=\'item_id\' value=\''.$this->id.'\'>\
-            <input type=\'hidden\' name=\'quantity\' id=\'quantity_hidden_'.$this->id.'\'>\
-            <input type=\'hidden\' name=\'price\' id=\'price_hidden_'.$this->id.'\'>\
-          </form>\
+          </div>\
+          <p style=\'clear:both;\'></p>\
         </div>\
         <div style=\'clear:both;\'></div>\
       </div>\
@@ -261,10 +232,8 @@ class RegistryItem
         var qty = document.getElementById("quantity_'.$this->id.'").value;
         document.getElementById("fixed_qty_'.$this->id.'").innerHTML = qty;
         document.getElementById("paypal_qty_'.$this->id.'").value = qty;
-        document.getElementById("quantity_hidden_'.$this->id.'").value = qty;
         var price = (parseInt(qty) * '.$this->unitPrice.').toFixed(2);
         document.getElementById("total_price_'.$this->id.'").innerHTML = price;
-        document.getElementById("price_hidden_'.$this->id.'").value = price;
         $overlay_panel_info_'.$this->id.'.fadeOut(0);
         $overlay_panel_conf_'.$this->id.'.fadeOut(0);
         $overlay_panel_purchase_'.$this->id.'.fadeIn(0);
@@ -308,34 +277,6 @@ class RegistryItem
       attach_overlay_events_'.$this->id.'();
   }
 
-  function validate_form_'.$this->id.'() {
-    var fname = document.forms[\'purchase_form_'.$this->id.'\']["buyer_first_name"].value;
-    if (fname == null || fname == "")
-    {
-      alert("Please enter your First Name");
-      return false;
-    }
-    var lname = document.forms[\'purchase_form_'.$this->id.'\']["buyer_last_name"].value;
-    if (lname == null || lname == "")
-    {
-      alert("Please enter your Last Name");
-      return false;
-    }
-    var email = document.forms[\'purchase_form_'.$this->id.'\']["email"].value;
-    if (email == null || email == "")
-    {
-      alert("Please enter your email address");
-      return false;
-    }
-    return true;
-  }
-
-  function submit_form_if_valid_'.$this->id.'() {
-    if (validate_form_'.$this->id.'()) {
-      document.forms[\'purchase_form_'.$this->id.'\'].submit()
-    }
-  }
-
   function attach_overlay_events_'.$this->id.'() {
       $("A.hide-overlay_'.$this->id.'", $overlay_wrapper_'.$this->id.').click( function(ev) {
           ev.preventDefault();
@@ -344,10 +285,6 @@ class RegistryItem
       $("A.overlay-purchase-transition_'.$this->id.'").click( function(ev) {
           ev.preventDefault();
           show_purchase_'.$this->id.'();
-      });
-      $("A.overlay-purchase-submit_'.$this->id.'").click( function(ev) {
-          ev.preventDefault();
-          submit_form_if_valid_'.$this->id.'();
       });
       $("A.overlay-purchase-back_'.$this->id.'").click( function(ev) {
           ev.preventDefault();

@@ -91,6 +91,7 @@ html, body {
   background: #FFF;
   width:450px;
   font-family:"Gabriola";
+  text-align:center;
 }
 
 .overlayPanelInfoContainer {
@@ -98,6 +99,14 @@ html, body {
   margin:10px;
   border: 2px solid;
   float:left;
+  position:relative;
+}
+
+.purchaseInfoContainer {
+  padding:0px;
+  margin:0px auto;
+  width:300px;
+  border: 2px solid;
   position:relative;
 }
 
@@ -214,6 +223,10 @@ html, body {
 .overlayConfDetails {
   text-align:left;
   padding:10px;
+}
+
+.purchaseThumb {
+  padding:5px;
 }
 
 .confThumb {
