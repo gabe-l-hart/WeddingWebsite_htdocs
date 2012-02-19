@@ -185,12 +185,15 @@ class RegistryItem
     if (isset($_POST['quantity'])) {
       $qty = $_POST['quantity'];
     }
+    $email = '';
+    if (isset($_POST['email'])) {
+      $email = $_POST['email'];
+    }
     $out = '<div class=\'overlayPanelTop\'></div>\
       <div class=\'overlayPanelBody\'>\
         <div class=\'regOverlayExit\'>\
           <a href=\'#\' class=\'hide-overlay_'.$this->id.' \'><img src=\'../images/closePanel.png\'></a>\
         </div>\
-        <div class=\'overlayConfHeader\'>Thank You! Your gift will help make our honeymoon incredible!</div>\
         <div class=\'overlayConfDetails\'>\
           <div class=\'overlayPanelInfoContainer\' style=\'width:150px;\'>\
             <div class=\'overlayPanelTitle\'>'.$this->name.'</div>\
@@ -199,6 +202,11 @@ class RegistryItem
             <div class=\'overlayPanelInfoText\'>Quantity: '.$qty.'</div>\
             <div class=\'overlayPanelInfoText\'>Total Price: $'.$price.'</div>\
           </div>\
+        </div>\
+        <div class=\'overlayConfDetails\'>\
+          <p class=\'overlayConfHeader\'>Thank You!</p>\
+          <p>Your gift will help make our honeymoon incredible! Your confirmation email has been sent to:</p>\
+          <p><b>'.$email.'</b>.</p>\
         </div>\
         <div style=\'clear:both;\'></div>\
       </div>\

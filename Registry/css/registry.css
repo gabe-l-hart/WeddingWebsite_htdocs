@@ -143,6 +143,7 @@ html, body {
   text-align:center;
   font-weight:bold;
   font-size:large;
+  padding:5px 0px 0px 0px;
 }
 
 .overlayPanelInfoText {
@@ -218,11 +219,13 @@ html, body {
 .overlayConfHeader {
   font-size:large;
   font-weight:bold;
+  text-align:center;
 }
 
 .overlayConfDetails {
   text-align:left;
   padding:10px;
+  line-height:15px;
 }
 
 .purchaseThumb {
