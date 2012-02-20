@@ -13,6 +13,67 @@
   <p>This is some really nifty descriptive text about the RSVP process.</p>
   </div>
 
+<?php
+  if (isset($_POST['success_names'])) {
+    if ($_POST['attending']) {
+      echo "<p class='rsvpSuccessMsg'>Thank you! We can't wait to see you in August!</p>";
+    } else {
+      echo "<p class='rsvpSuccessMsg'>We're so sorry to hear you won't be able to attend. You will be missed.</p>";
+    }
+  }
+?>
+
+  <script>
+  var $overlay_wrapper;
+  var $overlay_panel;
+
+  function show_overlay() {
+      if ( !$overlay_wrapper ) append_overlay();
+      $overlay_wrapper.fadeIn(700);
+      $overlay_panel.fadeIn(0);
+  }
+
+  function hide_overlay() {
+      $overlay_wrapper.fadeOut(500);
+  }
+
+  function append_overlay() {
+      $overlay_wrapper = $("<div class='overlay' id='overlayBG'></div>").appendTo( $("BODY") );
+      $overlay_panel = $("<div class='overlayPanel' id='overlayPanel'>\
+        <div id='overlayBG'>\
+          <div class='overlayPanelTop'></div>\
+          <div class='overlayPanelBody'>\
+          </div>\
+          <div class='overlayPanelBottom'></div>\
+        </div>\
+      </div>").appendTo( $overlay_wrapper );
+      attach_overlay_events();
+  }
+
+  function attach_overlay_events() {
+      $("A.hide-overlay", $overlay_wrapper).click( function(ev) {
+          ev.preventDefault();
+          hide_overlay();
+      });
+  }
+
+  $(function() {
+      $("A.show-overlay").click( function(ev) {
+          ev.preventDefault();
+          show_overlay();
+          fixOverlayHeight();
+      });
+  });
+
+  //DEBUG
+  show_overlay();
+
+  </script>
+
+
+
+
+
   <!-- RSVP Card -->
   <div class="rsvpCard">
     <div class="rsvpCardContainer">
