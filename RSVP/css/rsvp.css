@@ -37,7 +37,9 @@
 }
 
 .rsvpSendDiv {
-  margin: 20px 0px 0px 225px;
+  position:absolute;
+  bottom:60px;
+  right:40px;
 }
 
 .rsvpSendButton {
@@ -50,4 +52,49 @@
   background: url('../images/button120.png') no-repeat 0 0;
   border-style:none;
   cursor:pointer;
+}
+
+.rsvpSuccessMsg {
+  font-weight:bold;
+  font-size:20px;
+}
+
+.overlay {
+  width: 100%;
+  min-height:100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: url('../images/overlay.png') repeat 0 0;
+  display: none;
+  text-align: center;
+}
+
+.overlayPanel {
+  position:relative;
+  margin:100px auto;
+  width:450px;
+}
+
+.overlayPanelBody {
+  background: #FFF;
+  width:450px;
+  font-family:"Gabriola";
+  text-align:center;
+  overflow:hidden;
+}
+
+.overlayPanelTop {
+  background: url('../images/overlayPanelTop.png') no-repeat 0 0;
+  width:450px;
+  height:10px;
+  overflow:hidden;
+}
+
+.overlayPanelBottom {
+  background: url('../images/overlayPanelBottom.png') no-repeat 0 0;
+  width:450px;
+  height:10px;
+  overflow:hidden;
 }

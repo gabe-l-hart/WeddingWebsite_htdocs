@@ -19,7 +19,7 @@ mysql_query($query);
 echo "
 <form id='redirect' action='..' method='post'>
   <input type='hidden' id='success_names' name='success_names' value='".$_POST['names']."'></input>
-  <input type='hidden' id='attending' name='attending' value='".$_POST['attending']."'></input>
+  <input type='hidden' id='attending' name='attending' value='".$_POST['attend']."'></input>
 </form>";
 
 // Submit form on load
