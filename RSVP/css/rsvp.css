@@ -37,7 +37,9 @@
 }
 
 .rsvpSendDiv {
-  margin: 20px 0px 0px 225px;
+  position:absolute;
+  bottom:60px;
+  right:40px;
 }
 
 .rsvpSendButton {
@@ -69,11 +71,18 @@
   text-align: center;
 }
 
+.overlayPanel {
+  position:relative;
+  margin:100px auto;
+  width:450px;
+}
+
 .overlayPanelBody {
   background: #FFF;
   width:450px;
   font-family:"Gabriola";
   text-align:center;
+  overflow:hidden;
 }
 
 .overlayPanelTop {

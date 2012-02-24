@@ -13,15 +13,6 @@
   <p>This is some really nifty descriptive text about the RSVP process.</p>
   </div>
 
-<?php
-  if (isset($_POST['success_names'])) {
-    if ($_POST['attending']) {
-      echo "<p class='rsvpSuccessMsg'>Thank you! We can't wait to see you in August!</p>";
-    } else {
-      echo "<p class='rsvpSuccessMsg'>We're so sorry to hear you won't be able to attend. You will be missed.</p>";
-    }
-  }
-?>
 
   <script>
   var $overlay_wrapper;
@@ -31,6 +22,7 @@
       if ( !$overlay_wrapper ) append_overlay();
       $overlay_wrapper.fadeIn(700);
       $overlay_panel.fadeIn(0);
+      fixOverlayHeight();
   }
 
   function hide_overlay() {
@@ -43,7 +35,19 @@
         <div id='overlayBG'>\
           <div class='overlayPanelTop'></div>\
           <div class='overlayPanelBody'>\
-          </div>\
+          <div class='overlayExit'>\
+            <a href='#' class='hide-overlay '><img src='../images/closePanel.png'></a>\
+          </div>" +
+<?php
+  if (isset($_POST['success_names'])) {
+    if ($_POST['attending']) {
+      echo "\"<p class='rsvpSuccessMsg'>Thank you! We can't wait to see you in August!</p>\" +";
+    } else {
+      echo "\"<p class='rsvpSuccessMsg'>We're so sorry to hear you won't be able to attend. You will be missed.</p>\" +";
+    }
+  }
+?>
+          "</div>\
           <div class='overlayPanelBottom'></div>\
         </div>\
       </div>").appendTo( $overlay_wrapper );
@@ -65,8 +69,22 @@
       });
   });
 
-  //DEBUG
-  show_overlay();
+<?php
+	if (isset($_POST['success_names'])) {
+  	echo "show_overlay();";
+  }
+?>
+
+	// Fix the overlay background height
+  function fixOverlayHeight() {
+    var bodyH = $(document).height();
+    var overlayH = $("#overlayPanel").height();
+    if (bodyH > overlayH) {
+      document.getElementById("overlayBG").style.height = bodyH + "px";
+    } else {
+      document.getElementById("overlayBG").style.height = overlayH + "px";
+    }
+  }
 
   </script>
 

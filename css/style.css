@@ -89,6 +89,12 @@ html, body {
   padding: 0;
 }
 
+.overlayExit {
+  position: absolute;
+  top: 10px;
+  right:0px;
+}
+
 .rotate {
   /* Safari */
   -webkit-transform:rotate(-90deg);
