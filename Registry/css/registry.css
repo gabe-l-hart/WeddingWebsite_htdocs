@@ -40,18 +40,6 @@
   right:5px;
 }
 
-.regOverlay {
-  width: 100%;
-  min-height:100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  background: url('../images/overlay.png') repeat 0 0;
-  display: none;
-  text-align: center;
-}
-
 html, body {
   height: 100%;
   width: 100%;
@@ -60,32 +48,12 @@ html, body {
   position: relative;
 }
 
-.regOverlayPanel {
-  position:relative;
-  margin: 20px auto 20px auto;
-  width: 450px;
-}
-
 .regOverlayPanelPurchase {
   display: none;
 }
 
 .regOverlayPanelConf {
   display: none;
-}
-
-.overlayPanelTop {
-  background: url('../images/overlayPanelTop.png') no-repeat 0 0;
-  width:450px;
-  height:10px;
-  overflow:hidden;
-}
-
-.overlayPanelBody {
-  background: #FFF;
-  width:450px;
-  font-family:"Gabriola";
-  text-align:center;
 }
 
 .overlayPanelInfoContainer {
@@ -149,13 +117,6 @@ html, body {
 .overlayPanelText {
   text-align:left;
   padding:5px;
-}
-
-.overlayPanelBottom {
-  background: url('../images/overlayPanelBottom.png') no-repeat 0 0;
-  width:450px;
-  height:10px;
-  overflow:hidden;
 }
 
 .regBoughtBanner {

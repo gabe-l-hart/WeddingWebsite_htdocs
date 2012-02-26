@@ -51,7 +51,7 @@ class RegistryItem
   {
     $out = '<div class="regTileDiv">
     <a class="regTile itemTile show-overlay_'.$this->id.'" href="#">
-      <div class="overlay regTileWrapper">
+      <div class="overlayDiv regTileWrapper">
         <div class="regTileCaption">'.$this->name.'</div>
         <div class="regTileThumbnail">
           <img src="'.$this->thumbnailPath.'" class="regThubnail">
@@ -272,8 +272,8 @@ class RegistryItem
   }
 
   function append_overlay_'.$this->id.'() {
-      $overlay_wrapper_'.$this->id.' = $("<div class=\'regOverlay\' id=\'overlayBG\'></div>").appendTo( $("BODY") );
-      $overlay_panel_'.$this->id.' = $("<div class=\'regOverlayPanel\' id=\'overlayPanel\'></div>").appendTo( $overlay_wrapper_'.$this->id.' );
+      $overlay_wrapper_'.$this->id.' = $("<div class=\'overlay\' id=\'overlayBG\'></div>").appendTo( $("BODY") );
+      $overlay_panel_'.$this->id.' = $("<div class=\'overlayPanel\' id=\'overlayPanel\'></div>").appendTo( $overlay_wrapper_'.$this->id.' );
       $overlay_panel_info_'.$this->id.' = $("<div class=\'regOverlayPanelInfo\'></div>").appendTo( $overlay_panel_'.$this->id.' );
       $overlay_panel_purchase_'.$this->id.' = $("<div class=\'regOverlayPanelPurchase\'></div>").appendTo( $overlay_panel_'.$this->id.' );
       $overlay_panel_conf_'.$this->id.' = $("<div class=\'regOverlayPanelConf\'></div>").appendTo( $overlay_panel_'.$this->id.' );

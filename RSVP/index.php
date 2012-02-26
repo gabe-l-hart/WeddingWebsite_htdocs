@@ -70,8 +70,8 @@
   });
 
 <?php
-	if (isset($_POST['success_names'])) {
-  	echo "show_overlay();";
+  if (isset($_POST['success_names'])) {
+    echo "show_overlay();";
   }
 ?>
 
