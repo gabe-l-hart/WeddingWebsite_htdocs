@@ -21,3 +21,43 @@
   color:#4a002f;
   text-align:center;
 }
+
+.photoOverlayPanel {
+  position:relative;
+  margin:20px auto;
+  width:650px;
+}
+
+.photoOverlayPanelBody {
+  background: #FFF;
+  width:650px;
+  font-family:"Gabriola";
+  text-align:center;
+  overflow:hidden;
+}
+
+.photoOverlayPanelTop {
+  background: url('../images/overlayPanelTop.png') no-repeat 0 0;
+  width:650px;
+  height:10px;
+  overflow:hidden;
+}
+
+.photoOverlayPanelBottom {
+  background: url('../images/overlayPanelBottom.png') no-repeat 0 0;
+  width:650px;
+  height:10px;
+  overflow:hidden;
+}
+
+.galleryWrapper {
+}
+
+.ad-gallery {
+  padding:10px 25px;
+}
+
+.ad-thumbs {
+  position:relative;
+  left:-20px;
+}

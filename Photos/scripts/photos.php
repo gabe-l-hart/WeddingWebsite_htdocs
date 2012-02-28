@@ -37,11 +37,11 @@ class Photo
 /* This class represents an album */
 class Album
 {
-  /* Private members */
-  private $title = null;
-  private $gphotoID = null;
-  private $thumbnail = null;
-  private $photos = array();
+  /* Public members */
+  public $title = null;
+  public $gphotoID = null;
+  public $thumbnail = null;
+  public $photos = array();
 
   /* Constructor */
   public function __construct($title, $id, $thumb)
@@ -78,32 +78,6 @@ class Album
   public function photoImgTag($id)
   {
     return '<img name=\'debugPhoto\' src=\''.$this->photos[$id]->full_image[0]->getURL().'\'>';
-  }
-
-  /* Create the scripts needed to show the individual photos */
-  public function createImageScripts()
-  {
-    $out = '<script type=\'text/javascript\'>';
-
-    $firstPhoto = null;
-    $foundFirst = false;
-    foreach ($this->photos as $id => $photo) {
-      if ($foundFirst == false) {
-        $firstPhoto = $id;
-        $foundFirst = true;
-      }
-      $out .= '
-      function show_photo_'.$id.'() {
-        document.getElementById(\'fullImageContainer\').innerHTML = "'.$this->photoImgTag($id).'";
-      }';
-    }
-
-    $out .= '
-    // Show the first one
-    show_photo_'.$firstPhoto.'();
-
-    </script>';
-    return $out;
   }
 
   /* Create the album tile */
@@ -189,6 +163,8 @@ class UserSet
   /* Show a single album in the overlay */
   function showAlbum($id)
   {
+    $this->fetchAlbumContents($id);
+    $album = $this->getAlbum($id);
     $out = '
       <script>
       var $overlay_wrapper;
@@ -207,17 +183,43 @@ class UserSet
 
       function append_overlay() {
           $overlay_wrapper = $("<div class=\'overlay\' id=\'overlayBG\'></div>").appendTo( $("BODY") );
-          $overlay_panel = $("<div class=\'overlayPanel\' id=\'overlayPanel\'>\
+          $overlay_panel = $("<div class=\'photoOverlayPanel\' id=\'overlayPanel\'>\
             <div id=\'overlayBG\'>\
-              <div class=\'overlayPanelTop\'></div>\
-              <div class=\'overlayPanelBody\'>\
+              <div class=\'photoOverlayPanelTop\'></div>\
+              <div class=\'photoOverlayPanelBody\'>\
                 <div class=\'overlayExit\'>\
                   <a href=\'#\' class=\'hide-overlay \'><img src=\'../images/closePanel.png\'></a>\
                 </div>\
-                <div class=\'fullImageContainer\' id=\'fullImageContainer\'>\
-                </div>\
+                <div class=\'galleryWrapper\'>\
+\
+\
+    <div id=\'gallery\' class=\'ad-gallery\'>\
+      <div class=\'ad-image-wrapper\'>\
+      </div>\
+      <div class=\'ad-controls\'>\
+      </div>\
+      <div class=\'ad-nav\'>\
+        <div class=\'ad-thumbs\'>\
+          <ul class=\'ad-thumb-list\'>';
+
+    foreach($album->photos as $photo)
+    {
+      $out .= '<li>\
+            <a href=\''.$photo->full_image[0]->getUrl().'\'>\
+              <img src=\''.$photo->thumbnail[0]->getUrl().'\' class=\''.$photo->gphotoID.'\'>\
+            </a>\
+          </li>';
+    }
+
+    $out .='</ul>\
+        </div>\
+      </div>\
+    </div>\
+\
+\
               </div>\
-              <div class=\'overlayPanelBottom\'></div>\
+              </div>\
+              <div class=\'photoOverlayPanelBottom\'></div>\
             </div>\
           </div>").appendTo( $overlay_wrapper );
           attach_overlay_events();
@@ -253,10 +255,6 @@ class UserSet
       show_overlay();
 
       </script>';
-
-    $this->fetchAlbumContents($id);
-    $album = $this->getAlbum($id);
-    $out .= $album->createImageScripts();
 
     echo $out;
 
