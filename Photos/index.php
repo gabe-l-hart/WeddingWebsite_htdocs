@@ -16,7 +16,4 @@ require './scripts/photos.php';
     $userSet->displayAlbums();
   ?>
 
-  <!-- Make sure floated content gets expanded for -->
-  <div style="clear:both;"></div>
-
 <?php subPageBottom(); ?>

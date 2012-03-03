@@ -251,6 +251,11 @@ class UserSet
       echo $album->createTile();
       echo $album->createShowScripts();
     }
+
+    // Add clear div if necessary
+    if (count($this->albums) >= 6) {
+      echo '<div style="clear:both;"></div>';
+    }
   }
 
 
