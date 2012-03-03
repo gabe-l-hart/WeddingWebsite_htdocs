@@ -11,6 +11,7 @@
   width:212px;
   display:block;
   text-align:center;
+  cursor:pointer;
 }
 
 .albumThumbnail {
@@ -59,5 +60,10 @@
 
 .ad-thumbs {
   position:relative;
-  left:-20px;
+  left:0px;
+  height:56px;
+}
+
+.ad-thumb-list {
+  height:56px;
 }

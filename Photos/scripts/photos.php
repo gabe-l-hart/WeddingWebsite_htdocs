@@ -85,14 +85,14 @@ class Album
   {
     return '
     <div class="albumTileDiv commonText">
-      <a class="albumTile itemTile" href="javascript: submit_show_album_'.$this->gphotoID.'()">
-        <span class="overlayDiv">
+      <div class="albumTile itemTile" onclick="javascript: submit_show_album_'.$this->gphotoID.'()">
+        <div class="overlayDiv">
           <div class="albumThumbnail">
             <img src="'.$this->thumbnail[0]->getURL().'">
           </div>
           <div class="albumCaption">'.$this->title.'</div>
-        </span>
-      </a>
+        </div>
+      </div>
       <form method=\'post\' action=\'\' name=\'show_album_'.$this->gphotoID.'\'>
         <input type=\'hidden\' name=\'album_id\' value=\''.$this->gphotoID.'\' />
       </form>
@@ -206,7 +206,7 @@ class UserSet
     {
       $out .= '<li>\
             <a href=\''.$photo->full_image[0]->getUrl().'\'>\
-              <img src=\''.$photo->thumbnail[0]->getUrl().'\' class=\''.$photo->gphotoID.'\'>\
+              <img height=\'50px\' src=\''.$photo->thumbnail[0]->getUrl().'\' class=\''.$photo->gphotoID.'\'>\
             </a>\
           </li>';
     }
