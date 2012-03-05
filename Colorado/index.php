@@ -21,9 +21,14 @@
     padding: 0px 0px 2px 0px;
     border-bottom:solid 1px;
   }
+  .infoContainer {
+    line-height:25px;
+  }
   </style>
 
   <p class="subPageTitle">Things to do in Colorado</p>
+
+  <div class="infoContainer">
 
   <p class="coloradoDescription">For those of you looking to make a longer vacation out of your trip, here are just a few highlights of what Colorado has to offer.  For more information, the <a href="http://ranchretreats.com/tripplanning.html#local">Red Rock Ranch</a> offers a good list of activities in the local area.  The local chamber of commerce sites offer lots of information about visiting <a href="http://www.denverchamber.org/Page/visiting">Denver</a> and <a href="http://www.coloradospringschamber.org/visitor/things.asp">Colorado Springs</a>.  Also, some good information about Western Colorado can be found <a href="http://www.western-colorado-travel-secrets.com/">here</a>.</p>
 
@@ -166,6 +171,9 @@
   <div class="imageFrame" style="float:right; margin:10px 30px;">
     <img src="./images/sneffelsAspen.jpg" width="250px">
   </div>
+
+  </div>
+
   <div style="clear:both;"></div>
 
 <?php subPageBottom(); ?>
