@@ -58,3 +58,28 @@
   font-weight:bold;
   font-size:20px;
 }
+
+.travelContainer {
+  float:left;
+  width:100%
+}
+
+.sectionCaption {
+  font-size:20px;
+}
+
+.flyingFieldsContainer {
+  width:50%;
+  float:left;
+}
+
+.flyingFields {
+}
+
+.drivingFieldsContainer {
+  width:50%;
+  float:right;
+}
+
+.drivingFields {
+}

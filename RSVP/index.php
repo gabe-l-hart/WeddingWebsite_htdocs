@@ -75,7 +75,7 @@
   }
 ?>
 
-	// Fix the overlay background height
+  // Fix the overlay background height
   function fixOverlayHeight() {
     var bodyH = $(document).height();
     var overlayH = $("#overlayPanel").height();
@@ -111,5 +111,69 @@
       </form>
     </div>
   </div>
+
+  <!-- Driving/Flying script -->
+  <script type="text/javascript">
+
+    function enableFlying() {
+      $(".drivingField").prop('disabled', true);
+      $(".flyingField").prop('disabled', false);
+
+      $(".flyingFields").css("border-color","#CFCFCF");
+      $(".flyingFields").css("border-size","3px");
+
+      $(".drivingFields").css("border-color","#050505");
+      $(".drivingFields").css("border-size","3px");
+    }
+    function enableDriving() {
+      $(".flyingField").prop('disabled', true);
+      $(".drivingField").prop('disabled', false);
+
+      $(".drivingFields").css("border-color","#CFCFCF");
+      $(".drivingFields").css("border-size","3px");
+
+      $(".flyingFields").css("border-color","#010101");
+      $(".flyingFields").css("border-size","3px");
+    }
+
+    // Start with flying enabled
+    var tmpFunc = window.onload;
+    window.onload = function() { 
+      tmpFunc();
+      enableFlying();
+    }
+  </script>
+
+  <!-- Travel Info Form -->
+  <div class="travelContainer"">
+    <form class="travelForm" action="" method="post">
+
+      <div class="flyingFieldsContainer">
+        <div class="sectionCaption">
+          <input type="radio" name="travel_type" checked="checked" value="flying" onclick="enableFlying()" />Flying?
+        </div>
+        <fieldset class="flyingFields">
+          What airport will you be flying into?<br />
+          <input class="flyingField" type="radio" name="airport" value="Denver" />Denver<br />
+          <input class="flyingField" type="radio" name="airport" value="ColoradoSprings" />
+            Colorado Springs<br />
+          <input class="flyingField" type="radio" name="airport" value="Other" />Other 
+          <input class="flyingField" type="text" name="airport_other" size="10" />
+        </fieldset>
+      </div>
+
+      <div class="drivingFieldsContainer">
+        <div class="sectionCaption">
+          <input type="radio" name="travel_type" id="travel_driving" value="driving" onclick="enableDriving()" />Driving?
+        </div>
+        <fieldset class="drivingFields">
+          When do you plan to arrive? Please be as specific as possible.<br />
+          <textarea class="drivingField" name="driving_arrival" rows="2" cols="38" /></textarea><br />
+      </fieldset>
+      </div>
+    </form>
+  </div>
+
+  <div style="clear:both;"></div>
 
 <?php subPageBottom(); ?>
