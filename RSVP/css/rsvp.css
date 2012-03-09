@@ -68,18 +68,16 @@
   font-size:20px;
 }
 
+.fieldCaption {
+  line-height:15px;
+}
+
 .flyingFieldsContainer {
   width:50%;
   float:left;
 }
 
-.flyingFields {
-}
-
 .drivingFieldsContainer {
   width:50%;
   float:right;
-}
-
-.drivingFields {
 }

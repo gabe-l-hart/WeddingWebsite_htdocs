@@ -141,6 +141,7 @@
     window.onload = function() { 
       tmpFunc();
       enableFlying();
+      document.getElementById("travel_flying").checked = true;
     }
   </script>
 
@@ -150,7 +151,7 @@
 
       <div class="flyingFieldsContainer">
         <div class="sectionCaption">
-          <input type="radio" name="travel_type" checked="checked" value="flying" onclick="enableFlying()" />Flying?
+          <input type="radio" name="travel_type" id="travel_flying" checked="checked" value="flying" onclick="enableFlying()" />Flying?
         </div>
         <fieldset class="flyingFields">
           What airport will you be flying into?<br />
@@ -167,8 +168,14 @@
           <input type="radio" name="travel_type" id="travel_driving" value="driving" onclick="enableDriving()" />Driving?
         </div>
         <fieldset class="drivingFields">
-          When do you plan to arrive? Please be as specific as possible.<br />
-          <textarea class="drivingField" name="driving_arrival" rows="2" cols="38" /></textarea><br />
+          <div class="fieldCaption">
+            When do you plan to arrive? Please be as specific as possible.
+          </div>
+          <textarea class="drivingField" name="driving_arrival" rows="2" cols="38" /></textarea><br /><br />
+          <div class="fieldCaption">
+            Do you plan to extend your stay in Colorado by arriving early or staying after the wedding? If so, what are your travel plans? (optional)
+          </div>
+          <textarea class="drivingField" name="driving_extendedTravel" rows="2" cols="38" /></textarea><br />
       </fieldset>
       </div>
     </form>
