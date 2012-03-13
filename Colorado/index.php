@@ -10,16 +10,12 @@
     text-align:center;
   }
   .activityBullet a {
-    text-decoration:none;
+    text-decoration:underline;
     color:#CFCFCF;
-    padding: 0px 0px 2px 0px;
-    border-bottom:solid 1px;
   }
   .coloradoDescription a {
-    text-decoration:none;
+    text-decoration:underline;
     color:#CFCFCF;
-    padding: 0px 0px 2px 0px;
-    border-bottom:solid 1px;
   }
   .infoContainer {
     line-height:25px;

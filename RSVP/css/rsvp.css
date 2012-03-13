@@ -59,17 +59,54 @@
   font-size:20px;
 }
 
-.travelContainer {
+.additionalInfoContainer {
   float:left;
-  width:100%
+  width:100%;
+  padding: 20px 0px;
+}
+
+.additionalInfoForm {
+	width:100%;
 }
 
 .sectionCaption {
   font-size:20px;
 }
 
+.borderSection {
+	border: solid 3px;
+	border-color: #CFCFCF;
+}
+
 .fieldCaption {
   line-height:15px;
+  padding: 5px;
+}
+
+.songFieldContainer {
+	width:680px;
+}
+
+.songFields {
+	padding:10px;
+	border:0px;
+}
+
+.travelFieldsContainer {
+	width:680px;
+}
+
+.travelFieldsInner {
+	padding:10px;
+}
+
+.travelCaption {
+	border: 0px;
+	border-bottom-style: solid;
+	border-bottom-color: #CFCFCF;
+	border-bottom-width: 3px;
+	margin:5px;
+	padding: 0px 0px 10px 0px;
 }
 
 .flyingFieldsContainer {
@@ -77,7 +114,15 @@
   float:left;
 }
 
+.flyingFields {
+  border:0px;
+}
+
 .drivingFieldsContainer {
   width:50%;
   float:right;
+}
+
+.drivingFields {
+  border:0px;
 }

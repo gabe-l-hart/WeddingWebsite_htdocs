@@ -5,6 +5,21 @@
 <link rel="stylesheet" type="text/css" href="./css/rsvp.css">
 <?php subPageTop(); ?>
 
+<!-- Calander Script -->
+<script type="text/javascript" src="./scripts/calendarDateInput.js">
+
+/***********************************************
+* Jason's Date Input Calendar- By Jason Moon http://calendar.moonscript.com/dateinput.cfm
+* Script featured on and available at http://www.dynamicdrive.com
+* Keep this notice intact for use.
+***********************************************/
+
+</script>
+
+<!-- Time Picker Script -->
+<script type="text/javascript" src="./scripts/jquery.timePicker.js"></script>
+<style type="text/css" media="all">@import "./css/timePicker.css";</style>
+
   <!-- Title -->
   <p class="subPageTitle">RSVP</p>
 
@@ -119,21 +134,27 @@
       $(".drivingField").prop('disabled', true);
       $(".flyingField").prop('disabled', false);
 
-      $(".flyingFields").css("border-color","#CFCFCF");
-      $(".flyingFields").css("border-size","3px");
+			$(".flyingFields").css("background-color","transparent");
+			$(".drivingFields").css("background-color","#AAAAAA");
 
-      $(".drivingFields").css("border-color","#050505");
-      $(".drivingFields").css("border-size","3px");
+      //$(".flyingFields").css("border-color","#CFCFCF");
+      //$(".flyingFields").css("border-size","3px");
+
+      //$(".drivingFields").css("border-color","#050505");
+      //$(".drivingFields").css("border-size","3px");
     }
     function enableDriving() {
       $(".flyingField").prop('disabled', true);
       $(".drivingField").prop('disabled', false);
 
-      $(".drivingFields").css("border-color","#CFCFCF");
-      $(".drivingFields").css("border-size","3px");
+			$(".flyingFields").css("background-color","#AAAAAA");
+			$(".drivingFields").css("background-color","transparent");
 
-      $(".flyingFields").css("border-color","#010101");
-      $(".flyingFields").css("border-size","3px");
+      //$(".drivingFields").css("border-color","#CFCFCF");
+      //$(".drivingFields").css("border-size","3px");
+
+      //$(".flyingFields").css("border-color","#010101");
+      //$(".flyingFields").css("border-size","3px");
     }
 
     // Start with flying enabled
@@ -146,38 +167,70 @@
   </script>
 
   <!-- Travel Info Form -->
-  <div class="travelContainer"">
-    <form class="travelForm" action="" method="post">
+  <div class="additionalInfoContainer">
+    <form class="additionalInfoForm" action="" method="post">
 
-      <div class="flyingFieldsContainer">
-        <div class="sectionCaption">
-          <input type="radio" name="travel_type" id="travel_flying" checked="checked" value="flying" onclick="enableFlying()" />Flying?
-        </div>
-        <fieldset class="flyingFields">
-          What airport will you be flying into?<br />
-          <input class="flyingField" type="radio" name="airport" value="Denver" />Denver<br />
-          <input class="flyingField" type="radio" name="airport" value="ColoradoSprings" />
-            Colorado Springs<br />
-          <input class="flyingField" type="radio" name="airport" value="Other" />Other 
-          <input class="flyingField" type="text" name="airport_other" size="10" />
-        </fieldset>
+      <div class="songFieldContainer">
+      	<div class="borderSection">
+	        <fieldset class="songFields">
+	          <div class="fieldCaption">
+	            As part of our reception we hope you will join us in dancing. Everyone has favorite songs to dance to and we want to hear yours! Please help us build the perfect reception playlist by telling us three of your favorite (possibly romantic) songs.
+	        	</div>
+	          Song 1: <input class="songField" name="song1" size="90" /><br />
+	          Song 2: <input class="songField" name="song2" size="90" /><br />
+	          Song 3: <input class="songField" name="song3" size="90" />
+	      	</fieldset>
+      	</div>
       </div>
+			<br />
+			<div class="travelFieldsContainer">
+				<div class="travelFieldsInner borderSection">
+					<div class="travelCaption">
+		    		In an effort to coordinate travel for all of our guests, please let us know what your travel plans are (driving or flying) along with some details about when you'll be arriving/departing.
+					</div>
+		      <div class="flyingFieldsContainer">
 
-      <div class="drivingFieldsContainer">
-        <div class="sectionCaption">
-          <input type="radio" name="travel_type" id="travel_driving" value="driving" onclick="enableDriving()" />Driving?
-        </div>
-        <fieldset class="drivingFields">
-          <div class="fieldCaption">
-            When do you plan to arrive? Please be as specific as possible.
-          </div>
-          <textarea class="drivingField" name="driving_arrival" rows="2" cols="38" /></textarea><br /><br />
-          <div class="fieldCaption">
-            Do you plan to extend your stay in Colorado by arriving early or staying after the wedding? If so, what are your travel plans? (optional)
-          </div>
-          <textarea class="drivingField" name="driving_extendedTravel" rows="2" cols="38" /></textarea><br />
-      </fieldset>
-      </div>
+		        <div class="sectionCaption">
+		          <input type="radio" name="travel_type" id="travel_flying" checked="checked" value="flying" onclick="enableFlying()" />Flying?
+		        </div>
+		        <fieldset class="flyingFields">
+		          What airport will you be flying into?<br />
+		          <input class="flyingField" type="radio" name="airport" value="Denver" />Denver<br />
+		          <input class="flyingField" type="radio" name="airport" value="ColoradoSprings" />
+		            Colorado Springs<br />
+		          <input class="flyingField" type="radio" name="airport" value="Other" />Other 
+		          <input class="flyingField" type="text" name="airport_other" size="10" /><br /><br />
+		          What date and time will you be arriving?
+		          <script>DateInput('airport_arrival_date', true, 'DD-MON-YYYY')</script>
+		          <input class="flyingField" id="flying_arrival_time" name="flying_arrival_time" size="10" autocomplete="off" />
+		          <script type="text/javascript" >$("#flying_arrival_time").timePicker({show24Hours:false});</script><br /><br />
+		          What date and time will you be departing?
+		          <script>DateInput('airport_depart_date', true, 'DD-MON-YYYY')</script>
+		          <input class="flyingField" id="flying_depart_time" name="flying_depart_time" size="10" autocomplete="off" />
+		          <script type="text/javascript" >$("#flying_depart_time").timePicker({show24Hours:false});</script>
+		        </fieldset>
+		      </div>
+
+		      <div class="drivingFieldsContainer">
+		        <div class="sectionCaption">
+		          <input type="radio" name="travel_type" id="travel_driving" value="driving" onclick="enableDriving()" />Driving?
+		        </div>
+		        <fieldset class="drivingFields">
+		          <div class="fieldCaption">
+		            When do you plan to arrive? Please be as specific as possible so we can coordinate meeting you when you get here!
+		          </div>
+		          <textarea class="drivingField" name="driving_arrival" rows="2" /></textarea><br /><br />
+		          <div class="fieldCaption">
+		            Do you plan to extend your stay in Colorado by arriving early or staying after the wedding? If so, what are your travel plans?
+		          </div>
+		          <textarea class="drivingField" name="driving_extendedTravel" rows="4" /></textarea><br />
+		      </fieldset>
+		      </div>
+
+					<div style="clear:both;"></div>
+				</div>
+			</div>
+
     </form>
   </div>
 
