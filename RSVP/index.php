@@ -290,11 +290,11 @@
 	            playlist by telling us three of your favorite (possibly romantic) songs. If you realy
 	            don't have any songs to recommend, just enter "None" in the first box.
 	        	</div>
-	          <div id="song1Caption">Song 1: </div>
+	          <span id="song1Caption">Song 1: </span>
 	        	<input class="songField" id="song1" name="song1" size="90" /><br />
-	          <div id="song2Caption">Song 2: </div>
+	          <span id="song2Caption">Song 2: </span>
 	          <input class="songField" id="song2" name="song2" size="90" /><br />
-	          <div id="song3Caption">Song 3: </div>
+	          <span id="song3Caption">Song 3: </span>
 	          <input class="songField" id="song3" name="song3" size="90" />
 	      	</fieldset>
       	</div>
