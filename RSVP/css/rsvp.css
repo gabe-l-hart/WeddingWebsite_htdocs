@@ -42,7 +42,7 @@
   right:40px;
 }
 
-.rsvpSendButton {
+.rsvpButton {
   font-family:"Gabriola";
   text-align:center;
   font-size:14px;
@@ -125,4 +125,14 @@
 
 .drivingFields {
   border:0px;
+}
+
+.nameInput {
+	padding:10px;
+	float:right;
+}
+
+.otherInfoSubmit {
+	margin:12px 10px;
+	float:right;
 }
