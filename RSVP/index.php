@@ -160,11 +160,7 @@
 			$(".flyingFields").css("background-color","transparent");
 			$(".drivingFields").css("background-color","#AAAAAA");
 
-      //$(".flyingFields").css("border-color","#CFCFCF");
-      //$(".flyingFields").css("border-size","3px");
-
-      //$(".drivingFields").css("border-color","#050505");
-      //$(".drivingFields").css("border-size","3px");
+      $(".drivingCaptions").css("color","#CFCFCF");
     }
     function enableDriving() {
       $(".flyingField").prop('disabled', true);
@@ -173,11 +169,7 @@
 			$(".flyingFields").css("background-color","#AAAAAA");
 			$(".drivingFields").css("background-color","transparent");
 
-      //$(".drivingFields").css("border-color","#CFCFCF");
-      //$(".drivingFields").css("border-size","3px");
-
-      //$(".flyingFields").css("border-color","#010101");
-      //$(".flyingFields").css("border-size","3px");
+      $(".flyingCaptions").css("color","#CFCFCF");
     }
 
     // Start with flying enabled
@@ -279,6 +271,7 @@
 
   <!-- Travel Info Form -->
   <div class="additionalInfoContainer">
+  	<div class="subPageTitle">Additional Travel Information</div>
     <form class="additionalInfoForm" name="additionalInfoForm" onsubmit="return validateInfoForm()" action="" method="post">
 
       <div class="songFieldContainer">
@@ -287,7 +280,7 @@
 	          <div class="fieldCaption">
 	            As part of our reception we hope you will join us in dancing. Everyone has favorite
 	            songs to dance to and we want to hear yours! Please help us build the perfect reception
-	            playlist by telling us three of your favorite (possibly romantic) songs. If you realy
+	            playlist by telling us three of your favorite songs. If you really
 	            don't have any songs to recommend, just enter "None" in the first box.
 	        	</div>
 	          <span id="song1Caption">Song 1: </span>
@@ -311,17 +304,18 @@
 		          <input type="radio" name="travel_type" id="travel_flying" checked="checked" value="flying" onclick="enableFlying()" />Flying?
 		        </div>
 		        <fieldset class="flyingFields">
-		          <div id="airportCaption">What airport will you be flying into?</div><br />
+		          <div id="airportCaption" class="flyingCaptions">What airport will you be flying into?</div><br />
 		          <input class="flyingField" type="radio" name="airport" value="Denver" />Denver<br />
 		          <input class="flyingField" type="radio" name="airport" value="ColoradoSprings" />
 		            Colorado Springs<br />
-		          <input class="flyingField" type="radio" name="airport" id="airport_other_radio" value="Other" /><span id="airportOtherCaption">Other</span> 
+		          <input class="flyingField" type="radio" name="airport" id="airport_other_radio" value="Other" />
+		          <span id="airportOtherCaption" class="flyingCaptions">Other</span> 
 		          <input class="flyingField" type="text" name="airport_other" id="airport_other" size="10" /><br /><br />
-		          <div id="arrivingCaption">What date and time will you be arriving?</div>
+		          <div id="arrivingCaption" class="flyingCaptions">What date and time will you be arriving?</div>
 		          <script>DateInput('airport_arrival_date', true, 'DD-MON-YYYY')</script>
 		          <input class="flyingField" id="flying_arrival_time" name="flying_arrival_time" size="10" autocomplete="off" />
 		          <script type="text/javascript" >$("#flying_arrival_time").timePicker({show24Hours:false});</script><br /><br />
-		          <div id="departingCaption">What date and time will you be departing?</div>
+		          <div id="departingCaption" class="flyingCaptions">What date and time will you be departing?</div>
 		          <script>DateInput('airport_depart_date', true, 'DD-MON-YYYY')</script>
 		          <input class="flyingField" id="flying_depart_time" name="flying_depart_time" size="10" autocomplete="off" />
 		          <script type="text/javascript" >$("#flying_depart_time").timePicker({show24Hours:false});</script>
@@ -333,7 +327,7 @@
 		          <input type="radio" name="travel_type" id="travel_driving" value="driving" onclick="enableDriving()" />Driving?
 		        </div>
 		        <fieldset class="drivingFields">
-		          <div class="fieldCaption" id="drivingArrivalCaption">
+		          <div class="fieldCaption drivingCaptions" id="drivingArrivalCaption">
 		            When do you plan to arrive? Please be as specific as possible so we can coordinate meeting you when you get here!
 		          </div>
 		          <textarea class="drivingField" id="driving_arrival" name="driving_arrival" rows="2" /></textarea><br /><br />
