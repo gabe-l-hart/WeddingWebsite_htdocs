@@ -272,7 +272,7 @@
   <!-- Travel Info Form -->
   <div class="additionalInfoContainer">
   	<div class="subPageTitle">Additional Travel Information</div>
-    <form class="additionalInfoForm" name="additionalInfoForm" onsubmit="return validateInfoForm()" action="" method="post">
+    <form class="additionalInfoForm" name="additionalInfoForm" onsubmit="return validateInfoForm()" action="./scripts/submitAddtlInfo.php" method="post">
 
       <div class="songFieldContainer">
       	<div class="borderSection">
