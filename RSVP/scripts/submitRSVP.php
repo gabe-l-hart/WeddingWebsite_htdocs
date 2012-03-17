@@ -12,7 +12,7 @@ mysql_connect($db_hostname, $db_user, $db_pw) or die(mysql_error());
 mysql_select_db($db_name) or die(mysql_error());
 
 // Make db changes
-$query = "INSERT INTO  `".$db_name."`.`RSVP` (  `names`, `attending` ) VALUES ( '".$_POST['names']."', '".$_POST['attend']."' )";
+$query = "REPLACE INTO  `".$db_name."`.`rsvp` (  `names`, `attending` ) VALUES ( '".mysql_real_escape_string($_POST['names'])."', '".mysql_real_escape_string($_POST['attend'])."' )";
 mysql_query($query);
 
 // Create dummy form
