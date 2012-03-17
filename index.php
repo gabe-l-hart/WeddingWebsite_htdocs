@@ -11,8 +11,8 @@
 <!-- First Row -->
 <tr>
 <td><img src="./images/p11.png" alt="" /></td>
-<?php createHomeTile("./images/p12.png", "./Welcome/", "Welcome", "p12") ?>
-<?php createHomeTile("./images/p13.png", "./TheEvent/", "The Event", "p13") ?>
+<?php createHomeTile("./images/p12.png", "./Welcome/", "Our Wedding Weekend", "p12") ?>
+<?php createHomeTile("./images/p13.png", "./TheEvent/", "Logistics of the Weekend", "p13") ?>
 </tr>
 
 <!-- Second Row -->
@@ -25,7 +25,7 @@
 <!-- Third Row -->
 <tr>
 <td><img src="./images/p31.png" alt="" /></td>
-<?php createHomeTile("./images/p32.png", "./Colorado/", "Colorado", "p32") ?>
+<?php createHomeTile("./images/p32.png", "./Colorado/", "Visiting Colorado", "p32") ?>
 <?php createHomeTile("./images/p33.png", "./Photos/", "Photos", "p33") ?>
 </tr>
 

@@ -3,6 +3,6 @@
 <?php pageHeader("..", "The Event"); ?>
 <?php subPageTop(); ?>
 
-  	<p>TEST -- The Event</p>
+  	<p class="subPageTitle">Logistics of the Weekend</p>
 
 <?php subPageBottom(); ?>

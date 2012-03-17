@@ -22,7 +22,7 @@
   }
   </style>
 
-  <p class="subPageTitle">Things to do in Colorado</p>
+  <p class="subPageTitle">Visiting Colorado</p>
 
   <div class="infoContainer">
 

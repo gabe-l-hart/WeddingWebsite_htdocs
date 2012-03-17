@@ -434,7 +434,7 @@ class Registry
     }
 
     // Add clear div if necessary
-    if (count($this->items) >= 2) {
+    if (count($this->items) > 2) {
       echo '<div style="clear:both;"></div>';
     }
 
