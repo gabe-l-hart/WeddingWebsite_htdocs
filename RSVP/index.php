@@ -24,8 +24,9 @@
   <p class="subPageTitle">RSVP</p>
 
   <!-- Descriptive Text -->
-  <div style="margin:10px;">
-  <p>This is some really nifty descriptive text about the RSVP process.</p>
+  <div style="margin:10px;" class="descriptionText">
+  <p>As space at the Red Rock Ranch is strictly limited to fifty guests, we ask that you RSVP at your earliest convenience so we can make any necessary adjustments.  Please submit the card below with your reply no later than May 1st.</p>
+	<p>If only a portion of your invited party is able to attend the weekend, please submit the names below of those who will be attending.  We will assume any others not listed are unable to attend.</p>
   </div>
 
 
@@ -281,6 +282,9 @@
   <!-- Travel Info Form -->
   <div class="additionalInfoContainer">
   	<div class="subPageTitle">Additional Travel Information</div>
+  	<div class="descriptionText">
+  		<p>As the weekend draws nearer and your travel plans finalize, please submit the information below when you are able.</p>
+  	</div>
     <form class="additionalInfoForm" name="additionalInfoForm" onsubmit="return validateInfoForm()" action="./scripts/submitAddtlInfo.php" method="post">
 
       <div class="songFieldContainer">
@@ -304,7 +308,7 @@
 			<br />
 			<div class="travelFieldsContainer">
 				<div class="travelFieldsInner borderSection">
-					<div class="travelCaption">
+					<div class="fieldCaption travelCaption">
 		    		In an effort to coordinate travel for all of our guests, please let us know what your travel plans are (driving or flying) along with some details about when you'll be arriving/departing.
 					</div>
 		      <div class="flyingFieldsContainer">

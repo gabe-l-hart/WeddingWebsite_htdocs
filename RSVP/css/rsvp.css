@@ -1,3 +1,7 @@
+.descriptionText {
+	line-height:20px;
+}
+
 .rsvpCard {
   float:left;
   background: url('../images/rsvp_card.png') no-repeat 0 0;
@@ -79,7 +83,7 @@
 }
 
 .fieldCaption {
-  line-height:15px;
+  line-height:20px;
   padding: 5px;
 }
 
