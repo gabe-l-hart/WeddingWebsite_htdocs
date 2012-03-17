@@ -154,3 +154,7 @@ html, body {
   border-color:#CFCFCF;
   border-width:5px;
 }
+
+.descriptionText {
+	line-height:20px;
+}
