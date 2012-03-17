@@ -28,7 +28,7 @@ $nameField = checkPostField("nameField");
 $song1 = checkPostField("song1");
 $song2 = checkPostField("song2");
 $song3 = checkPostField("song3");
-$songs = $song1.";"$song2.";".$song3;
+$songs = $song1.";".$song2.";".$song3;
 $travel_type = checkPostField("travel_type");
 
 $airport = "";
@@ -39,6 +39,18 @@ $airport_depart_date = "";
 $flying_depart_time = "";
 $driving_arrival = "";
 $driving_extendedTravel = "";
+
+function formatDateTime($date, $time) {
+	$timeParts = explode(" ", $time);
+	$timeStr = $timeParts[0];
+	if ($timeParts[1] == "PM") {
+		$timeSubParts = explode(":", $timeParts[0]);
+		$h = intval($timeSubParts[0]);
+		$timeStr = strval($h + 12).":".$timeSubParts[1];
+	}
+	$timeStr .= ":00";
+	return $date." ".$timeStr;
+}
 
 // Set up query
 $query = "";
@@ -52,31 +64,40 @@ if ($success && $travel_type == "flying") {
 	$airport_depart_date = checkPostField("airport_depart_date");
 	$flying_depart_time = checkPostField("flying_depart_time");
 
-	
-	//$query = "INSERT INTO  `".$db_name."`.`additional_info`
- 	//	(  `name`, `songs`, `flying`, `airport`, `flying_arrive`, `flying_depart`, `driving` )
-  //	VALUES ( '$nameField', '$songs', '1', '$airport', '$' )";
+	$arriveDateTime = formatDateTime($airport_arrival_date, $flying_arrival_time);
+	$departDateTime = formatDateTime($airport_depart_date, $flying_depart_time);
+
+	$query = "REPLACE INTO  `".$db_name."`.`additional_info`
+ 		(  `name`, `songs`, `flying`, `airport`, `flying_arrive`, `flying_depart`, `driving`, `driving_arrive`, `driving_plans` )
+  	VALUES ( '$nameField', '$songs', '1', '$airport', '$arriveDateTime', '$departDateTime', '0', '', '' )";
 }
-elseif($succes && $travel_type == "driving") {
+elseif($success && $travel_type == "driving") {
 	$driving_arrival = checkPostField("driving_arrival");
 	$driving_extendedTravel = checkPostField("driving_extendedTravel");
+
+	$query = "REPLACE INTO  `".$db_name."`.`additional_info`
+ 		(  `name`, `songs`, `flying`, `airport`, `flying_arrive`, `flying_depart`, `driving`, `driving_arrive`, `driving_plans` )
+  	VALUES ( '$nameField', '$songs', '0', 'None', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1',
+  	'".mysql_real_escape_string($driving_arrival)."', '".mysql_real_escape_string($driving_extendedTravel)."' )";
 }
 else {
 	$success = false;
 }
 
-/*
 // Make db changes
-$query = "INSERT INTO  `".$db_name."`.`additional_info`
- (  `name`, `songs`, `flying`, `airport`, `flying_arrive`, `flying_depart`, `driving`, `driving_arrive`, `driving_plans` )
-  VALUES ( '".$_POST['name']."', '".$_POST['attend']."' )";
-mysql_query($query);
+if ($success) {
+	if(!mysql_query($query)) {
+		$success = false;
+	}
+}
+
+//DEBUG
+//echo "query: ".$query."<br><br>";
+//echo "success: ".$success."<br>";
 
 // Create dummy form
-echo "
-<form id='redirect' action='..' method='post'>
-  <input type='hidden' id='success_names' name='success_names' value='".$_POST['names']."'></input>
-  <input type='hidden' id='attending' name='attending' value='".$_POST['attend']."'></input>
+echo "<form id='redirect' action='..' method='post'>
+  <input type='hidden' id='additionalInfoSuccess' name='additionalInfoSuccess' value='".strval($success)."'></input>
 </form>";
 
 // Submit form on load
@@ -84,7 +105,6 @@ echo "<script type='text/javascript'>
   function submit () {
     document.getElementById('redirect').submit();
   }
-  window.onload = submit;
+  window.onload = submit();
 </script>";
-*/
 ?>

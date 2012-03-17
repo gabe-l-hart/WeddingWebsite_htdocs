@@ -61,6 +61,15 @@
       echo "\"<p class='rsvpSuccessMsg'>We're so sorry to hear you won't be able to attend. You will be missed.</p>\" +";
     }
   }
+  elseif(isset($_POST['additionalInfoSuccess'])) {
+		echo "\"<p class='rsvpSuccessMsg'>";
+		if (intval($_POST['additionalInfoSuccess'])) {
+			echo "Thank you for submitting your travel information. We can't wait to see you in August!";
+		} else {
+			echo "There was an error submitting your information. Please enter your information again.";
+		}
+		echo "</p>\" +";
+	}
 ?>
           "</div>\
           <div class='overlayPanelBottom'></div>\
@@ -85,7 +94,7 @@
   });
 
 <?php
-  if (isset($_POST['success_names'])) {
+  if (isset($_POST['success_names']) || isset($_POST['additionalInfoSuccess']) ) {
     echo "show_overlay();";
   }
 ?>
@@ -312,11 +321,11 @@
 		          <span id="airportOtherCaption" class="flyingCaptions">Other</span> 
 		          <input class="flyingField" type="text" name="airport_other" id="airport_other" size="10" /><br /><br />
 		          <div id="arrivingCaption" class="flyingCaptions">What date and time will you be arriving?</div>
-		          <script>DateInput('airport_arrival_date', true, 'DD-MON-YYYY')</script>
+		          <script>DateInput('airport_arrival_date', true, 'YYYY-MM-DD')</script>
 		          <input class="flyingField" id="flying_arrival_time" name="flying_arrival_time" size="10" autocomplete="off" />
 		          <script type="text/javascript" >$("#flying_arrival_time").timePicker({show24Hours:false});</script><br /><br />
 		          <div id="departingCaption" class="flyingCaptions">What date and time will you be departing?</div>
-		          <script>DateInput('airport_depart_date', true, 'DD-MON-YYYY')</script>
+		          <script>DateInput('airport_depart_date', true, 'YYYY-MM-DD')</script>
 		          <input class="flyingField" id="flying_depart_time" name="flying_depart_time" size="10" autocomplete="off" />
 		          <script type="text/javascript" >$("#flying_depart_time").timePicker({show24Hours:false});</script>
 		        </fieldset>
