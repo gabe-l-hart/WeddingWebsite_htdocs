@@ -91,10 +91,14 @@ class RegistryItem
                 <label for=\'quantity_'.$this->id.'\'>Qty: </label>\
                 <input type=\'text\' maxlength=3 size=3 id=\'quantity_'.$this->id.'\' value=\'1\' />\
               </form>\
-            </div>\
+            </div>';
+      if ($this->link != null and $this->link != "")
+      {
+          $out .= '\
           <a class=\'overlayButtonLink\' href=\''.$this->link.'\'>\
             <div class=\'overlayButton120\'>Visit their website</div>\
           </a>';
+      }
 
       if ($this->purchased >= $this->requested) {
         $out = $out.'<div class=\'overlayButton120\' style=\'color:#616161\'>Sold Out</div>';

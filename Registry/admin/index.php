@@ -65,7 +65,6 @@ require '../scripts/registry.php';
 
   function submitAddFormIfValid() {
     if (!validate_field("Upload","name")) { return false; }
-    if (!validate_field("Upload","link")) { return false; }
     if (!validate_field("Upload","requested")) { return false; }
     if (!validate_field("Upload","unit_price")) { return false; }
     if (!validate_field("Upload","file")) { return false; }
