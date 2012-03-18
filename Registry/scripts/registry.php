@@ -276,7 +276,7 @@ class RegistryItem
   }
 
   function append_overlay_'.$this->id.'() {
-      $overlay_wrapper_'.$this->id.' = $("<div class=\'overlay\' id=\'overlayBG\'></div>").appendTo( $("BODY") );
+      $overlay_wrapper_'.$this->id.' = $("<div class=\'overlay\' id=\'overlayBG\' name=\'overlayBG\'></div>").appendTo( $("BODY") );
       $overlay_panel_'.$this->id.' = $("<div class=\'overlayPanel\' id=\'overlayPanel\'></div>").appendTo( $overlay_wrapper_'.$this->id.' );
       $overlay_panel_info_'.$this->id.' = $("<div class=\'regOverlayPanelInfo\'></div>").appendTo( $overlay_panel_'.$this->id.' );
       $overlay_panel_purchase_'.$this->id.' = $("<div class=\'regOverlayPanelPurchase\'></div>").appendTo( $overlay_panel_'.$this->id.' );
@@ -355,12 +355,7 @@ class Registry
       // Fix the overlay background height
       function fixOverlayHeight() {
         var bodyH = $(document).height();
-        var overlayH = $("#overlayPanel").height();
-        if (bodyH > overlayH) {
-          document.getElementById("overlayBG").style.height = bodyH + "px";
-        } else {
-          document.getElementById("overlayBG").style.height = overlayH + "px";
-        }
+        $(".overlay").height( bodyH );
       }
 
       // Validate input text as integer less than a given max
