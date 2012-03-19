@@ -123,8 +123,10 @@ html, body {
 }
 
 .overlayPanel {
-  position:relative;
-  margin:20px auto;
+  position:fixed;
+  left:50%;
+  margin-top:20px;
+  margin-left:-225px;
   width:450px;
 }
 
