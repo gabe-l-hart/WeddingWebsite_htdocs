@@ -32,6 +32,15 @@
   <div style="float:left; width:250px">
     <p class="coloradoCaption">Westcliffe Area</p>
     <ul class="activityList">
+      <li class="activityBullet">Lodging in Westcliffe
+        <ul>
+          <li><a href="">The Westcliffe Inn</a></li>
+          <li><a href="">The Golden Corner Motel</a></li>
+          <li><a href="">The Courtyard Inn</a></li>
+          <li><a href="">Over The Brim Inn</a></li>
+          <li><a href="">The Alpine Lodge</a></li>
+        </ul>
+      </li>
       <li class="activityBullet">Hiking (
         <a class="commonText" href="http://www.custercountyco.com/hiking.htm">more info</a>)
         <ul>
