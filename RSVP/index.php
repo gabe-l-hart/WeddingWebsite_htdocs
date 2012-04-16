@@ -160,7 +160,7 @@
     </div>
   </div>
 
-  <!-- Additional infor form scripts -->
+  <!-- Additional info form scripts -->
   <script type="text/javascript">
 
     function enableFlying() {
@@ -293,9 +293,9 @@
 	          <div class="fieldCaption">
 	            As part of our reception we hope you will join us in dancing. Everyone has favorite
 	            songs to dance to and we want to hear yours! Please help us build the perfect reception
-	            playlist by telling us three of your favorite songs. If you really
+	            playlist by telling us up to three of your favorite songs. If you really
 	            don't have any songs to recommend, just enter "None" in the first box.
-	        	</div>
+	          </div>
 	          <span id="song1Caption">Song 1: </span>
 	        	<input class="songField" id="song1" name="song1" size="90" /><br />
 	          <span id="song2Caption">Song 2: </span>
