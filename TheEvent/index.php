@@ -53,9 +53,15 @@
   </div>
   <p class="descriptionText" style="padding:0px; margin:0px;">
     Guests may arrive Thursday anytime after 3pm and must depart the ranch
-    on Sunday by 11am. Detailed directions to the Red Rock Ranch can be found
+    on Sunday by 10am. Detailed directions to the Red Rock Ranch can be found
     <a href="http://ranchretreats.com/tripplanning.html#directions">here</a>
     on their website.
+  </p>
+
+  <p class="descriptionText">
+    NOTE: Google Maps is not able to find the Red Rock Ranch's address, so if
+    you plan to use a GPS, just enter "Westcliffe, Colorado" and follow the
+    end of the directions linked above.
   </p><br>
 
   <!-- Flying -->
