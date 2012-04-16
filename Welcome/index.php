@@ -8,15 +8,15 @@
 	<div class="descriptionText">
 		<p>
 			Welcome to our wedding website!  We could not be more excited to share with you our vision for the wedding.
-			We hope you will explore the information provided here and join us August 9<sup>th</sup>-12<sup>th</sup> for
-			a celebration of love, friendship, and all that is to come.
+                        We hope you will explore the information provided here in preparation for our August 9<sup>th</sup>-12
+                        <sup>th</sup> celebration of love, friendship, and all that is to come.
 		</p>
 		<div class="imageFrame" style="float:right;">
 			<img src="./images/im1.jpg" alt="" width="200" >
 		</div>
 		<p>
 			We feel there is no better way to celebrate the exciting new phase we will be entering than surrounded by
-			those who helped us get there.  As we have envisioned our wedding, our dream has been to spend days rather
+			those who helped us get here.  As we have envisioned our wedding, our dream has been to spend days rather
 			than hours with those we love.  Having lived in Michigan, Massachusetts, Minnesota, North Carolina, and
 			Colorado, we want to gather those who have most supported us as individuals and as a couple along the way,
 			drawing upon that love and support as we commit ourselves to one another and the life we will share.
