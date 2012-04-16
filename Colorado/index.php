@@ -27,6 +27,9 @@
   <div class="infoContainer">
 
   <p class="coloradoDescription">For those of you looking to make a longer vacation out of your trip, here are just a few highlights of what Colorado has to offer.  For more information, the <a href="http://ranchretreats.com/tripplanning.html#local">Red Rock Ranch</a> offers a good list of activities in the local area.  The local chamber of commerce sites offer lots of information about visiting <a href="http://www.denverchamber.org/Page/visiting">Denver</a> and <a href="http://www.coloradospringschamber.org/visitor/things.asp">Colorado Springs</a>.  Also, some good information about Western Colorado can be found <a href="http://www.western-colorado-travel-secrets.com/">here</a>.</p>
+<p class="coloradoDescription">
+  NOTE: Summer lodging tends to book up fast in Westcliffe, so if you plan to extend your stay in the area, consider booking well ahead of time.
+</p>
 
   <!--Westcliffe Area-->
   <div style="float:left; width:250px">
