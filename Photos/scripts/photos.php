@@ -258,7 +258,5 @@ class UserSet
     }
   }
 
-
-
 }
 ?>

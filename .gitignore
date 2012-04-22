@@ -9,3 +9,4 @@ db.php
 Registry/images/items/*
 .htaccess
 .lesshst
+cred.php
