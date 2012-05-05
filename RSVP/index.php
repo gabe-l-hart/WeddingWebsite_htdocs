@@ -25,7 +25,7 @@
 
   <!-- Descriptive Text -->
   <div style="margin:10px;" class="descriptionText">
-  <p>As space at the Red Rock Ranch is strictly limited to fifty guests, we ask that you RSVP at your earliest convenience so we can make any necessary adjustments.  Please submit the card below with your reply no later than May 1st.</p>
+  <p>As space at the Red Rock Ranch is strictly limited to fifty guests, we ask that you RSVP at your earliest convenience so we can make any necessary adjustments.  Please submit the card below with your reply.</p>
 	<p>If only a portion of your invited party is able to attend the weekend, please submit the names below of those who will be attending.  We will assume any others not listed are unable to attend.</p>
   </div>
 
