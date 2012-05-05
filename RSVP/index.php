@@ -143,7 +143,7 @@
   <!-- RSVP Card -->
   <div class="rsvpCard">
     <div class="rsvpCardContainer">
-      <p class="dateLine">Please reply by May 1<sup>st</sup></p>
+      <p class="dateLine">Please reply at your earliest convenience</p>
       <form name="rsvp_card" onsubmit="return validateRSVP()" action="scripts/submitRSVP.php" method="post">
         <div class="nameInputPair">
           <label for="names">Guest Name(s)</label>
