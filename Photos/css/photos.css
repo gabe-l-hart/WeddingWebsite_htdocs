@@ -69,9 +69,6 @@
 }
 
 .uploadButton {
-  position:absolute;
-  right:20px;
-  top:20px;
   font-family:"Gabriola";
   text-align:center;
   height:20px;
@@ -83,4 +80,7 @@
 .uploadButtonLink {
   text-decoration:none;
   color:#4A002F;
+  position:absolute;
+  right:20px;
+  top:20px;
 }
