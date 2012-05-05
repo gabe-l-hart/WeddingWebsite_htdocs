@@ -36,12 +36,6 @@ function createNewAlbum($photos, $name)
   $entry->setGphotoAccess($access);
 
   $result = $photos->insertAlbumEntry($entry);
-  if ($result) {
-    echo "Created new album (".$name.")";
-  } else {
-    echo "There was an issue with the album creation.";
-  }
-
   return $result;
 }
 
@@ -51,22 +45,12 @@ function addPhoto($photos, $album, $photoInfo)
   $fd = $photos->newMediaFileSource($photoInfo["tmp_name"]);
   $fd->setContentType($photoInfo["type"]);
 
-  //DEBUG
-  echo "Test 1 (before photo entry created)";
-
   $entry = new Zend_Gdata_Photos_PhotoEntry();
   $entry->setMediaSource($fd);
   $entry->setTitle($photos->newTitle($photoInfo["name"]));
 
-  //DEBUG
-  echo "Test 2 (before adding photo)";
-
   $result = $photos->insertPhotoEntry($entry, $album);
-  if ($result) {
-    echo "Added a photo to the album";
-  } else {
-    echo "There was an issue with the file upload.";
-  }
+  return $result;
 }
 
 ?>
