@@ -12,6 +12,10 @@ require './scripts/photos.php';
 
   <p class="subPageTitle">Photos</p>
 
+  <a class="uploadButtonLink" href="./Upload">
+    <div href="./Upload" class="uploadButton">Upload Your Photos!</div>
+  </a>
+
   <div class="descriptionText">
     <p>We will upload our official wedding pictures here after the event.  You will also receive instructions at the wedding on how to upload your own pictures to the website so all guests can view and download pictures others have taken.</p>
     <p>For now, please enjoy the below pictures of the Red Rock Ranch and our engagement photos!</p>

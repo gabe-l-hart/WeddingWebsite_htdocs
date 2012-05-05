@@ -67,3 +67,20 @@
 .ad-thumb-list {
   height:56px;
 }
+
+.uploadButton {
+  position:absolute;
+  right:20px;
+  top:20px;
+  font-family:"Gabriola";
+  text-align:center;
+  height:20px;
+  width:120px;
+  margin:5px;
+  font-size:16px;
+  background: url('../images/buttonBG.png') no-repeat 0 0;
+}
+.uploadButtonLink {
+  text-decoration:none;
+  color:#4A002F;
+}
