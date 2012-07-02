@@ -5,11 +5,6 @@
 
 <style type="text/css">
 
-.sectionCaption {
-  font-size: 20px;
-  text-decoration: underline;
-}
-
 .address {
   font-style: italic;
   text-align: center;
