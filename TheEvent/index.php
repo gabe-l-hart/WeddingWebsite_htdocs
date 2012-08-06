@@ -57,7 +57,32 @@
     NOTE: Google Maps is not able to find the Red Rock Ranch's address, so if
     you plan to use a GPS, just enter "Westcliffe, Colorado" and follow the
     end of the directions linked above.
-  </p><br>
+  </p>
+
+  <p class="descriptionText"<b>*************** <i>DIRECTIONS DETOUR</i> ***************</b></p>
+
+  <p class="descriptionText">
+    There is a brige out on Highway 67, so the standard directions from Denver
+    and Colorado Springs no longer work. Here are the new directions:
+  </p>
+  <p class="descriptionText">
+    Just stay on I-25 south until you come to Pueblo. As you start to pass
+    downtown Pueblo on your right,  you will want to take the 6th street exit
+    (which also says State Hwy 96). When you get off the interstate, you turn
+    right onto 6th street. Go a couple of blocks to Santa Fe…go left on Santa
+    Fe 2 blocks to 4th Street. 4th Street IS Hwy 96. Make a right onto 4th
+    street (Hwy 96)…and stay on this road all the way out of town. The name of
+    the road will change, but it is Hwy 96 all the way to the ranch.
+  </p>
+  <p class="descriptionText">
+    Continue on Hwy 96 into the mountains until you come to Mile Marker 6. At
+    Mile Marker 6, you make a right onto our road, County Road 260. (Be careful,
+    this right is a very sharp right turn so make sure and slow down before you
+    hit Mile Marker 6.). Our ranch entrance is up on the left 1/2 mile after
+    turning onto County Road 260. (525 County Road 260)
+  </p>
+
+  <br/>
 
   <!-- Flying -->
   <p class="sectionCaption">Flying to the Red Rock Ranch</p>

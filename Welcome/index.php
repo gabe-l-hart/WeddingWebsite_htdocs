@@ -124,11 +124,8 @@
 			<li>10:30 am: Pancake breakfast (Ranch House Kitchen)</li>
 			<li>2:00 pm: Volleyball game</li>
 			<li>
-				3:00 pm: Meeting with Reception Table Heads (Cottage House Kitchen)
-			</li>
-			<li>
-				4:00 pm: Ceremony rehearsal for Wedding Party (Lawn outside
-				Cottage House)
+				3:00 pm: Ceremony rehearsal for Wedding Party (Lawn outside
+				Ranch House)
 			</li>
 			<li>4:00 pm: Cornhole Tournament (Lawn outside Ranch House)</li>
 			<li>6:00 pm: BBQ dinner (Lawn outside Ranch House)</li>
@@ -158,7 +155,7 @@
 					</li>
 				</ul>
 			</li>
-			<li>4 pm: Wedding ceremony (Lawn outside Cottage House)
+			<li>4 pm: Wedding ceremony (Lawn outside Ranch House)
 				<ul class="noteIndent">
 					<li>
 						<b>Note:</b> In the event of inclement weather, the ceremony
