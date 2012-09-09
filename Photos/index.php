@@ -26,5 +26,5 @@ require './scripts/photos.php';
     $userSet->populateAlbums();
     $userSet->displayAlbums();
   ?>
-
+  <div style="clear:both;">
 <?php subPageBottom(); ?>
